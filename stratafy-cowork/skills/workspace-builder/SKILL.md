@@ -41,11 +41,17 @@ Scrape the company website and search the web. Pull out everything you can:
 - Recent press coverage or announcements
 - Methodology signals (do they mention OKRs, Scaling Up, EOS anywhere?)
 
-**Then draft a complete workspace proposal:**
+**Present ONLY the foundation draft first — do NOT include strategies, initiatives, or assumptions yet.** Save those for after the foundation is confirmed. The draft should look like this:
 
 ```
-WORKSPACE DRAFT — [Company Name]
+FOUNDATION DRAFT — [Company Name]
 Based on: [URL] + web research
+
+CONTEXT
+  Industry: [identified]
+  Stage: [startup / growth / scale-up / enterprise]
+  Market position: [inferred]
+  Key products/services: [listed]
 
 FOUNDATION
   Mission: [drafted from website/about page]
@@ -55,40 +61,19 @@ FOUNDATION
     2. [Value] — [description]
     ...
   Beliefs: [inferred from how they talk about their market]
-
-STRATEGIC LANDSCAPE
-  Industry: [identified]
-  Stage: [startup / growth / scale-up / enterprise]
-  Market position: [inferred]
-  Key products/services: [listed]
-
-SUGGESTED STRATEGY TREE
-  Corporate: [inferred overarching direction]
-    ├── [Functional strategy 1] — based on [evidence]
-    ├── [Functional strategy 2] — based on [evidence]
-    └── [Functional strategy 3] — based on [evidence]
-
-LIKELY INITIATIVES
-  - [Initiative inferred from job postings, product roadmap, press]
-  - [Initiative inferred from recent announcements]
-
-ASSUMPTIONS I THINK YOU'RE MAKING
-  - [assumption about their market]
-  - [assumption about their competitive position]
-  - [assumption about their growth model]
-
-RISKS I'D FLAG
-  - [risk based on market / stage / model]
+  Principles: [any operating principles detected]
 
 WHAT I COULDN'T FIND
-  - [gaps that need human input]
+  - [gaps in the foundation that need human input]
 ```
 
-### 3. Verify & Build Foundation First
+Do NOT present the strategy tree, initiatives, assumptions, or risks at this stage. That comes after the foundation is locked in.
 
-Present the research draft and focus on getting the **foundation right before touching strategy**. The foundation is the bedrock — mission, vision, values, beliefs, workspace context. Get this confirmed and built first.
+### 3. Verify & Build Foundation
 
-Ask targeted refinement questions about the foundation:
+Focus entirely on getting the **foundation right before touching strategy**. The foundation is the bedrock — mission, vision, values, beliefs, workspace context.
+
+Ask targeted refinement questions about the foundation only:
 
 - "I see you say X on your website — is that still your mission, or has it evolved?"
 - "Your values page mentions A, B, C. Are those the ones the team actually lives by?"
@@ -107,9 +92,33 @@ Once the user confirms (even partially — don't wait for perfection), **build t
 
 ### 4. Strategy & Execution Layer
 
-Only after the foundation is built, move to the strategic architecture. Present your suggested strategy tree and refine with the user:
+**Only after the foundation is built**, present the strategy draft. This is a separate conversation step:
 
-- "Based on your website and recent hiring, it looks like your main strategic priorities are [X], [Y], and [Z]. Does that match how you think about it?"
+```
+STRATEGY DRAFT — [Company Name]
+
+STRATEGY TREE
+  Corporate: [inferred overarching direction]
+    ├── [Functional strategy 1] — based on [evidence]
+    ├── [Functional strategy 2] — based on [evidence]
+    └── [Functional strategy 3] — based on [evidence]
+
+LIKELY INITIATIVES
+  - [Initiative inferred from job postings, product roadmap, press]
+  - [Initiative inferred from recent announcements]
+
+ASSUMPTIONS YOU'RE PROBABLY MAKING
+  - [assumption about their market]
+  - [assumption about their competitive position]
+  - [assumption about their growth model]
+
+RISKS I'D FLAG
+  - [risk based on market / stage / model]
+```
+
+Refine with the user:
+
+- "Based on your website and recent hiring, it looks like your main strategic priorities are [X], [Y], and [Z]. Does that match?"
 - "Your careers page is hiring heavily for [role]. Is [strategy] the current priority?"
 
 Once confirmed, build the strategy layer:

@@ -47,48 +47,40 @@ Use web search to supplement with:
 - Recent press coverage
 - Industry context
 
-### Step 2: Present a Pre-Filled Draft
+### Step 2: Present Foundation Draft
 
-Present your findings as a structured draft — not questions. Frame it as "here's what I found" not "tell me about your company."
+Present ONLY the foundation — not strategies, initiatives, or assumptions. Frame it as "here's what I found" not "tell me about your company."
 
 ```
-WORKSPACE DRAFT — [Company Name]
+FOUNDATION DRAFT — [Company Name]
 Based on: [URL] + web research
+
+CONTEXT
+  Industry: [identified]
+  Stage: [startup / growth / scale-up / enterprise]
+  Market position: [inferred]
+  Key products/services: [listed]
 
 FOUNDATION
   Mission: [drafted from website/about page]
   Vision: [inferred from messaging, or "Not found — we'll define this together"]
-  Values: [extracted from values/culture page, or inferred from language]
+  Values:
     1. [Value] — [description]
     2. [Value] — [description]
     ...
-
-STRATEGIC LANDSCAPE
-  Industry: [identified]
-  Market position: [inferred]
-  Key products/services: [listed]
-  Apparent strategic priorities: [inferred from website emphasis, recent content]
-
-SUGGESTED STRATEGY TREE
-  Corporate: [inferred overarching direction]
-    ├── [Functional strategy 1] — based on [evidence]
-    ├── [Functional strategy 2] — based on [evidence]
-    └── [Functional strategy 3] — based on [evidence]
-
-ASSUMPTIONS I'M MAKING
-  - [assumption about their market]
-  - [assumption about their stage]
-  - [assumption about their priorities]
+  Beliefs: [inferred from how they talk about their market]
 
 WHAT I COULDN'T FIND
-  - [gaps that need human input]
+  - [gaps in the foundation that need human input]
 ```
 
-### Step 3: Verify & Build Foundation First
+Do NOT present strategies, assumptions, or risks yet. That comes after the foundation is locked in.
 
-Focus on getting the **foundation right before touching strategy**. The foundation is the bedrock — get it confirmed and built first.
+### Step 3: Verify & Build Foundation
 
-Ask targeted refinement questions about the foundation only:
+Focus entirely on the foundation. Get it confirmed and built before moving on.
+
+Ask targeted refinement questions:
 
 - "I see you say X on your website — is that still your mission, or has it evolved?"
 - "Your values page mentions A, B, C. Are those the ones the team actually lives by?"
@@ -105,11 +97,28 @@ Once confirmed (even partially), **build the foundation immediately**:
 
 ### Step 4: Strategy & Execution
 
-Only after the foundation is built, move to the strategic architecture. Present your suggested strategy tree and refine:
+**Only after the foundation is built**, present a separate strategy draft:
 
-- "Based on your website and recent hiring, your main strategic priorities look like [X], [Y], and [Z]. Does that match?"
+```
+STRATEGY DRAFT — [Company Name]
 
-Once confirmed, build:
+STRATEGY TREE
+  Corporate: [inferred overarching direction]
+    ├── [Functional strategy 1] — based on [evidence]
+    ├── [Functional strategy 2] — based on [evidence]
+    └── [Functional strategy 3] — based on [evidence]
+
+LIKELY INITIATIVES
+  - [Initiative inferred from evidence]
+
+ASSUMPTIONS YOU'RE PROBABLY MAKING
+  - [assumption about their market]
+
+RISKS I'D FLAG
+  - [risk based on market / stage / model]
+```
+
+Refine with the user, then build:
 
 1. `create_strategy` for corporate and functional strategies
 2. `create_initiative` for concrete work linked to strategies

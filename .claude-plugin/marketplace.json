@@ -15,7 +15,7 @@
       "name": "stratafy-cowork",
       "source": "./stratafy-cowork",
       "description": "Turn strategy sessions into living strategic workspaces. Set up client workspaces, debrief sessions, track execution, and run intelligence scans — powered by 169 strategic tools via MCP.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "author": {
         "name": "Stratafy"
       },

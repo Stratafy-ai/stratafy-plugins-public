@@ -20,15 +20,13 @@ If the user also provides session notes, strategy documents, or methodology cont
 
 ## Process
 
-### Step 0: Load Existing Workspace Context
+### Step 0: Find or Create the Workspace
 
-Before researching, check if the workspace already exists:
+Before researching, find the right workspace:
 
-- If a workspace is selected or the user mentions one, call `get_workspace_snapshot` to load everything already captured.
-- Use existing data as your starting point. Don't re-research what's already populated — focus on gaps and enrichment.
-- If the workspace has `workspace_context` set, use it to guide your research.
-
-If no workspace exists yet, skip to Step 1.
+1. **Search by domain first.** Call `select_workspace` with the `domain` parameter set to the company URL (e.g. `domain: "globalaccess.co.za"`). This finds any existing workspace matching that domain and auto-selects it.
+2. **If a match is found**, call `get_workspace_snapshot` to load existing data. Use this as your starting point — don't re-research what's already populated.
+3. **If no match is found**, check the returned workspace list for a name match. If none, you'll create a new workspace during Step 1.
 
 ### Step 1: Research
 
@@ -47,9 +45,16 @@ Use web search to supplement with:
 - Recent press coverage
 - Industry context
 
-**Immediately after research, save workspace context.** Call `update_workspace_context` with everything you found: industry, stage, market position, key products, competitors, revenue, team size. This is factual research data — it does not need user confirmation. Do this BEFORE presenting any draft.
+### Step 2: Save Context (BEFORE presenting anything)
 
-### Step 2: Present Foundation Draft
+**CRITICAL: Save the workspace context BEFORE presenting the foundation draft. This is a hard requirement.**
+
+1. If no workspace exists yet, call `create_workspace` with the company name.
+2. Call `update_workspace_context` with everything from research: `industry`, `domain`, and `company_context` as a structured JSON with stage, market position, key products, competitors, revenue, team size, CEO, funding status.
+3. **Verify the save succeeded** — check the response. If it failed, fix it before continuing.
+4. Only AFTER context is saved, proceed to present the foundation draft.
+
+### Step 3: Present Foundation Draft
 
 Present ONLY the foundation — not strategies, initiatives, or assumptions. Frame it as "here's what I found" not "tell me about your company."
 
@@ -57,13 +62,13 @@ Present ONLY the foundation — not strategies, initiatives, or assumptions. Fra
 FOUNDATION DRAFT — [Company Name]
 Based on: [URL] + web research
 
-CONTEXT
+CONTEXT (saved to workspace)
   Industry: [identified]
   Stage: [startup / growth / scale-up / enterprise]
   Market position: [inferred]
   Key products/services: [listed]
 
-FOUNDATION
+FOUNDATION (needs your confirmation)
   Mission: [drafted from website/about page]
   Vision: [inferred from messaging, or "Not found — we'll define this together"]
   Values:
@@ -78,9 +83,9 @@ WHAT I COULDN'T FIND
 
 Do NOT present strategies, assumptions, or risks yet. That comes after the foundation is locked in.
 
-### Step 3: Confirm & Build Foundation
+**WAIT for the user to respond before building foundation entities.** The context is saved, but the foundation needs human confirmation first.
 
-Workspace context is already saved (Step 1). Now focus entirely on the foundation.
+### Step 4: Confirm & Build Foundation
 
 Ask targeted refinement questions about mission, vision, values, beliefs:
 
@@ -90,15 +95,14 @@ Ask targeted refinement questions about mission, vision, values, beliefs:
 
 Once confirmed, **build ALL foundation entities and verify each succeeded**:
 
-1. Select or create the workspace
-2. `update_mission`, `update_vision`
-3. `create_value` for EACH value (one call per value)
-4. `create_principle` for any operating principles
-5. `create_belief` for EACH belief (one call per belief)
+1. `update_mission`, `update_vision`
+2. `create_value` for EACH value (one call per value)
+3. `create_principle` for any operating principles
+4. `create_belief` for EACH belief (one call per belief)
 
-**Before moving to Step 4, verify the foundation is complete.** If any create call failed, fix it now. Do NOT proceed to strategies with a half-built foundation.
+**Before moving to Step 5, verify the foundation is complete.** If any create call failed, fix it now. Do NOT proceed to strategies with a half-built foundation.
 
-### Step 4: Strategy & Execution
+### Step 5: Strategy & Execution
 
 **Only after the foundation is built**, present a separate strategy draft:
 
@@ -129,7 +133,7 @@ Refine with the user, then build:
 4. `create_risk` if identified
 5. `create_decision` for choices already made or still open
 
-### Step 5: Summary
+### Step 6: Summary
 
 Present what was created:
 - Total entities created (strategies, initiatives, assumptions, etc.)
@@ -140,7 +144,9 @@ Present what was created:
 ## Key Principles
 
 - **Research first, ask second** — never open with "tell me about your company" when you can look it up
+- **Save context immediately** — workspace context is factual research data, save it before asking the user anything
 - **Draft, don't interrogate** — present a hypothesis for them to react to, not a blank form to fill out
+- **Wait for confirmation** — don't build foundation entities until the user confirms the draft
 - **Surface assumptions** — the most valuable part is making implicit beliefs explicit
 - **Good enough to start** — a 70% populated workspace is better than a perfect plan that never ships. They can refine in future sessions
 - **Use their language** — if the website says "customers" don't say "clients." If they say "team members" don't say "employees"

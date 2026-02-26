@@ -24,7 +24,7 @@ Turn strategy sessions into living strategic workspaces. Designed for strategy c
 - `/stratafy-cowork:radar-scan` — Competitive and market intelligence scan
 - `/stratafy-cowork:decision-brief` — Prepare decision context for stakeholders
 
-**Connectors**: Stratafy MCP (135+ tools), Slack, Google Calendar, Gmail, Notion, Linear
+**Connectors**: Stratafy MCP (169 tools), Slack, Google Calendar, Gmail, Notion, Linear
 
 ## Installation
 
@@ -53,7 +53,7 @@ After installing, configure your Stratafy connection:
 ## Learn More
 
 - [Stratafy](https://stratafy.ai) — The operating system for strategy
-- [Stratafy MCP Documentation](https://app.stratafy.ai/api/mcp) — 135+ strategic intelligence tools
+- [Stratafy MCP Documentation](https://stratafy.ai/docs/mcp) — 169 strategic intelligence tools
 
 ## License
 

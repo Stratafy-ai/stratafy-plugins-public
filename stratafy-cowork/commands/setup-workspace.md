@@ -83,15 +83,16 @@ WHAT I COULDN'T FIND
 
 Do NOT present strategies, assumptions, or risks yet. That comes after the foundation is locked in.
 
-**WAIT for the user to respond before building foundation entities.** The context is saved, but the foundation needs human confirmation first.
+**Ask ONE question with the draft — the most important gap (usually mission or vision). WAIT for the user to respond.**
 
 ### Step 4: Confirm & Build Foundation
 
-Ask targeted refinement questions about mission, vision, values, beliefs:
+**IMPORTANT: Ask only ONE question per message.** Do not dump 3-5 questions at once. This is a conversation, not a survey. Work through the foundation one piece at a time:
 
-- "I see you say X on your website — is that still your mission, or has it evolved?"
-- "Your values page mentions A, B, C. Are those the ones the team actually lives by?"
-- "I couldn't find a clear vision statement. What does success look like in 3-5 years?"
+1. Start with the most important gap (e.g. "Is this mission accurate, or has it evolved?")
+2. Wait for the answer
+3. Ask the next question based on what they said (e.g. "What does success look like in 3-5 years?")
+4. Continue until mission, vision, values, and beliefs are confirmed
 
 Once confirmed, **build ALL foundation entities and verify each succeeded**:
 

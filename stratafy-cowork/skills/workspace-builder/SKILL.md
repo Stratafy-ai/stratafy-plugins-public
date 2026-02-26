@@ -83,15 +83,19 @@ Do NOT present the strategy tree, initiatives, assumptions, or risks at this sta
 
 Workspace context is already saved (Step 2). Now focus entirely on getting the foundation right.
 
-**Present the foundation draft and ask targeted refinement questions. WAIT for the user to respond before building anything.**
+**Present the foundation draft and then ask ONE question at a time. WAIT for the user to respond before asking the next question or building anything.**
 
-Ask targeted refinement questions about mission, vision, values, beliefs:
+**IMPORTANT: Ask only ONE question per message.** Do not dump 3-5 questions at once. This is a conversation, not a survey. Work through the foundation one piece at a time:
 
-- "I see you say X on your website — is that still your mission, or has it evolved?"
-- "Your values page mentions A, B, C. Are those the ones the team actually lives by?"
-- "I couldn't find a clear vision statement. What does success look like in 3-5 years?"
+1. Start with the most important gap — usually mission or vision
+2. Wait for the answer
+3. Ask the next question based on what they said
+4. Continue until you've covered mission, vision, values, beliefs
 
-Surface implicit beliefs: "It seems like you believe [X] about your market — is that something you've validated?"
+Example flow:
+- Message 1: Present the draft + "Is the mission I drafted accurate, or has it evolved?"
+- Message 2 (after they respond): "What does success look like for Global Access in 3-5 years? That'll shape the vision."
+- Message 3 (after they respond): "The values I inferred are X, Y, Z — do those resonate, or are there ones the team actually lives by?"
 
 **Do NOT build foundation entities until the user has confirmed.** The context is saved, but the foundation needs human input first.
 

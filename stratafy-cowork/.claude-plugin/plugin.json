@@ -1,11 +1,10 @@
 {
-  "name": "stratafy",
-  "version": "0.1.0",
+  "name": "stratafy-cowork",
   "description": "Turn strategy sessions into living strategic workspaces. Set up client workspaces, debrief sessions, track execution, and run intelligence scans — powered by 135+ strategic tools.",
   "author": {
     "name": "Stratafy",
     "url": "https://stratafy.ai"
   },
-  "homepage": "https://github.com/stratafy/stratafy-cowork-plugin",
+  "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
   "license": "Apache-2.0"
 }

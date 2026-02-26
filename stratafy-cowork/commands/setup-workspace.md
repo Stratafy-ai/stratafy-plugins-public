@@ -20,6 +20,16 @@ If the user also provides session notes, strategy documents, or methodology cont
 
 ## Process
 
+### Step 0: Load Existing Workspace Context
+
+Before researching, check if the workspace already exists:
+
+- If a workspace is selected or the user mentions one, call `get_workspace_snapshot` to load everything already captured.
+- Use existing data as your starting point. Don't re-research what's already populated — focus on gaps and enrichment.
+- If the workspace has `workspace_context` set, use it to guide your research.
+
+If no workspace exists yet, skip to Step 1.
+
 ### Step 1: Research
 
 Scrape the company website and pull out everything you can:
@@ -93,12 +103,13 @@ Let the user correct, add nuance, or confirm. Don't re-ask things they've alread
 Once the user confirms (even partially — don't wait for perfection), create everything in Stratafy:
 
 1. Select or create the workspace
-2. Set foundation: `update_mission`, `update_vision`, `create_value` for each value
-3. Build strategy tree: `create_strategy` for corporate and functional strategies
-4. Add any initiatives that emerged from the conversation: `create_initiative`
-5. Log assumptions explicitly: `create_assumption` — especially the ones surfaced during verification
-6. Log risks if identified: `create_risk`
-7. Log any decisions already made: `create_decision`
+2. `update_workspace_context` with structured company info (industry, stage, market, key products) — this powers radar scans, coherence checks, and agent context
+3. Set foundation: `update_mission`, `update_vision`, `create_value` for each value
+4. Build strategy tree: `create_strategy` for corporate and functional strategies
+5. Add any initiatives that emerged from the conversation: `create_initiative`
+6. Log assumptions explicitly: `create_assumption` — especially the ones surfaced during verification
+7. Log risks if identified: `create_risk`
+8. Log any decisions already made: `create_decision`
 
 ### Step 5: Summary
 

@@ -9,12 +9,14 @@ You help users create and populate Stratafy workspaces. This is the most importa
 These are the Stratafy MCP tools you'll use during workspace setup. They are already available — do not search for them.
 
 **Workspace:**
+
 - `select_workspace` — list workspaces or select one (supports `domain` param to search by URL)
 - `create_workspace` — create a new workspace
 - `update_workspace_context` — save research data (industry, domain, company_context as JSON)
 - `get_workspace_snapshot` — load everything in a workspace
 
 **Foundation:**
+
 - `update_mission` — set the mission statement
 - `update_vision` — set the vision statement
 - `create_value` — create a value (name + content + priority_order)
@@ -22,12 +24,14 @@ These are the Stratafy MCP tools you'll use during workspace setup. They are alr
 - `create_belief` — create a belief (name + content + priority_order)
 
 **Strategy:**
+
 - `create_strategy` — create a strategy (strategy_type: "corporate" or "functional", parent_strategy_id for functional)
 - `create_initiative` — create an initiative linked to a strategy
 - `create_objective` — create a measurable objective
 - `create_metric` — create a metric for tracking
 
 **Intelligence:**
+
 - `create_assumption` — surface an assumption (confidence + impact_if_wrong)
 - `create_risk` — flag a risk (likelihood + impact)
 - `create_insight` — capture existing knowledge
@@ -35,6 +39,7 @@ These are the Stratafy MCP tools you'll use during workspace setup. They are alr
 - `create_decision` — record a choice (status: decided or pending)
 
 **Team:**
+
 - `create_team` — create a team
 - `add_team_member` — add a member to a team
 
@@ -62,6 +67,7 @@ If the user has already provided session notes, transcripts, or documents alongs
 Scrape the company website and search the web. Pull out everything you can:
 
 **From the website:**
+
 - About page → mission, purpose, founder story
 - Values/culture page → stated values
 - Products/services pages → what they do, value proposition
@@ -71,6 +77,7 @@ Scrape the company website and search the web. Pull out everything you can:
 - Pricing page → business model, target segments
 
 **From web search:**
+
 - Industry context, market size, competitive landscape
 - Crunchbase/LinkedIn → funding stage, team size, growth trajectory
 - Recent press coverage or announcements
@@ -127,6 +134,7 @@ Workspace context is already saved (Step 2). Now focus entirely on getting the f
 4. Continue until you've confirmed ALL of: mission, vision, values, beliefs, and principles
 
 **You MUST confirm each foundation element before saving it.** The order should be:
+
 - Message 1: Present the draft + ask about mission
 - Message 2 (after they respond): Ask about vision
 - Message 3 (after they respond): Ask about values — present the list, ask if they'd keep/change/add
@@ -189,15 +197,18 @@ Refine with the user **one question at a time** (same rule as foundation):
 Once confirmed, build the strategy layer:
 
 **Strategy tree (top-down):**
+
 - `create_strategy` with `strategy_type: "corporate"` — the overarching direction. Usually one.
 - `create_strategy` with `strategy_type: "functional"` and `parent_strategy_id` — 3-5 strategic pillars. Common ones: Growth/GTM, Product, People, Operations, Finance. But use what matches the company, not generic labels.
 
 **Execution layer:**
+
 - `create_initiative` linked to strategies — concrete work with timelines and priority
 - `create_objective` for measurable targets
 - `create_metric` for ongoing measurements
 
 **Intelligence layer:**
+
 - `create_assumption` — every strategy rests on assumptions. Rate confidence (hypothesis/likely/validated) and impact_if_wrong (low/medium/high/critical). This is the highest-value part of workspace setup.
 - `create_risk` — rate likelihood and impact, include mitigation ideas
 - `create_insight` — existing knowledge, market intelligence, lessons learned
@@ -205,12 +216,14 @@ Once confirmed, build the strategy layer:
 - `create_decision` — choices already made (status: decided) or still open (status: pending)
 
 **Team structure (if found):**
+
 - If the website reveals leadership structure, suggest creating teams via `create_team` and `add_team_member`
 - Don't force this — many early-stage companies don't need formal org structure yet
 
 ### 5. Summary
 
 Present what was created:
+
 - Total entities by type
 - The strategy tree visualised
 - What's populated vs. what's still a placeholder
@@ -245,18 +258,21 @@ Then present a draft for verification before creating anything.
 Don't ask what methodology they use — detect it from context. Look for keywords in the website, session notes, or coaching context:
 
 **Scaling Up / Rockefeller Habits** (keywords: BHAG, Rocks, Critical Numbers, OPSP, Rockefeller):
+
 - Foundation = Core Values + Core Purpose + BHAG
 - Strategy = Key Thrusts/Capabilities from the One Page Strategic Plan
 - Initiatives = Rocks (quarterly priorities)
 - Metrics = Critical Numbers
 
 **EOS / Traction** (keywords: V/TO, Rocks, Scorecard, EOS, Traction, L10):
+
 - Foundation = Core Values + Core Focus (Purpose/Cause/Passion + Niche)
 - Vision = 10-Year Target + 3-Year Picture
 - Initiatives = Rocks
 - Metrics = Scorecard items
 
 **OKR-native** (keywords: OKR, Objectives, Key Results):
+
 - Strategy pillars become objective containers
 - Key Results are created under each objective
 - Initiatives support the key results
@@ -266,6 +282,7 @@ If no methodology is detected, use the default Stratafy structure. If the user l
 ## When to Use This Knowledge
 
 Activate this skill when:
+
 - A user wants to set up a new workspace
 - Someone provides session notes, transcripts, or strategy documents to import
 - A coach is onboarding a new client

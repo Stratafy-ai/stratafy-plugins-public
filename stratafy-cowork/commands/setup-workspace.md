@@ -21,6 +21,7 @@ These Stratafy MCP tools are already available — do not search for them:
 ## Input
 
 Ask for just two things:
+
 1. **Company URL** (required) — their website
 2. **Company name** (optional) — if it's not obvious from the URL
 
@@ -41,6 +42,7 @@ Before researching, find the right workspace:
 ### Step 1: Research
 
 Scrape the company website and pull out everything you can:
+
 - **What they do** — products, services, value proposition
 - **Mission / purpose** — any stated mission, about page, founder story
 - **Values** — stated values, culture page, how they describe themselves
@@ -51,6 +53,7 @@ Scrape the company website and pull out everything you can:
 - **Stage** — startup, growth, enterprise (infer from team size, funding, language)
 
 Use web search to supplement with:
+
 - Crunchbase / LinkedIn data if available
 - Recent press coverage
 - Industry context
@@ -151,6 +154,7 @@ RISKS I'D FLAG
 ```
 
 Present the draft, then ask ONE question at a time:
+
 - "Is the corporate strategy right — is this the overarching direction?"
 - (wait) "Are these the right functional pillars?"
 - (wait) "Which initiatives are actually in play?"
@@ -167,6 +171,7 @@ Once confirmed, build:
 ### Step 7: Summary
 
 Present what was created:
+
 - Total entities created (strategies, initiatives, assumptions, etc.)
 - The strategy tree visualised
 - What's populated vs. what's still a placeholder

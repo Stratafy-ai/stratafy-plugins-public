@@ -1,0 +1,14 @@
+{
+  "name": "stratafy-cowork-plugin",
+  "owner": {
+    "name": "Stratafy",
+    "url": "https://stratafy.ai"
+  },
+  "plugins": [
+    {
+      "name": "stratafy",
+      "source": ".",
+      "description": "Turn strategy sessions into living strategic workspaces. Set up client workspaces, debrief sessions, track execution, and run intelligence scans — powered by 169 strategic tools."
+    }
+  ]
+}

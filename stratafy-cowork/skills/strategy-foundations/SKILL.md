@@ -6,15 +6,15 @@ You are working with Stratafy — the operating system for strategy. This skill 
 
 Strategy execution must answer seven fundamental questions. Everything in Stratafy maps to one of these:
 
-| Question | Answer | What It Contains |
-|---|---|---|
-| Who are we? | Foundation (Identity) | Mission, vision, values, principles, beliefs |
-| Where do we focus? | Strategy (Direction) | Strategic themes, positioning, capabilities |
+| Question              | Answer                   | What It Contains                                  |
+| --------------------- | ------------------------ | ------------------------------------------------- |
+| Who are we?           | Foundation (Identity)    | Mission, vision, values, principles, beliefs      |
+| Where do we focus?    | Strategy (Direction)     | Strategic themes, positioning, capabilities       |
 | What do we commit to? | Initiatives (Commitment) | Resourced programs with budgets, teams, timelines |
-| How do we execute? | Tactics (Execution) | Objectives, plans, milestones, metrics |
-| How do we learn? | Cortex (Intelligence) | Assumptions, risks, insights, alignment scoring |
-| What informs us? | Context (Reality) | Documents, market data, signals, radar |
-| What supports us? | Tools (Capabilities) | Integrations, agents, automations |
+| How do we execute?    | Tactics (Execution)      | Objectives, plans, milestones, metrics            |
+| How do we learn?      | Cortex (Intelligence)    | Assumptions, risks, insights, alignment scoring   |
+| What informs us?      | Context (Reality)        | Documents, market data, signals, radar            |
+| What supports us?     | Tools (Capabilities)     | Integrations, agents, automations                 |
 
 The first four are **execution levels** (the Strategy Stack). The last three are **enablers** that cut across all levels.
 
@@ -182,6 +182,7 @@ Watch for these failures and call them out:
 ## When to Use This Knowledge
 
 Activate this skill when:
+
 - A user asks "what is..." or "how does... work" about strategy concepts
 - Someone is exploring a workspace for the first time
 - You need to explain the relationship between entities

@@ -279,7 +279,7 @@ Type: :badge[Type 2 — Reversible] | Status: :badge[Pending] | Due: March 15, 2
 ### Board Presentation
 
 ```mdc
-::presentation-deck{title="Board Update — Q1 2026" description="Quarterly strategy review" author="CEO Name" date="March 2026"}
+::::::presentation-deck{title="Board Update — Q1 2026" description="Quarterly strategy review" author="CEO Name" date="March 2026"}
 
 ::::presentation-page
 # Board Update
@@ -370,7 +370,7 @@ items:
 ::
 ::::
 
-::
+::::::
 ```
 
 ## Common Patterns

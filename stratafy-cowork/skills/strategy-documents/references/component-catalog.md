@@ -310,7 +310,7 @@ Full-viewport slide presentation container. Starts as a meta card in the documen
 - Scroll-snap navigation between slides
 
 ```mdc
-::presentation-deck{title="Q2 Strategy Review" description="Board briefing" author="Sarah Chen" date="March 2026"}
+::::::presentation-deck{title="Q2 Strategy Review" description="Board briefing" author="Sarah Chen" date="March 2026"}
 
 ::::presentation-page
 # Q2 Strategy Review
@@ -345,10 +345,10 @@ ARR is behind target but growth rate is accelerating. Retention is strong.
 ::
 ::::
 
-::
+::::::
 ```
 
-**Nesting rules:** Use `::::` (4 colons) for `presentation-page` so inner components (`::card`, `::metric-card`, `::speaker-notes`) nest correctly with 2 colons.
+**Nesting rules:** The deck must use MORE colons than its children. Use `::::::` (6 colons) for the deck, `::::` (4 colons) for pages, and `::` (2 colons) for components inside pages. In MDC, outer containers always need more colons than inner ones — otherwise a `::` closing an inner component will prematurely close the deck.
 
 ---
 
@@ -377,7 +377,7 @@ Talking points:
 ::
 ```
 
-> **Important:** Place `::speaker-notes` inside `::::presentation-page` (with 4 colons on the page) so the 2-colon notes component nests correctly.
+> **Important:** Place `::speaker-notes` inside `::::presentation-page` (4 colons on the page). The deck wrapper must use `::::::` (6 colons) so that `::` closers for inner components don't prematurely close the deck.
 
 ---
 

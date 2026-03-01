@@ -57,13 +57,13 @@ Writing or editing strategy documents and presentations in Stratafy:
 
 ### Strategy Components
 
-| MDC Name              | Purpose                             |
-| --------------------- | ----------------------------------- |
-| `::metric-card`       | Dashboard metric with trend         |
-| `::project-timeline`  | Phased timeline with status         |
-| `::presentation-deck` | Full-viewport slide container       |
-| `::presentation-page` | Individual slide within a deck      |
-| `::speaker-notes`     | Hidden talking points for presenter |
+| MDC Name                  | Purpose                                   |
+| ------------------------- | ----------------------------------------- |
+| `::metric-card`           | Dashboard metric with trend               |
+| `::project-timeline`      | Phased timeline with status               |
+| `::::::presentation-deck` | Full-viewport slide container (6 colons)  |
+| `::::presentation-page`   | Individual slide within a deck (4 colons) |
+| `::speaker-notes`         | Hidden talking points for presenter       |
 
 ### Inline Components
 
@@ -110,3 +110,4 @@ Named slot content
 7. **Never nest components inside tabs or cards** — callouts inside `::tabs-item` or `::card` produce broken rendering. Use `### ` headings instead
 8. **Use tabs sparingly** — only for simple text comparisons. For sections with tables or callouts, use headings
 9. **Add blank lines** around block components for reliable parsing
+10. **Outer containers need more colons** — in MDC, a `::` closer matches the nearest same-count opener. For presentations: deck uses `::::::` (6), pages use `::::` (4), inner components use `::` (2). If the deck uses `::`, inner component closers will break it

@@ -33,6 +33,29 @@
         "cowork"
       ],
       "category": "productivity"
+    },
+    {
+      "name": "stratafy-finance",
+      "source": "./stratafy-finance",
+      "description": "Your AI finance partner — connects every rand to strategic intent. Chart of accounts design, financial alignment scans, budget mapping, quarterly reviews, and investor prep.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "finance",
+        "cfo",
+        "strategy",
+        "chart-of-accounts",
+        "budget",
+        "alignment",
+        "mcp",
+        "cowork"
+      ],
+      "category": "finance"
     }
   ]
 }

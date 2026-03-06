@@ -1,84 +1,72 @@
-# Stratafy Cowork Plugin
+# Stratafy Plugins
 
-Claude Cowork plugin for strategy coaches and consultants.
+Claude Cowork plugins for Stratafy — the operating system for strategy.
 
-## Repository Structure
+## Plugins
 
-The plugin is developed inside the main Stratafy monorepo at `cowork-plugin/` and published to a separate public repo:
+| Plugin | Who It's For | Description |
+| --- | --- | --- |
+| [`stratafy-cowork`](./stratafy-cowork/) | Strategy coaches & consultants | Workspace setup, session debriefs, strategy reviews, radar scans |
+| [`stratafy-finance`](./stratafy-finance/) | Finance Directors & finance teams | COA design, financial alignment scans, budget mapping, investor prep |
 
-| Location           | Repo                           | Purpose                       |
-| ------------------ | ------------------------------ | ----------------------------- |
-| `cowork-plugin/`   | `ljcremer/stratafy`            | Development (source of truth) |
-| `stratafy-cowork/` | `Stratafy-ai/stratafy-plugins` | Published plugin (public)     |
+## Installation
 
-The directory is renamed during publish: `cowork-plugin/` locally becomes `stratafy-cowork/` in the plugin repo.
+```bash
+claude plugins add Stratafy-ai/stratafy-plugins/stratafy-cowork
+claude plugins add Stratafy-ai/stratafy-plugins/stratafy-finance
+```
 
-## Versioning
+## Development
 
-Version is tracked in `cowork-plugin/.claude-plugin/plugin.json`:
+Plugins are developed inside the main Stratafy monorepo and synced here for publishing:
+
+| Local (monorepo)    | Published (this repo)  |
+| ------------------- | ---------------------- |
+| `cowork-plugin/`    | `stratafy-cowork/`     |
+| `finance-plugin/`   | `stratafy-finance/`    |
+
+### Publishing Changes
+
+```bash
+# Clone this repo
+git clone https://github.com/Stratafy-ai/stratafy-plugins.git /tmp/stratafy-plugins
+
+# Sync whichever plugin changed
+rsync -av --delete cowork-plugin/ /tmp/stratafy-plugins/stratafy-cowork/ --exclude='.git'
+rsync -av --delete finance-plugin/ /tmp/stratafy-plugins/stratafy-finance/ --exclude='.git'
+
+# Commit and push
+cd /tmp/stratafy-plugins
+git add .
+git commit -m "feat: describe what changed"
+git push origin main
+```
+
+### Versioning
+
+Each plugin tracks its own version in `.claude-plugin/plugin.json`. Follow semver:
+
+- **Patch** (x.x.1) — fixes to existing commands or skills
+- **Minor** (x.1.0) — new skills, new commands, or significant updates
+- **Major** (1.0.0) — breaking changes
+
+Bump the version before pushing.
+
+## MCP Connection
+
+All plugins connect to Stratafy via MCP:
 
 ```json
 {
-  "version": "1.1.0"
+  "mcpServers": {
+    "stratafy": {
+      "type": "http",
+      "url": "https://app.stratafy.ai/api/mcp"
+    }
+  }
 }
 ```
 
-Follow semver:
+## License
 
-- **Patch** (1.1.x) — fixes to existing commands or skills (typos, clarifications, bug fixes)
-- **Minor** (1.x.0) — new skills, new commands, or significant updates to existing ones
-- **Major** (x.0.0) — breaking changes (renamed commands, removed skills, restructured plugin)
-
-Always bump the version before pushing to the plugin repo.
-
-## Publishing
-
-After making changes locally, sync to the plugin repo:
-
-```bash
-# 1. Clone the plugin repo
-git clone https://github.com/Stratafy-ai/stratafy-plugins.git /tmp/stratafy-plugins
-
-# 2. Sync local changes (rsync handles additions, updates, and deletions)
-rsync -av --delete cowork-plugin/ /tmp/stratafy-plugins/stratafy-cowork/ --exclude='.git'
-
-# 3. Commit and push
-cd /tmp/stratafy-plugins
-git add stratafy-cowork/
-git commit -m "feat: describe what changed"
-git push origin main
-
-# 4. Clean up
-rm -rf /tmp/stratafy-plugins
-```
-
-The `--delete` flag in rsync ensures removed files are also removed in the plugin repo. The `--exclude='.git'` prevents overwriting the plugin repo's git history.
-
-## Plugin Contents
-
-### Commands (6)
-
-| Command                     | Description                                       |
-| --------------------------- | ------------------------------------------------- |
-| `/stratafy:setup-workspace` | Onboard a new client workspace from a company URL |
-| `/stratafy:session-debrief` | Parse session notes into strategic artifacts      |
-| `/stratafy:radar-scan`      | Run competitive/market intelligence scans         |
-| `/stratafy:pulse`           | Quick strategic health check                      |
-| `/stratafy:decision-brief`  | Prepare context for a pending decision            |
-| `/stratafy:strategy-review` | Deep strategy review with alignment scans         |
-
-### Skills (7)
-
-| Skill                   | Description                                  |
-| ----------------------- | -------------------------------------------- |
-| `strategy-foundations`  | First-principles strategy knowledge          |
-| `workspace-builder`     | End-to-end workspace creation flow           |
-| `signal-intelligence`   | Signal detection and radar operations        |
-| `execution-tracking`    | OKRs, initiatives, assumptions, risks        |
-| `coaching-facilitation` | Multi-client coaching workflows              |
-| `strategic-reporting`   | Audience-specific reports and briefings      |
-| `mdc-content`           | MDC syntax and components for rich documents |
-
-### MCP Servers (6)
-
-Configured in `.mcp.json`: Stratafy, Slack, Google Calendar, Gmail, Notion, Linear.
+Apache-2.0

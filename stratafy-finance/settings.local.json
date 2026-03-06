@@ -1,0 +1,15 @@
+{
+  "name": "Your Name",
+  "title": "Finance Director",
+  "company": "Your Company",
+  "stratafy": {
+    "workspace_id": "your-default-workspace-id",
+    "api_key": "your-stratafy-api-key"
+  },
+  "finance": {
+    "accounting_framework": "IFRS",
+    "currency": "ZAR",
+    "fiscal_year_start": "March",
+    "reporting_cadence": "monthly"
+  }
+}

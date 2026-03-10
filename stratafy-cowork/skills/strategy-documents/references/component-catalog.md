@@ -348,7 +348,7 @@ ARR is behind target but growth rate is accelerating. Retention is strong.
 ::::::
 ```
 
-**Nesting rules:** The deck must use MORE colons than its children. Use `::::::` (6 colons) for the deck, `::::` (4 colons) for pages, and `::` (2 colons) for components inside pages. In MDC, outer containers always need more colons than inner ones — otherwise a `::` closing an inner component will prematurely close the deck.
+**Nesting rules:** The deck must use MORE colons than its children. Use `::::::` (6 colons) for the deck, `::::` (4 colons) for pages, and `::` (2 colons) for components inside pages. **Critical: the closing colons MUST exactly match the opening colon count.** A `::::` opener requires a `::::` closer — using `:::` or `:::::` will fail silently and render literal colons as text.
 
 ---
 
@@ -377,7 +377,7 @@ Talking points:
 ::
 ```
 
-> **Important:** Place `::speaker-notes` inside `::::presentation-page` (4 colons on the page). The deck wrapper must use `::::::` (6 colons) so that `::` closers for inner components don't prematurely close the deck.
+> **Important:** Place `::speaker-notes` inside `::::presentation-page` (4 colons on the page). The deck wrapper must use `::::::` (6 colons) so that `::` closers for inner components don't prematurely close the deck. Always close pages with exactly `::::` (4 colons) — not 3 or 5.
 
 ---
 

@@ -19,12 +19,12 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "captur
 
 **If a URL is provided:**
 
-Check if the content fetch MCP is available (`mcp__stratafy_fetch__fetch_content`).
+Check if the content fetch tool is available (`mcp__stratafy__fetch_content`).
 
 If available:
-- For social media URLs (x.com, twitter.com, linkedin.com, facebook.com, instagram.com): use `force_grok: true`
-- For all other URLs: use default (headless browser with Grok fallback)
-- Set `include_images: true` if the user mentioned images or visuals
+- For auth-walled URLs (linkedin.com, facebook.com, instagram.com): use `force_grok: true`
+- For X/Twitter URLs (x.com, twitter.com): use default — Cloudflare renders these successfully
+- For all other URLs: use default (Cloudflare Browser Rendering with Grok fallback)
 
 If not available:
 - Use `WebFetch` to retrieve the page content

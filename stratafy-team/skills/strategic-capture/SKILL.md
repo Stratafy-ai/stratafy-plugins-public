@@ -19,17 +19,19 @@ URL or Content → Fetch → Extract → Analyse → Store → Connect
 
 ### 1. Fetch the Content
 
-Use `mcp__stratafy_fetch__fetch_content` if the content fetch MCP is available. This handles:
-- JavaScript-rendered pages
+Use `mcp__stratafy__fetch_content` if available. This handles:
+- JavaScript-rendered pages (via Cloudflare Browser Rendering API)
 - Anti-bot protections
-- Auth-walled sources (X/Twitter, LinkedIn)
-- Automatic fallback from headless browser to AI-powered extraction
+- Auth-walled sources (LinkedIn, Facebook, Instagram — via Grok AI fallback)
+- X/Twitter posts and articles render directly via Cloudflare (no Grok needed)
 
-If the content fetch MCP is not available, fall back to `WebFetch`. If that also fails, ask the user to paste the content.
+If the content fetch tool is not available, fall back to `WebFetch`. If that also fails, ask the user to paste the content.
 
-**For known-difficult sources** (X/Twitter, LinkedIn, Facebook):
-- Use `force_grok: true` to skip headless and go directly to AI extraction
-- This saves ~15 seconds per attempt on sources that never work with headless
+**For auth-walled sources** (LinkedIn, Facebook, Instagram):
+- Use `force_grok: true` to skip Cloudflare and go directly to AI extraction
+- These platforms require authentication and always time out with browser rendering
+
+**Note:** X/Twitter does NOT need `force_grok`. Cloudflare successfully renders posts, articles, and quoted tweets. Only reply threads are auth-walled.
 
 ### 2. Extract Key Information
 

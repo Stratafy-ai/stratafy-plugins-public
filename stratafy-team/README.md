@@ -24,12 +24,16 @@ Stratafy Team gives every person in your organisation an AI partner that underst
 - **`/coach-me`** — Strategic coaching through powerful questions, grounded in your actual work and strategy
 - **`/advise-me`** — Direct advice with trade-offs and a clear recommendation
 
+### Intelligence
+- **`/capture`** — Capture articles, tweets, reports from a URL — extract, analyse, and connect to strategy
+
 ## Skills
 
 - **Strategic Literacy** — How to read strategy, understand metrics, connect work to purpose
 - **Role Adaptation** — Tailored experience for engineering, sales, marketing, operations, finance, and leadership
 - **Role Coaching** — Coach and advisor modes adapted to each role's challenges and language
 - **Presentation Craft** — Structure pitches, demos, and presentations using the Missing Link Action Framework
+- **Strategic Capture** — Capture external content from URLs, analyse strategic relevance, and connect to the intelligence pipeline
 
 ## Requirements
 

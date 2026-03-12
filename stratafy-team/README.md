@@ -29,6 +29,7 @@ Stratafy Team gives every person in your organisation an AI partner that underst
 - **Strategic Literacy** — How to read strategy, understand metrics, connect work to purpose
 - **Role Adaptation** — Tailored experience for engineering, sales, marketing, operations, finance, and leadership
 - **Role Coaching** — Coach and advisor modes adapted to each role's challenges and language
+- **Presentation Craft** — Structure pitches, demos, and presentations using the Missing Link Action Framework
 
 ## Requirements
 

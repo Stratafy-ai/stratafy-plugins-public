@@ -60,8 +60,8 @@
     {
       "name": "stratafy-team",
       "source": "./stratafy-team",
-      "description": "Your AI execution partner — connects daily work to company strategy. Daily rhythm, weekly briefings, strategic context, and role-adapted coaching for every team member.",
-      "version": "0.1.0",
+      "description": "Your AI execution partner — connects daily work to company strategy. Daily rhythm, weekly briefings, strategic context, role-adapted coaching, and presentation craft for every team member.",
+      "version": "0.2.0",
       "author": {
         "name": "Stratafy"
       },

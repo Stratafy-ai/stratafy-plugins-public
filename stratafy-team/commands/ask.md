@@ -95,7 +95,7 @@ Based on what you found (or didn't find), suggest one or two next steps:
 Every entity in the search results has an `entity_type` and `entity_id`. Construct clickable links using this pattern:
 
 ```
-https://app.stratafy.ai/ws/{workspace_id}/{path}
+https://stratafy.ai/ws/{workspace_id}/{path}
 ```
 
 Where `{workspace_id}` is the current workspace ID (from `select_workspace` or session context) and `{path}` is:
@@ -131,13 +131,13 @@ For foundation entities (if they appear):
 
 SOURCES
 ━━━━━━━
-[Entity Type] — [Entity Name](https://app.stratafy.ai/ws/{workspace_id}/{path})
+[Entity Type] — [Entity Name](https://stratafy.ai/ws/{workspace_id}/{path})
   [Key detail from this entity relevant to the question]
 
-[Entity Type] — [Entity Name](https://app.stratafy.ai/ws/{workspace_id}/{path})
+[Entity Type] — [Entity Name](https://stratafy.ai/ws/{workspace_id}/{path})
   [Key detail]
 
-[Entity Type] — [Entity Name](https://app.stratafy.ai/ws/{workspace_id}/{path})
+[Entity Type] — [Entity Name](https://stratafy.ai/ws/{workspace_id}/{path})
   [Key detail]
 
 [If critical intelligence was surfaced:]

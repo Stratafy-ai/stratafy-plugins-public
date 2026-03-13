@@ -14,8 +14,11 @@ Any natural language question:
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "ask"`.
+### Step 1: Log the Question
+Call `log_activity` with:
+- `activity_type`: `"command_usage"`
+- `description`: `"ask"`
+- `metadata`: `{ "question": "<the user's question>" }`
 
 ### Step 2: Search the Workspace
 
@@ -56,7 +59,29 @@ Answer the user's question directly, grounded in the workspace content. Follow t
 - If the workspace partially answers the question, say what's covered and what's not
 - If results are low-similarity (below 0.5), caveat: "These results are tangentially related — the workspace may not directly address this topic"
 
-### Step 5: Suggest Follow-ups
+### Step 5: Log the Outcome
+
+After formulating the answer, log whether the question was successfully answered.
+
+Determine the `answer_quality` based on what happened:
+- **`"answered"`** — Search returned relevant results (top result similarity >= 0.5) and you could give a direct, grounded answer
+- **`"partial"`** — Search returned results but they were tangential (top similarity < 0.5), or the workspace only partially addressed the question
+- **`"unanswered"`** — Zero results, or results were too irrelevant to form a meaningful answer
+
+Call `log_activity` with:
+- `activity_type`: `"workspace_question"`
+- `description`: `"ask_outcome"`
+- `metadata`:
+  - `question`: The user's original question
+  - `answer_quality`: One of `"answered"`, `"partial"`, `"unanswered"`
+  - `result_count`: Number of search results returned
+  - `top_similarity`: Similarity score of the best result (or 0 if no results)
+  - `entity_types_found`: Array of entity types that appeared in results (e.g. `["strategy", "risk", "assumption"]`)
+  - `gap_topic`: (only for `"partial"` or `"unanswered"`) A short label describing what the workspace is missing (e.g. `"pricing strategy"`, `"hiring plan"`, `"competitive positioning"`)
+
+**Why this matters:** Unanswered and partially answered questions are a direct signal about gaps in the workspace. If multiple people ask about pricing and the workspace can't answer, that's a sign the team needs to articulate a pricing strategy. These logs feed into workspace health analysis over time.
+
+### Step 6: Suggest Follow-ups
 
 Based on what you found (or didn't find), suggest one or two next steps:
 

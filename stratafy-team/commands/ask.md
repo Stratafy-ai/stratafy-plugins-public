@@ -90,6 +90,40 @@ Based on what you found (or didn't find), suggest one or two next steps:
 - If the answer connects to a specific strategy: "This relates to your [Strategy Name]. Want me to run a health check on it?"
 - If nothing was found: "Want me to help capture your thinking on this topic as an insight or decision?"
 
+## Entity URL Construction
+
+Every entity in the search results has an `entity_type` and `entity_id`. Construct clickable links using this pattern:
+
+```
+https://app.stratafy.ai/ws/{workspace_id}/{path}
+```
+
+Where `{workspace_id}` is the current workspace ID (from `select_workspace` or session context) and `{path}` is:
+
+| Entity Type   | URL Path                          |
+| ------------- | --------------------------------- |
+| `strategy`    | `strategy/{entity_id}`            |
+| `initiative`  | `initiatives/{entity_id}`         |
+| `objective`   | `objectives/{entity_id}`          |
+| `metric`      | `metric/{entity_id}`              |
+| `decision`    | `decisions/{entity_id}`           |
+| `insight`     | `cortex/insights/{entity_id}`     |
+| `signal`      | `cortex/signals/{entity_id}`      |
+| `assumption`  | `assumptions/{entity_id}`         |
+| `risk`        | `risks/{entity_id}`               |
+| `document`    | `documents/{entity_id}`           |
+| `plan`        | `plans/{entity_id}`               |
+
+For foundation entities (if they appear):
+
+| Entity Type   | URL Path                          |
+| ------------- | --------------------------------- |
+| `mission`     | `foundation/mission`              |
+| `vision`      | `foundation/vision`               |
+| `value`       | `foundation/values/{entity_id}`   |
+| `principle`   | `foundation/principles/{entity_id}` |
+| `belief`      | `foundation/beliefs/{entity_id}`  |
+
 ## Output Format
 
 ```
@@ -97,13 +131,13 @@ Based on what you found (or didn't find), suggest one or two next steps:
 
 SOURCES
 ━━━━━━━
-[Entity Type] — [Entity Name]
+[Entity Type] — [Entity Name](https://app.stratafy.ai/ws/{workspace_id}/{path})
   [Key detail from this entity relevant to the question]
 
-[Entity Type] — [Entity Name]
+[Entity Type] — [Entity Name](https://app.stratafy.ai/ws/{workspace_id}/{path})
   [Key detail]
 
-[Entity Type] — [Entity Name]
+[Entity Type] — [Entity Name](https://app.stratafy.ai/ws/{workspace_id}/{path})
   [Key detail]
 
 [If critical intelligence was surfaced:]
@@ -113,6 +147,8 @@ SOURCES
 SUGGESTED NEXT STEP
   [One concrete follow-up action]
 ```
+
+Every entity name in the response MUST be a markdown hyperlink to the entity in Stratafy. This applies to the SOURCES section and also to any entity referenced in the answer text itself.
 
 ## Rules
 

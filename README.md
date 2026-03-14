@@ -1,8 +1,8 @@
-# Stratafy Plugins
+# The Stratafy Team
 
-Claude plugins for Stratafy — the operating system for strategy.
+A full fractional leadership team, powered by AI. Every role grounded in your live strategy.
 
-## Plugins
+## The Team
 
 | Plugin | Who It's For | Description |
 | --- | --- | --- |

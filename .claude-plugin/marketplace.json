@@ -1,6 +1,6 @@
 {
   "name": "stratafy",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "owner": {
     "name": "Stratafy",
     "email": "hello@stratafy.com"
@@ -8,7 +8,7 @@
   "metadata": {
     "description": "Stratafy is the operating system for strategy. These plugins bring strategic intelligence into Claude — from workspace management and coaching to strategic finance and daily execution for every team member.",
     "pluginRoot": "./",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "plugins": [
     {
@@ -107,6 +107,145 @@
         "mcp"
       ],
       "category": "productivity"
+    },
+    {
+      "name": "stratafy-cmo",
+      "source": "./stratafy-cmo",
+      "description": "Your fractional CMO — brand audits, campaign briefs, positioning analysis, and marketing-strategy alignment for marketing leaders.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "cmo",
+        "marketing",
+        "fractional",
+        "brand",
+        "positioning",
+        "campaigns",
+        "strategy",
+        "mcp"
+      ],
+      "category": "marketing"
+    },
+    {
+      "name": "stratafy-cro",
+      "source": "./stratafy-cro",
+      "description": "Your fractional CRO — pipeline reviews, deal strategy, revenue alignment, and go-to-market execution for revenue leaders.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "cro",
+        "revenue",
+        "fractional",
+        "sales",
+        "pipeline",
+        "deals",
+        "strategy",
+        "mcp"
+      ],
+      "category": "sales"
+    },
+    {
+      "name": "stratafy-cpo",
+      "source": "./stratafy-cpo",
+      "description": "Your fractional CPO — roadmap reviews, feature briefs, product-strategy alignment, and prioritisation for product leaders.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "cpo",
+        "product",
+        "fractional",
+        "roadmap",
+        "features",
+        "prioritisation",
+        "strategy",
+        "mcp"
+      ],
+      "category": "product"
+    },
+    {
+      "name": "stratafy-cto",
+      "source": "./stratafy-cto",
+      "description": "Your fractional CTO — tech reviews, architecture briefs, technical debt assessment, and engineering-strategy alignment for technical leaders.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "cto",
+        "technology",
+        "fractional",
+        "architecture",
+        "engineering",
+        "technical-debt",
+        "strategy",
+        "mcp"
+      ],
+      "category": "engineering"
+    },
+    {
+      "name": "stratafy-chro",
+      "source": "./stratafy-chro",
+      "description": "Your fractional CHRO — team health checks, hiring briefs, org-strategy alignment, and people analytics for people leaders.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "chro",
+        "people",
+        "fractional",
+        "hr",
+        "hiring",
+        "team-health",
+        "strategy",
+        "mcp"
+      ],
+      "category": "hr"
+    },
+    {
+      "name": "stratafy-gc",
+      "source": "./stratafy-gc",
+      "description": "Your fractional General Counsel — risk reviews, compliance briefs, regulatory alignment, and governance oversight for legal and compliance teams.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "homepage": "https://stratafy.ai",
+      "repository": "https://github.com/Stratafy-ai/stratafy-plugins",
+      "license": "Apache-2.0",
+      "keywords": [
+        "gc",
+        "legal",
+        "fractional",
+        "compliance",
+        "governance",
+        "risk",
+        "regulatory",
+        "strategy",
+        "mcp"
+      ],
+      "category": "legal"
     }
   ]
 }

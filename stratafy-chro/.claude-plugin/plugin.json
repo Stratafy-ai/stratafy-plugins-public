@@ -1,0 +1,8 @@
+{
+  "name": "stratafy-chro",
+  "version": "0.1.0",
+  "description": "Your fractional CHRO — connects people decisions to strategic intent. Team health reviews, hiring briefs aligned to strategy, and people decisions that serve the mission.",
+  "author": { "name": "Stratafy", "url": "https://stratafy.ai" },
+  "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
+  "license": "Apache-2.0"
+}

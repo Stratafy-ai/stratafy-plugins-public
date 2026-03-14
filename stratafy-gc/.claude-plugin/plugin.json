@@ -1,0 +1,8 @@
+{
+  "name": "stratafy-gc",
+  "version": "0.1.0",
+  "description": "Your fractional General Counsel — connects legal and compliance to strategic intent. Risk reviews, compliance assessments for strategic initiatives, and governance decisions that protect the mission.",
+  "author": { "name": "Stratafy", "url": "https://stratafy.ai" },
+  "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
+  "license": "Apache-2.0"
+}

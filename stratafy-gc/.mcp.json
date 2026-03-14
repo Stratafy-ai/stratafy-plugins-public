@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "stratafy": {
+      "type": "http",
+      "url": "https://app.stratafy.ai/api/mcp"
+    },
+    "linear": {
+      "type": "http",
+      "url": "https://mcp.linear.app/sse"
+    }
+  }
+}

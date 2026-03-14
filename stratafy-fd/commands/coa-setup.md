@@ -1,4 +1,4 @@
-# /stratafy-finance:coa-setup
+# /stratafy-fd:coa-setup
 
 Design a strategy-aligned chart of accounts from scratch, or restructure an existing one to connect every account to strategic intent.
 

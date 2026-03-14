@@ -1,4 +1,4 @@
-# /stratafy-chief-of-staff:meeting-prep
+# /stratafy-cos:meeting-prep
 
 Prepare a comprehensive briefing pack for any leadership meeting — board meetings, exec standups, all-hands, investor updates, or 1:1s. Ensures the right context is gathered and the right talking points are prepared.
 

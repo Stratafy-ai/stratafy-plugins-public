@@ -1,4 +1,4 @@
-# /stratafy-finance:quarterly-review
+# /stratafy-fd:quarterly-review
 
 Produce a comprehensive quarterly financial review that connects financial performance to strategic progress. Designed for leadership meetings, board presentations, or coaching sessions.
 

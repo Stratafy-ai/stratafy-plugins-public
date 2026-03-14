@@ -1,4 +1,4 @@
-# /stratafy-chief-of-staff:alignment-check
+# /stratafy-cos:alignment-check
 
 Check cross-functional alignment — are all teams pulling in the same direction? Surfaces conflicts, gaps, contradictions, and misalignment between strategies, initiatives, and execution.
 

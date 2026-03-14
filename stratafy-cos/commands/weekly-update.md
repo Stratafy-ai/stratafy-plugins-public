@@ -1,4 +1,4 @@
-# /stratafy-chief-of-staff:weekly-update
+# /stratafy-cos:weekly-update
 
 Generate a weekly leadership update — the rhythm document that keeps the executive team aligned. Designed to replace the "going around the table" standup with something more structured and insightful.
 

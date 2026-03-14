@@ -1,4 +1,4 @@
-# /stratafy-finance:pricing-model
+# /stratafy-fd:pricing-model
 
 Design or analyse a pricing model — connecting revenue architecture to strategic intent. Not "what should we charge?" in isolation, but "what pricing structure turns our strategy into sustainable revenue?"
 

@@ -1,4 +1,4 @@
-# Stratafy Chief of Staff
+# Stratafy CoS
 
 Your AI Chief of Staff — the cross-functional connective tissue that keeps leadership teams aligned, informed, and decisive.
 

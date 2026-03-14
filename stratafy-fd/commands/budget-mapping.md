@@ -1,10 +1,10 @@
-# /stratafy-finance:budget-mapping
+# /stratafy-fd:budget-mapping
 
 Connect spend to strategy. Review and improve the mappings between financial accounts and strategic priorities. The goal: every rand should trace to a strategic intent.
 
 ## When to Use
 
-- After creating a new COA (follow-up to `/stratafy-finance:coa-setup`)
+- After creating a new COA (follow-up to `/stratafy-fd:coa-setup`)
 - When new accounts have been added without mappings
 - After a strategy change that affects financial allocation
 - When the financial scan shows low mapping coverage

@@ -1,0 +1,11 @@
+{
+  "name": "stratafy-cos",
+  "version": "0.1.0",
+  "description": "Your fractional Chief of Staff — cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
+  "author": {
+    "name": "Stratafy",
+    "url": "https://stratafy.ai"
+  },
+  "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
+  "license": "Apache-2.0"
+}

@@ -1,4 +1,4 @@
-# /stratafy-finance:investor-prep
+# /stratafy-fd:investor-prep
 
 Prepare financial materials for investor conversations — fundraising decks, due diligence responses, financial model narratives, and board updates. Everything connected to strategic context.
 

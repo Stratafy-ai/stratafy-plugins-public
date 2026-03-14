@@ -35,9 +35,9 @@
       "category": "productivity"
     },
     {
-      "name": "stratafy-finance",
-      "source": "./stratafy-finance",
-      "description": "Your AI finance partner — connects every rand to strategic intent. Chart of accounts design, financial alignment scans, budget mapping, pricing models, metrics analysis, quarterly reviews, and investor prep.",
+      "name": "stratafy-fd",
+      "source": "./stratafy-fd",
+      "description": "Your fractional Finance Director — connects every dollar to strategic intent. Chart of accounts design, financial alignment, budget mapping, pricing models, metrics analysis, and investor prep.",
       "version": "0.3.0",
       "author": {
         "name": "Stratafy"
@@ -48,6 +48,8 @@
       "keywords": [
         "finance",
         "cfo",
+        "fd",
+        "fractional",
         "strategy",
         "chart-of-accounts",
         "budget",
@@ -82,9 +84,9 @@
       "category": "productivity"
     },
     {
-      "name": "stratafy-chief-of-staff",
-      "source": "./stratafy-chief-of-staff",
-      "description": "Your AI Chief of Staff — cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
+      "name": "stratafy-cos",
+      "source": "./stratafy-cos",
+      "description": "Your fractional Chief of Staff — cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
       "version": "0.1.0",
       "author": {
         "name": "Stratafy"
@@ -94,6 +96,8 @@
       "license": "Apache-2.0",
       "keywords": [
         "chief-of-staff",
+        "cos",
+        "fractional",
         "executive",
         "alignment",
         "decisions",

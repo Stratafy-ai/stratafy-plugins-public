@@ -1,4 +1,4 @@
-# /stratafy-chief-of-staff:exec-brief
+# /stratafy-cos:exec-brief
 
 Generate a concise executive briefing — the one-page view of everything leadership needs to know right now. Designed to be scanned in 2 minutes and acted on immediately.
 

@@ -1,6 +1,6 @@
-# Stratafy Finance
+# Stratafy FD
 
-Your AI finance partner — connects every rand to strategic intent.
+Your fractional Finance Director — connects every dollar to strategic intent.
 
 ## Role-Adaptive Agent
 
@@ -17,12 +17,12 @@ Same skills, same commands — different voice and authority level. The Stratafy
 
 | Command | Description |
 | --- | --- |
-| `/stratafy-finance:coa-setup` | Design a strategy-aligned chart of accounts |
-| `/stratafy-finance:financial-scan` | Run financial alignment scans (L1/L2/L3) |
-| `/stratafy-finance:budget-mapping` | Connect spend to strategy — map accounts to priorities |
-| `/stratafy-finance:quarterly-review` | Comprehensive quarterly financial review |
-| `/stratafy-finance:investor-prep` | Prepare financial materials for investors |
-| `/stratafy-finance:explain-metric` | Explain a financial metric in strategic context |
+| `/stratafy-fd:coa-setup` | Design a strategy-aligned chart of accounts |
+| `/stratafy-fd:financial-scan` | Run financial alignment scans (L1/L2/L3) |
+| `/stratafy-fd:budget-mapping` | Connect spend to strategy — map accounts to priorities |
+| `/stratafy-fd:quarterly-review` | Comprehensive quarterly financial review |
+| `/stratafy-fd:investor-prep` | Prepare financial materials for investors |
+| `/stratafy-fd:explain-metric` | Explain a financial metric in strategic context |
 
 ## Skills (3)
 

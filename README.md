@@ -16,6 +16,7 @@ Claude plugins for Stratafy — the operating system for strategy.
 | [`stratafy-cto`](./stratafy-cto/) | Technical leaders & engineering teams | Fractional CTO — tech reviews, architecture briefs, technical debt assessment |
 | [`stratafy-chro`](./stratafy-chro/) | People leaders & HR teams | Fractional CHRO — team health checks, hiring briefs, org-strategy alignment |
 | [`stratafy-gc`](./stratafy-gc/) | Legal & compliance teams | Fractional General Counsel — risk reviews, compliance briefs, regulatory alignment |
+| [`stratafy-advisor`](./stratafy-advisor/) | External startup advisors | Fractional Advisor — advisory sessions, board prep, stage-specific pattern recognition |
 
 ## Installation
 
@@ -30,6 +31,7 @@ claude plugins add Stratafy-ai/stratafy-plugins/stratafy-cpo
 claude plugins add Stratafy-ai/stratafy-plugins/stratafy-cto
 claude plugins add Stratafy-ai/stratafy-plugins/stratafy-chro
 claude plugins add Stratafy-ai/stratafy-plugins/stratafy-gc
+claude plugins add Stratafy-ai/stratafy-plugins/stratafy-advisor
 ```
 
 ## Development
@@ -48,6 +50,7 @@ Plugins are developed inside the main Stratafy monorepo and synced here for publ
 | `cto-plugin/`             | `stratafy-cto/`              |
 | `chro-plugin/`            | `stratafy-chro/`             |
 | `gc-plugin/`              | `stratafy-gc/`               |
+| `advisor-plugin/`         | `stratafy-advisor/`          |
 
 ### Publishing Changes
 

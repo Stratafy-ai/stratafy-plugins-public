@@ -1,75 +1,120 @@
 {
   "name": "stratafy-plugins",
+  "description": "The Stratafy Team — a full fractional leadership team, powered by AI. Every role grounded in your live strategy.",
   "owner": {
     "name": "Stratafy",
     "email": "hello@stratafy.com"
   },
   "plugins": [
     {
-      "name": "Stratafy Guardian",
+      "name": "stratafy-guardian",
       "source": "./stratafy-guardian",
       "description": "Guardian of your strategy. Watches over structural health, content quality, execution alignment, and strategic coherence — surfacing what needs attention before it becomes a problem.",
-      "version": "2.0.1"
+      "version": "2.0.1",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["strategy", "coaching", "workspace", "guardian", "mcp"]
     },
     {
-      "name": "Stratafy Expert - Finance Director",
+      "name": "stratafy-fd",
       "source": "./stratafy-fd",
       "description": "Your fractional Finance Director — connects every dollar to strategic intent. Chart of accounts design, financial alignment, budget mapping, pricing models, metrics analysis, and investor prep.",
-      "version": "0.4.0"
+      "version": "0.4.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["finance", "fd", "fractional", "strategy", "budget", "mcp"]
     },
     {
-      "name": "Stratafy Team",
+      "name": "stratafy-team",
       "source": "./stratafy-team",
-      "description": "Your AI execution partner — connects daily work to company strategy. Daily rhythm, weekly briefings, strategic context, role-adapted coaching, and presentation craft for every team member.",
-      "version": "0.9.2"
+      "description": "Your AI execution partner — connects daily work to company strategy. Daily rhythm, weekly briefings, strategic context, role-adapted coaching for every team member.",
+      "version": "0.9.2",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["team", "execution", "strategy", "coaching", "daily", "weekly", "mcp"]
     },
     {
-      "name": "Stratafy Expert - Chief of Staff",
+      "name": "stratafy-cos",
       "source": "./stratafy-cos",
       "description": "Your fractional Chief of Staff — cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["chief-of-staff", "cos", "fractional", "executive", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - CMO",
+      "name": "stratafy-cmo",
       "source": "./stratafy-cmo",
       "description": "Your fractional CMO — brand audits, campaign briefs, positioning analysis, and marketing-strategy alignment for marketing leaders.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["cmo", "marketing", "fractional", "brand", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - CRO",
+      "name": "stratafy-cro",
       "source": "./stratafy-cro",
       "description": "Your fractional CRO — pipeline reviews, deal strategy, revenue alignment, and go-to-market execution for revenue leaders.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["cro", "revenue", "fractional", "sales", "pipeline", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - CPO",
+      "name": "stratafy-cpo",
       "source": "./stratafy-cpo",
       "description": "Your fractional CPO — roadmap reviews, feature briefs, product-strategy alignment, and prioritisation for product leaders.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["cpo", "product", "fractional", "roadmap", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - CTO",
+      "name": "stratafy-cto",
       "source": "./stratafy-cto",
       "description": "Your fractional CTO — connects technology decisions to strategic intent. Technical architecture reviews, build-vs-buy analysis, and engineering decisions that serve the mission.",
-      "version": "0.2.1"
+      "version": "0.2.1",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["cto", "technology", "fractional", "architecture", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - CHRO",
+      "name": "stratafy-chro",
       "source": "./stratafy-chro",
       "description": "Your fractional CHRO — team health checks, hiring briefs, org-strategy alignment, and people analytics for people leaders.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["chro", "people", "fractional", "hr", "hiring", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - General Counsel",
+      "name": "stratafy-gc",
       "source": "./stratafy-gc",
       "description": "Your fractional General Counsel — risk reviews, compliance briefs, regulatory alignment, and governance oversight for legal and compliance teams.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["gc", "legal", "fractional", "compliance", "governance", "strategy", "mcp"]
     },
     {
-      "name": "Stratafy Expert - Advisor",
+      "name": "stratafy-advisor",
       "source": "./stratafy-advisor",
       "description": "Your fractional startup advisor — advisory sessions, board prep, stage-specific pattern recognition, and strategic guidance from an experienced external perspective.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": ["advisor", "startup", "fractional", "board", "advisory", "strategy", "mcp"]
     }
   ]
 }

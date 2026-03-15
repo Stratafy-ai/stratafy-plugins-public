@@ -1,8 +1,11 @@
 {
-  "name": "stratafy-cto",
+  "name": "Stratafy Expert - CTO",
   "version": "0.2.0",
-  "description": "Your fractional CTO — connects technology decisions to strategic intent. Technical architecture reviews, build-vs-buy analysis grounded in strategy, and engineering decisions that serve the mission.",
-  "author": { "name": "Stratafy", "url": "https://stratafy.ai" },
+  "description": "Your fractional CTO \u2014 connects technology decisions to strategic intent. Technical architecture reviews, build-vs-buy analysis grounded in strategy, and engineering decisions that serve the mission.",
+  "author": {
+    "name": "Stratafy",
+    "url": "https://stratafy.ai"
+  },
   "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
   "license": "Apache-2.0"
 }

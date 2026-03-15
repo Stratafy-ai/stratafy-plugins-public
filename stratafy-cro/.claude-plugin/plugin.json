@@ -1,8 +1,11 @@
 {
-  "name": "stratafy-cro",
+  "name": "Stratafy Expert - CRO",
   "version": "0.2.0",
-  "description": "Your fractional CRO — connects revenue to strategic intent. Pipeline reviews against strategy, deal strategy aligned to positioning, and revenue intelligence that serves the mission.",
-  "author": { "name": "Stratafy", "url": "https://stratafy.ai" },
+  "description": "Your fractional CRO \u2014 connects revenue to strategic intent. Pipeline reviews against strategy, deal strategy aligned to positioning, and revenue intelligence that serves the mission.",
+  "author": {
+    "name": "Stratafy",
+    "url": "https://stratafy.ai"
+  },
   "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
   "license": "Apache-2.0"
 }

@@ -1,8 +1,11 @@
 {
-  "name": "stratafy-advisor",
+  "name": "Stratafy Expert - Advisor",
   "version": "0.2.0",
-  "description": "Your external startup advisor — pattern-matched experience from working with many companies. Stage-aware advisory sessions, board prep, and the hard questions your team isn't asking.",
-  "author": { "name": "Stratafy", "url": "https://stratafy.ai" },
+  "description": "Your external startup advisor \u2014 pattern-matched experience from working with many companies. Stage-aware advisory sessions, board prep, and the hard questions your team isn't asking.",
+  "author": {
+    "name": "Stratafy",
+    "url": "https://stratafy.ai"
+  },
   "homepage": "https://github.com/Stratafy-ai/stratafy-plugins",
   "license": "Apache-2.0"
 }

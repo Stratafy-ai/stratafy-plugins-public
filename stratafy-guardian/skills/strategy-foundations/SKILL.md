@@ -75,20 +75,75 @@ Initiatives are the bridge between strategy and execution. They represent concre
 
 **Anti-pattern**: Operational creep — when most initiatives are operational, strategy is being neglected. Every initiative should trace to a strategy.
 
-### Level 4: Tactics (Execution)
+### Level 4: Objectives & Metrics (Measurement)
 
-**Question**: How do we deliver and measure progress?
+**Question**: Are we achieving what we set out to achieve? Are we healthy while doing it?
 
-The detailed work of execution:
+A strategy needs two parallel instruments: **objectives** tell you whether you're winning, **metrics** tell you whether you're healthy. They are parallel — not hierarchical. Objectives close. Metrics persist.
 
-- **Objectives** — Measurable outcomes (OKR-style), attached to strategies or initiatives
-- **Key Results** — Specific targets with current values and confidence scores
-- **Metrics** — Ongoing performance indicators with thresholds and polarity
-- **Milestones** — Time-bound checkpoints
+#### Objective Types
+
+**Strategic Objective** — lives on the **strategy**.
+Answers: "What does winning look like for this strategy?"
+The outcome a strategy exists to achieve. Bounded — you can say "we achieved this" or "we didn't." Every active strategy should have at least one. Should be few (3–4 max per strategy).
+
+*Example*: "Platform supporting 3+ simultaneous customer deployments reliably."
+
+*Quality test*: If you can't tell whether it's been achieved, it's not an objective — it's an aspiration. "Be the best" fails. "Win 3 enterprise accounts in fintech" passes.
+
+**Key Result** — lives on the **initiative**.
+Answers: "How do we know this initiative is delivering?"
+Measurable evidence that an initiative is delivering toward its parent strategy's objectives. Must be specific and measurable (quantitative or binary). Should trace to a strategic objective — you should be able to say which strategic objective this key result serves. Supports OKR scoring (0–1).
+
+*Example*: "Context assembly time under 200ms with 80% cache hit rate" (serves the strategic objective "AI agent has full strategic context in under 200ms").
+
+*Quality test*: If a key result doesn't trace to a strategic objective, ask: what is this initiative actually proving? If you can't answer, the initiative may be orphaned work.
+
+**Milestone** — lives on the **initiative**.
+Answers: "Have we reached this checkpoint?"
+Binary progress markers. Done or not done. Marks that work is complete, not that it's generating strategic value (that's what key results are for).
+
+*Example*: "Phase 1: Manual briefing prototype live and tested for 7 consecutive days."
+
+*Quality test*: If a milestone has a percentage or range, it's a key result, not a milestone.
+
+#### Objective Hierarchy
+
+```
+Strategy
+  ├── Strategic Objective (what winning looks like)
+  │     ↑ key results should trace to these
+  ├── Metric (leading indicator — continuous, never closes)
+  ├── Metric (lagging indicator — continuous, never closes)
+  └── Initiative
+        ├── Key Result (measurable evidence of delivery)
+        └── Milestone (binary checkpoint of delivery)
+```
+
+| | Strategic Objective | Key Result | Milestone |
+|---|---|---|---|
+| **Lives on** | Strategy | Initiative | Initiative |
+| **Answers** | What does winning look like? | Is this initiative delivering? | Have we reached this checkpoint? |
+| **Measurement** | Quantitative, qualitative, or binary | Quantitative or binary | Binary only |
+| **Closes?** | Yes — achieved or not | Yes — scored 0–1 | Yes — done or not |
+| **Proves** | Strategy success | Initiative contribution to strategy | Work completion |
+
+#### Metrics — Parallel, Not Subordinate
+
+Metrics are the strategy's vital signs. They don't feed objectives and objectives don't feed them. They're a separate instrument:
+
+- **Leading metrics** — where you have agency (e.g. pipeline size, demos completed, content published)
+- **Lagging metrics** — confirm what already happened (e.g. MRR, retention rate, conversion rate)
+
+Every active strategy should have at least one leading and one lagging metric. Every metric **must** be linked to the strategy it measures. Unlinked metrics are orphaned data — a number without strategic context.
 
 **Governance**: Team leads + Contributors. Reviews weekly/monthly.
 
-**Key rule**: Plans attach to initiatives, not directly to strategies. Objectives can link to either.
+**Anti-patterns**:
+- **Vanity metrics** — Numbers that go up but don't indicate strategic progress. "Page views" without conversion context is vanity.
+- **Orphaned metrics** — Metrics with no strategy link. If it doesn't measure a strategy, why are we tracking it?
+- **Unmeasured strategies** — Strategies with no objectives and no metrics. If you can't tell whether it's working, it's not a strategy — it's a hope.
+- **Key results without a claim** — Key results on initiatives that don't trace to any strategic objective. Evidence without a hypothesis.
 
 ## The Cascade
 
@@ -98,12 +153,13 @@ Strategy flows from abstract to concrete. Each level translates the one above in
 Foundation: "We exist to close the gap between intent and execution"
     ↓ constrains
 Strategy: "Focus on AI-forward organisations with strategic operating system"
+    ├── Strategic Objective: "Win 3 enterprise lighthouse customers"
+    ├── Leading Metric: "Qualified pipeline size"
+    ├── Lagging Metric: "Active lighthouse customers"
     ↓ allocates resources to
 Initiative: "Build coach onboarding workflow" ($200K, Q1-Q2, Team of 3)
-    ↓ defines outcomes
-Objective: "Onboard 50 coaches in first quarter"
-    ↓ measured by
-Metrics: "Active coach workspaces: 50, Client retention: 80%"
+    ├── Key Result: "50 coaches onboarded" (traces to strategic objective)
+    └── Milestone: "Onboarding flow v1 shipped"
 ```
 
 When reviewing any entity, check upward: does this initiative actually serve a strategy? Does this strategy align with the foundation? Misalignment at any level means the cascade is broken.
@@ -148,10 +204,12 @@ External or internal indicators worth watching — competitive moves, market shi
 Foundation (mission, vision, values, principles, beliefs)
     ↓ anchors
 Strategy Tree (corporate → functional → sub-strategies)
+    ├── Strategic Objectives (what winning looks like)
+    ├── Metrics (leading + lagging vital signs, linked to strategy)
     ↓ drives
 Initiatives (strategic work with timelines and owners)
-    ↓ measured by
-Objectives & Key Results (targets and progress)
+    ├── Key Results (measurable evidence, traces to strategic objective)
+    ├── Milestones (binary checkpoints)
     ↓ informed by
 Signals → Insights → Decisions
     ↓ tracked by
@@ -164,8 +222,11 @@ Watch for these failures and call them out:
 
 - **Strategy-as-to-do-list** — A list of projects is not a strategy. Strategy is about choices: what you will AND won't do.
 - **Implicit assumptions** — The most dangerous assumptions are the ones nobody has stated. Surface them.
-- **Missing measurement** — If you can't tell whether a strategy is working, it's not a strategy, it's a hope.
+- **Missing measurement** — If you can't tell whether a strategy is working, it's not a strategy, it's a hope. Check: does every active strategy have at least one objective AND at least one metric?
 - **Orphaned initiatives** — Work that doesn't connect to any strategy. Ask: why are we doing this?
+- **Orphaned metrics** — Metrics with no strategy link. A number without strategic context is noise.
+- **Key results without a claim** — Key results on initiatives that don't trace to a strategic objective. Ask: what strategic outcome does this evidence support?
+- **Strategies without vital signs** — Strategies with no leading or lagging metrics. You're flying blind.
 - **Values as platitudes** — "Integrity, excellence, teamwork" — every company claims these. Real values are tradeoffs.
 - **Confusing strategy with tactics** — "Hire 10 engineers" is a tactic. "Build a world-class engineering capability" is strategy.
 - **Operational creep** — When execution crowds out strategy. If everything is urgent, nothing is strategic.

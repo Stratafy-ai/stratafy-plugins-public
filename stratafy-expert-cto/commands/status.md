@@ -1,6 +1,6 @@
-# /stratafy-cto:status
+# /stratafy-expert-cto:status
 
-Quick health check — red/amber/green per owned strategy with initiative progress. No analysis, just the numbers.
+Quick health check — red/amber/green per owned strategy, with attention items and upcoming deadlines surfaced at the top.
 
 ## Process
 
@@ -13,32 +13,54 @@ Call `get_expert_strategies` with the CTO expert ID.
 
 If that fails, fall back to `list_strategies` and filter for technology/product/infrastructure strategies.
 
-### Step 3: Get Health Data
+### Step 3: Get Health & Initiative Data
 
 For each owned strategy, in parallel:
-- `get_strategy` — Health score and alerts
-- `list_initiatives` filtered by `strategy_id` — Status counts
+- `get_strategy` — Health score, alerts, and status
+- `list_initiatives` filtered by `strategy_id` — Status, target_completion_date, completion_percentage
 
-### Step 4: Present
+### Step 4: Identify What Needs Attention
+
+From the gathered data, extract:
+
+**Attention items** (show these first):
+- Strategies with health status amber or red
+- Health alerts with severity "red"
+- Initiatives that are `in_progress` with no update in 14+ days (stalled)
+- Initiatives past their `target_completion_date` (overdue)
+
+**Upcoming deadlines** (next 14 days):
+- Initiatives with `target_completion_date` within the next 14 days
+- Sort by date, nearest first
+
+### Step 5: Present
 
 ```
 CTO STATUS — [Date]
 
-[Strategy 1]: 🟢/🟡/🔴 [health score]
-  Initiatives: [N] active ([N] on track, [N] stalled, [N] overdue)
-  Alerts: [health alerts, if any]
+━━━ NEEDS ATTENTION ━━━━━━━━━━━━━━━━━━━━
+🔴 [Strategy/initiative] — [one-line reason]
+🟡 [Strategy/initiative] — [one-line reason]
+⚠️ [Initiative] — stalled [N] days, no update since [date]
 
-[Strategy 2]: 🟢/🟡/🔴 [health score]
-  Initiatives: [N] active ([N] on track, [N] stalled, [N] overdue)
-  Alerts: [health alerts, if any]
+━━━ UPCOMING DEADLINES ━━━━━━━━━━━━━━━━━
+📅 [date] — [Initiative] ([completion]%) → [Strategy]
+📅 [date] — [Initiative] ([completion]%) → [Strategy]
 
-Overall: [N] strategies, [summary health statement]
+━━━ STRATEGY HEALTH ━━━━━━━━━━━━━━━━━━━━
+[Strategy 1]: 🟢 [score] — [N] initiatives on track
+[Strategy 2]: 🟡 [score] — [one-line issue]
+[Strategy 3]: 🔴 [score] — [one-line issue]
 ```
 
-That's it. Run `/stratafy-cto:engage` if you want the full briefing.
+If there are no attention items or upcoming deadlines, say so — that's a good sign.
+
+Run `/stratafy-expert-cto:engage` if you want the full briefing with recommendations.
 
 ## Rules
 
-- **Fast.** This should take seconds. No analysis, no recommendations.
-- **Just the numbers.** Health scores, initiative counts, alerts.
-- When referencing strategies, use markdown links with the `urls.detail` URL from tool responses.
+- **Fast.** This should take seconds. Lead with what needs attention, not a full report.
+- **Attention first.** Red and amber items at the top. Green strategies get one line, no detail.
+- **Deadlines are concrete.** Show the actual date, not "soon" or "upcoming".
+- **No recommendations.** That's what `/engage` is for. Status just shows the state.
+- When referencing strategies or initiatives, use markdown links with the `urls.detail` URL from tool responses.

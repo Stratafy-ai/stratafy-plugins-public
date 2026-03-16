@@ -60,8 +60,8 @@
     {
       "name": "stratafy-expert-cos",
       "source": "./stratafy-expert-cos",
-      "description": "Your fractional Chief of Staff \u2014 cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
-      "version": "0.2.0",
+      "description": "Your fractional Chief of Staff \u2014 daily strategic briefings with provenance digests, cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
+      "version": "0.3.0",
       "author": {
         "name": "Stratafy"
       },

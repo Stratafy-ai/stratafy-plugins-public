@@ -130,7 +130,7 @@
       "name": "stratafy-expert-cto",
       "source": "./stratafy-expert-cto",
       "description": "Your fractional CTO \u2014 connects technology decisions to strategic intent. Technical architecture reviews, build-vs-buy analysis, and engineering decisions that serve the mission.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Stratafy"
       },

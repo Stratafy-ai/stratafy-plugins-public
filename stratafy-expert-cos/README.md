@@ -9,6 +9,7 @@ The Chief of Staff sees across all teams, strategies, and initiatives. It surfac
 ## Commands
 
 ### Executive Intelligence
+- **`/daily-brief`** — Morning strategic briefing: yesterday's provenance digest, what needs attention, today's focus, blind spots
 - **`/exec-brief`** — On-demand executive briefing: strategic health, key metrics, what needs attention, wins, upcoming
 - **`/weekly-update`** — Structured weekly leadership update: scorecard, wins, concerns, decisions, next week's focus
 
@@ -42,7 +43,7 @@ The Chief of Staff sees across all teams, strategies, and initiatives. It surfac
 1. Install the plugin in Claude
 2. Connect your Stratafy workspace via MCP
 3. Connect Linear, Slack, and Google Calendar via MCP (optional)
-4. Start with `/exec-brief` or `/weekly-update`
+4. Start with `/daily-brief` each morning, or `/exec-brief` for on-demand intelligence
 
 ## Who It's For
 
@@ -54,7 +55,7 @@ The Chief of Staff sees across all teams, strategies, and initiatives. It surfac
 ## Provenance
 
 On every mutation tool call (create_*, update_*, delete_*, link_*, etc.), always include:
-- `_source_plugin`: "stratafy-cos"
+- `_source_plugin`: "stratafy-expert-cos"
 - `_source_command`: the command being run
 - `_change_reasoning`: 1-2 sentences explaining WHY this change is being made
 

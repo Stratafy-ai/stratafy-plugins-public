@@ -17,11 +17,13 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "daily-
 
 In parallel:
 - `generate_digest(period: 'daily', days_ago: 0)` — Yesterday's provenance digest (what changed and why)
-- `get_workspace_snapshot` — Current strategic state
+- `list_strategies` — All strategies with health scores (health_score, health_status, health_alerts)
 - `list_key_priorities` — Current company priorities
 - `get_pending_decisions` — Decisions awaiting action
 - `list_initiatives(status: 'in_progress')` — Active initiatives with progress
 - `get_high_risk_items` — Elevated risks
+
+**Note:** Use `list_strategies` not `get_workspace_snapshot` — the snapshot strips health scores. `list_strategies` returns `health_score`, `health_status`, and `health_alerts` for each strategy.
 
 ### Step 3: Check for Alerts
 

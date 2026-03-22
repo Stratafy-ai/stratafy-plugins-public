@@ -10,9 +10,9 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 
 ### Step 2: Gather Context
 
-In parallel:
-- `get_workspace_snapshot` — Company context and strategy overview
-- `list_strategies` — Strategy tree for alignment check
+Call `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities"]` and `_source_plugin: "stratafy-team"`.
+
+**Do NOT call `list_strategies` separately** — the snapshot already includes the strategy tree and avoids duplicate large payloads.
 
 ### Step 3: Walk Through Reflection
 

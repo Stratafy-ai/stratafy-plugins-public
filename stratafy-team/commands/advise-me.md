@@ -19,12 +19,9 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 
 ### Step 2: Gather Context
 
-In parallel:
-- `get_workspace_snapshot` — Company context and strategic landscape
-- `list_strategies` — Active strategies with priorities
-- `list_key_priorities` — Current company focus
-- `list_metrics` — Relevant metrics for grounding
-- `list_assumptions` — Relevant assumptions that bear on the decision
+Call `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities", "metrics", "assumptions"]` and `_source_plugin: "stratafy-team"` — Workspace context filtered to your role.
+
+**Do NOT call `list_strategies`, `list_key_priorities`, `list_metrics`, or `list_assumptions` separately** — the snapshot includes all of these.
 
 If the question relates to specific work:
 - `get_strategy` — Detail on connected strategy

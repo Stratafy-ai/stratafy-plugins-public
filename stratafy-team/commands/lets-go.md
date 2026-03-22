@@ -11,10 +11,10 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 ### Step 2: Gather Context
 
 In parallel:
-- `get_workspace_snapshot` — Company context, foundation, strategy overview
-- `list_strategies` — Active strategies with priorities
-- `list_key_priorities` — What the company is focused on right now
+- `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities", "metrics"]` and `_source_plugin: "stratafy-team"` — Workspace context filtered to your role
 - `list_metrics` — Key metrics with current status (for quick health pulse)
+
+**Do NOT call `list_strategies` or `list_key_priorities` separately** — the snapshot includes both and avoids duplicate large payloads.
 
 ### Step 3: Pull Tasks from Linear
 

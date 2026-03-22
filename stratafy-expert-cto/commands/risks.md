@@ -4,22 +4,27 @@ Surface technical risks and assumptions across your owned strategies. Fast scan 
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "risks"`.
-
-### Step 2: Get Owned Strategies
-
-Call `get_expert_strategies` with `_source_plugin: "stratafy-cto"` with the CTO expert ID.
-
-### Step 3: Gather Risk Data
+### Step 1: Get User Context & Get Owned Strategies
 
 In parallel:
-- `list_risks` with `_source_plugin: "stratafy-cto"` — All risks, filter for those linked to owned strategies
-- `list_assumptions` with `_source_plugin: "stratafy-cto"` — All assumptions, filter for technical ones
-- `get_high_risk_items` with `_source_plugin: "stratafy-cto"` — Highest severity items across the workspace
-- `search_workspace` with `_source_plugin: "stratafy-cto"` with query "technical risk security scalability reliability" — surface risks not yet formally logged
+- Call `get_user_context` with `command_name: "risks"`, `plugin_name: "stratafy-cto"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cto"` — returns all strategies this expert owns
 
-### Step 4: Categorise
+### Step 2: Gather Risk Data
+
+From Step 1 results, filter to **active strategies only**.
+
+For each active owned strategy, in parallel:
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — risks linked to this strategy
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — assumptions linked to this strategy
+
+Also in parallel (not per-strategy):
+- `get_high_risk_items` with `min_score: 9` — highest severity items across the workspace (may surface unlinked risks relevant to tech)
+
+**Do NOT call `list_risks` or `list_assumptions` without filters — these return oversized payloads.**
+
+### Step 3: Categorise
 
 **Risks by urgency:**
 - **Active** — Currently materialising or imminent
@@ -31,7 +36,7 @@ In parallel:
 - **Believed** — Team consensus but untested
 - **Fragile** — Low confidence, high consequence if wrong
 
-### Step 5: Present
+### Step 4: Present
 
 ```
 CTO RISKS — [Date]

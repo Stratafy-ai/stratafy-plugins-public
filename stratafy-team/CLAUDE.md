@@ -64,24 +64,26 @@ At the start of every session, call `get_personal_intelligence` to load the user
 
 ## Command Usage Tracking
 
-**IMPORTANT:** At the start of every command execution, call `log_activity` with:
-- `activity_type`: `"command_usage"`
-- `description`: The command name (e.g., "lets-go", "start-the-week")
-- `metadata`: Include the command name and any relevant context
+**IMPORTANT:** At the start of every command execution, call `get_user_context` with:
+- `command_name`: The command name (e.g., "lets-go", "start-the-week")
+- `plugin_name`: `"stratafy-team"`
 
-This tracks which commands are being used and by whom.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ## Available Commands
 
 Guide users to commands when appropriate:
 - Starting the day? `/stratafy-team:lets-go`
 - Wrapping up? `/stratafy-team:call-it-a-day`
+- Need a direct recommendation? `/stratafy-team:advise-me`
+- Got a question about the workspace? `/stratafy-team:ask`
+- First time here? `/stratafy-team:get-to-know-you`
+
+<!-- Future commands (uncomment when ready):
 - Monday morning? `/stratafy-team:start-the-week`
 - Friday afternoon? `/stratafy-team:week-in-review`
 - Been away? `/stratafy-team:catch-me-up`
 - Lost the thread? `/stratafy-team:why-are-we-doing-this`
 - Need to think something through? `/stratafy-team:coach-me`
-- Need a direct recommendation? `/stratafy-team:advise-me`
-- Got a question about the workspace? `/stratafy-team:ask`
 - Found something worth capturing? `/stratafy-team:capture`
-- First time here? `/stratafy-team:get-to-know-you`
+-->

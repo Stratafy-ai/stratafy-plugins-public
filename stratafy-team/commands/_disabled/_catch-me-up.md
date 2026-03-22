@@ -11,8 +11,9 @@ Provide one of:
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "catch-me-up"`.
+### Step 1: Get User Context
+Call `get_user_context` with `command_name: "catch-me-up"`, `plugin_name: "stratafy-team"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ### Step 2: Gather Context
 

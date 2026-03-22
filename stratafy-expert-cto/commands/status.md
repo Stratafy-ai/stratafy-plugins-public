@@ -4,8 +4,9 @@ Quick health check — red/amber/green per owned strategy, with attention items 
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "status"`.
+### Step 1: Get User Context
+Call `get_user_context` with `command_name: "status"`, `plugin_name: "stratafy-cto"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ### Step 2: Get Owned Strategies
 
@@ -15,7 +16,9 @@ If that fails, fall back to `list_strategies` with `_source_plugin: "stratafy-ct
 
 ### Step 3: Get Health & Initiative Data
 
-For each owned strategy, in parallel:
+From Step 2 results, filter to **active strategies only** — skip any with status `completed` or `archived`.
+
+For each **active** owned strategy, in parallel:
 - `get_strategy` with `_source_plugin: "stratafy-cto"` — Health score, alerts, and status
 - `list_initiatives` filtered by `strategy_id` with `_source_plugin: "stratafy-cto"` — Status, target_completion_date, completion_percentage
 

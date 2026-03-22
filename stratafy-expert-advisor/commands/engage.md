@@ -4,23 +4,26 @@ Start your advisory session — review the full strategic landscape, apply patte
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-advisor"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ### Step 2: Gather Context
 
-Unlike executive experts who scope to owned strategies, the advisor sees everything — like a board advisor would.
+Unlike executive experts who scope to owned strategies, the advisor sees everything — like a board advisor would. But use targeted calls to avoid context overflow.
 
 In parallel:
-- `get_workspace_snapshot` — Company context, stage, industry, foundation
-- `list_strategies` — Full strategy portfolio
-- `list_key_priorities` — Current focus
-- `list_risks` — Risk landscape
-- `list_assumptions` — What they're betting on
-- `get_high_risk_items` — Where danger is concentrated
-- `get_pending_decisions` — What's stuck
-- `list_metrics` — Performance data
-- `list_initiatives` — Execution status across the board
+- `list_strategies` — full strategy portfolio (names, status, health scores)
+- `list_key_priorities` — current focus
+- `get_high_risk_items` with `min_score: 6` — where danger is concentrated (medium+ severity)
+- `list_assumptions` with `impact_if_wrong: "critical"` — only critical assumptions they're betting on
+- `get_pending_decisions` — what's stuck
+- `list_metrics` — performance data
+
+**Do NOT call `get_workspace_snapshot`, `list_risks` without filters, `list_assumptions` without filters, or `list_initiatives` without filters — these return oversized payloads that overflow context.**
+
+If you need initiative detail for specific strategies flagged as concerning, call `list_initiatives` filtered by `strategy_id` for those specific strategies only.
 
 ### Step 3: Pattern Match
 

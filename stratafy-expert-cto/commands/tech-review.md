@@ -4,18 +4,28 @@ Review technical architecture and engineering direction against the company's st
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "tech-review"`.
+### Step 1: Get User Context & Get Owned Strategies
+
+In parallel:
+- Call `get_user_context` with `command_name: "tech-review"`, `plugin_name: "stratafy-cto"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cto"` — returns all strategies this expert owns
 
 ### Step 2: Gather Context
 
-In parallel:
-- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company context
-- `list_strategies` with `_source_plugin: "stratafy-cto"` — Find technology/product strategies
-- `list_initiatives` with `_source_plugin: "stratafy-cto"` — Technical initiatives and their status
-- `list_risks` with `_source_plugin: "stratafy-cto"` — Technical risks
-- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Technical assumptions
-- `search_workspace` with `_source_plugin: "stratafy-cto"` with query "technology architecture engineering infrastructure" — related context
+From Step 1 results, filter to **active strategies only**.
+
+For each active owned strategy, in parallel:
+- `get_strategy` — full strategy content, health score, alerts
+- `list_initiatives` filtered by `strategy_id` — technical initiatives and their status
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — technical risks
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — technical assumptions
+
+Also in parallel (not per-strategy):
+- `list_key_priorities` — current company priorities to check tech alignment
+- `search_workspace` with query "technology architecture engineering infrastructure" — related context
+
+**Do NOT call `get_workspace_snapshot`, `list_risks`, `list_assumptions`, or `list_initiatives` without filters — these return oversized payloads.**
 
 ### Step 3: Assess
 

@@ -11,19 +11,25 @@ Describe the capability:
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "build-vs-buy"`.
+### Step 1: Get User Context & Get Owned Strategies
+
+In parallel:
+- Call `get_user_context` with `command_name: "build-vs-buy"`, `plugin_name: "stratafy-cto"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cto"` — CTO's owned strategies
 
 ### Step 2: Gather Strategic Context
 
+From Step 1 results, identify the **most relevant active strategy** for the capability being evaluated.
+
 In parallel:
-- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company stage, team size, runway
-- `get_expert_strategies` with `_source_plugin: "stratafy-cto"` — CTO's owned strategies
-- `list_strategies` with `_source_plugin: "stratafy-cto"` — Which strategy does this capability serve?
-- `list_initiatives` with `_source_plugin: "stratafy-cto"` — Related initiatives and their timelines
-- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Assumptions about build capacity, vendor reliability, etc.
-- `list_risks` with `_source_plugin: "stratafy-cto"` — Risks this decision creates or mitigates
-- `search_workspace` with `_source_plugin: "stratafy-cto"` with the capability description — any prior thinking or decisions
+- `get_strategy` with the relevant strategy ID — full content, health, stage context
+- `list_initiatives` filtered by `strategy_id` — related initiatives and their timelines
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — risks this decision creates or mitigates
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — assumptions about build capacity, vendor reliability, etc.
+- `search_workspace` with the capability description — any prior thinking or decisions
+
+**Do NOT call `get_workspace_snapshot`, `list_strategies`, `list_risks`, or `list_assumptions` without filters — these return oversized payloads.**
 
 ### Step 3: Apply the Framework
 

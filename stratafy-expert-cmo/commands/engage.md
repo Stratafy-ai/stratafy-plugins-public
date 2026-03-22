@@ -4,29 +4,30 @@ Start your session — review your owned strategies, surface what needs attentio
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
+### Step 1: Get User Context & Identify Owned Strategies
 
-### Step 2: Identify Owned Strategies
+In parallel:
+- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-cmo"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cmo"` — returns all strategies this expert owns with name, status, and strategy type
 
-Call `get_expert_strategies` with the CMO expert ID to get all strategies this expert owns.
+### Step 2: Gather Context
 
-If that fails, fall back to `list_strategies` and filter for marketing/brand/category/SEO strategies.
+From Step 1 results, filter to **active strategies only** — skip any with status `completed` or `archived`.
 
-### Step 3: Gather Context
+For each **active** owned strategy, in parallel:
+- `get_strategy` — health score, health alerts, status, and content summary
+- `list_initiatives` filtered by `strategy_id` — initiative progress, stalled items, overdue work
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — risks linked to this strategy
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — assumptions linked to this strategy
 
-For each owned strategy, in parallel:
-- `get_strategy` — Get health score, health alerts, status, and content summary
-- `list_initiatives` filtered by `strategy_id` — Get initiative progress, stalled items, overdue work
-- `list_risks` — Risks linked to owned strategies
-- `list_assumptions` — Assumptions that need validation
+Also in parallel (not per-strategy):
+- `list_key_priorities` — current company priorities
+- `get_pending_decisions` — decisions in your domain awaiting resolution
 
-Also in parallel:
-- `get_workspace_snapshot` — Company context and current priorities
-- `list_key_priorities` — What the company is focused on right now
-- `get_pending_decisions` — Decisions in your domain awaiting resolution
+**Do NOT call `get_workspace_snapshot`, `list_risks`, or `list_assumptions` without filters — these return oversized payloads that overflow context.**
 
-### Step 4: Diagnose
+### Step 3: Diagnose
 
 For each owned strategy, assess:
 1. **Health** — What's the health score? What are the alerts?
@@ -39,7 +40,7 @@ For each owned strategy, assess:
 
 Rank findings by strategic risk — what threatens market position most.
 
-### Step 5: Present
+### Step 4: Present
 
 ```
 CMO ENGAGE — [Date]
@@ -77,7 +78,7 @@ Based on the above, here's where your time has the most impact today:
 2. [Action] — [why now]
 ```
 
-### Step 6: Execute Together
+### Step 5: Execute Together
 
 Once the user picks a focus area, dive in and help them do the work — draft positioning, write copy, build campaign briefs.
 

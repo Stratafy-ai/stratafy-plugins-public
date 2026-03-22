@@ -4,22 +4,26 @@ Start your session — review the full strategic landscape across all executives
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-cos"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ### Step 2: Gather Context
 
-The CoS sees across all domains — this is the cross-functional view.
+The CoS sees across all domains — this is the cross-functional view. Use targeted calls to avoid context overflow.
 
 In parallel:
-- `get_workspace_snapshot` — Company context, foundation, current state
-- `list_strategies` — All active strategies with health and ownership
-- `list_key_priorities` — Current company priorities
-- `list_initiatives` — All active initiatives with progress
-- `list_risks` — Full risk landscape
-- `get_pending_decisions` — Decisions awaiting resolution
-- `list_metrics` — Key metrics across all domains
-- `list_signals` — Recent signals that may need routing
+- `list_strategies` — all active strategies with health and ownership
+- `list_key_priorities` — current company priorities
+- `get_high_risk_items` with `min_score: 6` — medium+ severity risks across the workspace
+- `get_pending_decisions` — decisions awaiting resolution
+- `list_metrics` — key metrics across all domains
+- `list_signals` with `status: "unprocessed"` — recent signals that need routing
+
+**Do NOT call `get_workspace_snapshot`, `list_risks` without filters, `list_assumptions` without filters, or `list_initiatives` without filters — these return oversized payloads that overflow context.**
+
+If you need initiative detail for specific strategies flagged as concerning, call `list_initiatives` filtered by `strategy_id` for those specific strategies only.
 
 ### Step 3: Diagnose Cross-Functionally
 

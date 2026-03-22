@@ -4,27 +4,32 @@ Start your session — review your owned strategies, surface what needs attentio
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-gc"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ### Step 2: Identify Owned Strategies
 
-Call `get_expert_strategies` with the GC expert ID to get all strategies this expert owns.
-
-If that fails, fall back to `list_strategies` and scan all strategies for legal, compliance, and governance exposure.
+Call `get_expert_strategies` with `role: "gc"` to get all strategies this expert owns.
 
 Note: The GC may not own dedicated strategies but monitors legal risk across the entire portfolio.
 
 ### Step 3: Gather Context
 
 In parallel:
-- `get_workspace_snapshot` — Company context, industry, and stage
-- `list_strategies` — All active strategies (GC has cross-cutting visibility)
-- `list_risks` — All risks, especially legal/compliance/regulatory
-- `list_assumptions` — Assumptions with legal or regulatory implications
-- `get_high_risk_items` — Highest severity items across the workspace
-- `get_pending_decisions` — Decisions with governance or legal implications
-- `list_key_priorities` — Current company priorities
+- `list_strategies` — all active strategies (GC has cross-cutting visibility)
+- `get_high_risk_items` with `min_score: 6` — medium-and-above severity items across the workspace
+- `list_assumptions` with `assumption_type: "strategic"`, `impact_if_wrong: "critical"` — only critical strategic assumptions with legal/regulatory implications
+- `get_pending_decisions` — decisions with governance or legal implications
+- `list_key_priorities` — current company priorities
+
+For each **active** owned strategy (if any), also in parallel:
+- `get_strategy` — full content, health, alerts
+- `list_initiatives` filtered by `strategy_id` — initiative progress
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — risks linked to owned strategies
+
+**Do NOT call `get_workspace_snapshot`, `list_risks` without filters, or `list_assumptions` without filters — these return oversized payloads that overflow context.**
 
 ### Step 4: Diagnose
 

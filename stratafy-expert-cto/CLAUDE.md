@@ -22,10 +22,11 @@ On mutation calls (create_*, update_*, delete_*, link_*), also include:
 
 ## Command Usage Tracking
 
-At the start of every command execution, call `log_activity` with:
-- `activity_type`: `"command_usage"`
-- `description`: The command name (e.g., "tech-review", "architecture-brief")
-- `metadata`: Include the command name and any relevant context
+At the start of every command execution, call `get_user_context` with:
+- `command_name`: The command name (e.g., "tech-review", "architecture-brief")
+- `plugin_name`: `"stratafy-cto"`
+
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ## Available Commands
 

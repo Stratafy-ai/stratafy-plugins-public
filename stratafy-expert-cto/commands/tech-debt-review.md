@@ -11,18 +11,27 @@ Assess technical debt across the strategy portfolio. Surfaces where shortcuts, d
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "tech-debt-review"`.
+### Step 1: Get User Context & Get Owned Strategies
+
+In parallel:
+- Call `get_user_context` with `command_name: "tech-debt-review"`, `plugin_name: "stratafy-cto"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cto"` — CTO's owned strategies
 
 ### Step 2: Gather Context
 
-In parallel:
-- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company context and stage
-- `get_expert_strategies` with `_source_plugin: "stratafy-cto"` — CTO's owned strategies
-- `list_initiatives` with `_source_plugin: "stratafy-cto"` — All technical initiatives, especially stalled ones
-- `list_risks` with `_source_plugin: "stratafy-cto"` — Technical risks across all strategies
-- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Technical assumptions (framework choices, scalability bets, etc.)
-- `search_workspace` with `_source_plugin: "stratafy-cto"` with query "technical debt infrastructure scalability performance migration" — related context
+From Step 1 results, filter to **active strategies only**.
+
+For each active owned strategy, in parallel:
+- `get_strategy` — full content, health score, alerts
+- `list_initiatives` filtered by `strategy_id` — technical initiatives, especially stalled ones
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — technical risks
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — technical assumptions (framework choices, scalability bets, etc.)
+
+Also in parallel (not per-strategy):
+- `search_workspace` with query "technical debt infrastructure scalability performance migration" — related context
+
+**Do NOT call `get_workspace_snapshot`, `list_risks`, `list_assumptions`, or `list_initiatives` without filters — these return oversized payloads.**
 
 ### Step 3: Categorise Debt
 

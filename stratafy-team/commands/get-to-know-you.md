@@ -11,10 +11,11 @@ A 10-minute conversational onboarding session that teaches Stratafy how you thin
 
 ## Process
 
-### Step 1: Log Usage & Check Existing Context
+### Step 1: Get User Context & Check Existing Context
 
 Call in parallel:
-- `log_activity` with `activity_type: "command_usage"`, `description: "get-to-know-you"`
+- `get_user_context` with `command_name: "get-to-know-you"`, `plugin_name: "stratafy-team"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 - `get_personal_intelligence` — Check what already exists
 
 **If personal context already exists and onboarding is complete:**

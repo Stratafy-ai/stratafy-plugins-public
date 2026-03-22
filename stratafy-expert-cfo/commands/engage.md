@@ -4,31 +4,32 @@ Start your session — review your owned strategies, surface what needs attentio
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
+### Step 1: Get User Context & Identify Owned Strategies
 
-### Step 2: Identify Owned Strategies
+In parallel:
+- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-fd"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cfo"` — returns all strategies this expert owns with name, status, and strategy type
 
-Call `get_expert_strategies` with the FD expert ID to get all strategies this expert owns.
+### Step 2: Gather Context
 
-If that fails, fall back to `list_strategies` and filter for funding/finance/growth strategies.
+From Step 1 results, filter to **active strategies only** — skip any with status `completed` or `archived`.
 
-### Step 3: Gather Context
+For each **active** owned strategy, in parallel:
+- `get_strategy` — health score, health alerts, status, and content summary
+- `list_initiatives` filtered by `strategy_id` — initiative progress, stalled items, overdue work
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — financial risks linked to this strategy
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — financial assumptions linked to this strategy
 
-For each owned strategy, in parallel:
-- `get_strategy` — Get health score, health alerts, status, and content summary
-- `list_initiatives` filtered by `strategy_id` — Get initiative progress, stalled items, overdue work
-- `list_risks` — Financial risks
-- `list_assumptions` — Financial assumptions that need validation
-- `list_metrics` — Financial metrics (burn rate, runway, revenue, etc.)
+Also in parallel (not per-strategy):
+- `list_key_priorities` — current company priorities
+- `get_pending_decisions` — financial decisions awaiting resolution
+- `list_finance_proposals` — current COA status
+- `list_metrics` — financial metrics (burn rate, runway, revenue, etc.)
 
-Also in parallel:
-- `get_workspace_snapshot` — Company context and current priorities
-- `list_key_priorities` — What the company is focused on right now
-- `get_pending_decisions` — Financial decisions awaiting resolution
-- `list_finance_proposals` — Current COA status
+**Do NOT call `get_workspace_snapshot`, `list_risks`, or `list_assumptions` without filters — these return oversized payloads that overflow context.**
 
-### Step 4: Diagnose
+### Step 3: Diagnose
 
 For each owned strategy, assess:
 1. **Health** — What's the health score? What are the alerts?
@@ -41,7 +42,7 @@ For each owned strategy, assess:
 
 Rank findings by financial exposure — what threatens the runway or the raise most.
 
-### Step 5: Present
+### Step 4: Present
 
 ```
 FD ENGAGE — [Date]
@@ -84,7 +85,7 @@ Based on the above, here's where your time has the most impact today:
 2. [Action] — [why now]
 ```
 
-### Step 6: Execute Together
+### Step 5: Execute Together
 
 Once the user picks a focus area, dive in and help — budget mapping, investor prep, financial modelling.
 

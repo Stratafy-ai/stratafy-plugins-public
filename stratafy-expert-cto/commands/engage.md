@@ -4,30 +4,30 @@ Start your session — review your owned strategies, surface what needs attentio
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
+### Step 1: Get User Context & Identify Owned Strategies
 
-### Step 2: Load Role-Filtered Context
+In parallel:
+- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-cto"`.
+  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+- Call `get_expert_strategies` with `role: "cto"` — returns all strategies this expert owns with name, status, and strategy type
 
-Call `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"`. This returns the workspace filtered through the CTO context matrix — your owned strategies at full depth, other strategies compressed, and only pending insights.
+### Step 2: Gather Execution Detail
 
-### Step 3: Identify Owned Strategies
+From Step 1 results, filter to **active strategies only** — skip any with status `completed` or `archived`.
 
-From the snapshot, identify strategies owned by the CTO expert. Also call `get_expert` with `role: "cto"` to confirm the expert record and owned strategy IDs.
+For each **active** owned strategy, in parallel:
+- `get_strategy` with the strategy ID — health score, alerts, status, content summary
+- `list_initiatives` filtered by `strategy_id` — initiative progress, stalled items, overdue work
+- `get_risks_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — risks linked to this strategy
+- `get_assumptions_for_context` with `context_type: "strategy"`, `context_id: [strategy_id]` — assumptions linked to this strategy
 
-If the snapshot doesn't include owned strategy detail, call `get_expert_strategies` with the CTO expert ID.
+Also in parallel (not per-strategy):
+- `list_key_priorities` — current company priorities
+- `get_pending_decisions` — decisions awaiting resolution (scan results for tech-relevant ones)
 
-### Step 4: Gather Execution Detail
+**Do NOT call `get_workspace_snapshot` or `list_risks`/`list_assumptions` without filters — these return oversized payloads that overflow context.**
 
-For each owned strategy, in parallel:
-- `get_strategy` with `_source_plugin: "stratafy-cto"` — Health score, alerts, status
-- `list_initiatives` filtered by `strategy_id` with `_source_plugin: "stratafy-cto"` — Progress, stalled items, overdue work
-
-Also in parallel:
-- `list_key_priorities` with `_source_plugin: "stratafy-cto"` — Current company priorities
-- `get_pending_decisions` with `_source_plugin: "stratafy-cto"` — Decisions awaiting resolution
-
-### Step 5: Diagnose
+### Step 3: Diagnose
 
 For each owned strategy, assess:
 1. **Health** — What's the health score? What are the alerts?
@@ -39,7 +39,7 @@ For each owned strategy, assess:
 
 Rank findings by strategic risk — what threatens execution most.
 
-### Step 6: Present
+### Step 4: Present
 
 ```
 CTO ENGAGE — [Date]
@@ -77,7 +77,7 @@ Based on the above, here's where your time has the most impact today:
 2. [Action] — [why now]
 ```
 
-### Step 7: Execute Together
+### Step 5: Execute Together
 
 Once the user picks a focus area, dive in and help them do the work. Don't just brief — execute.
 
@@ -93,7 +93,7 @@ On every mutation, include:
 - **Be direct.** This is a CTO briefing, not a report. Architecture-first, no fluff.
 - **Lead with what's broken.** Green strategies don't need airtime. Red and amber first.
 - **Quantify.** "Initiative stalled" → "Initiative stalled 18 days, blocking Pulse v2 launch."
-- **Think in dependencies.** Surface cross-strategy blockers — if Product Architecture is stuck, what does that mean for Pulse and InsightSync?
+- **Think in dependencies.** Surface cross-strategy blockers — if Product Architecture is stuck, what does that mean for dependent strategies?
 - **Recommend, don't decide.** Surface the issue, propose the action, let the human commit.
 - When referencing strategies or initiatives, use markdown links with the `urls.detail` URL from tool responses.
 - Keep the briefing scannable in 60 seconds. Details come when the user digs in.

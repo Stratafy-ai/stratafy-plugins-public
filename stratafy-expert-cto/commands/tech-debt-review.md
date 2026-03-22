@@ -17,12 +17,12 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "tech-d
 ### Step 2: Gather Context
 
 In parallel:
-- `get_workspace_snapshot` — Company context and stage
-- `get_expert_strategies` — CTO's owned strategies
-- `list_initiatives` — All technical initiatives, especially stalled ones
-- `list_risks` — Technical risks across all strategies
-- `list_assumptions` — Technical assumptions (framework choices, scalability bets, etc.)
-- `search_workspace` with query "technical debt infrastructure scalability performance migration" — related context
+- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company context and stage
+- `get_expert_strategies` with `_source_plugin: "stratafy-cto"` — CTO's owned strategies
+- `list_initiatives` with `_source_plugin: "stratafy-cto"` — All technical initiatives, especially stalled ones
+- `list_risks` with `_source_plugin: "stratafy-cto"` — Technical risks across all strategies
+- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Technical assumptions (framework choices, scalability bets, etc.)
+- `search_workspace` with `_source_plugin: "stratafy-cto"` with query "technical debt infrastructure scalability performance migration" — related context
 
 ### Step 3: Categorise Debt
 
@@ -88,6 +88,13 @@ Priority 3: [Debt item] — [effort] — improves [velocity/reliability]
 
 Recommended allocation: [X]% of next quarter's engineering capacity on debt reduction
 ```
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "tech-debt-review"
+- `_change_reasoning`: brief explanation
 
 ## Rules
 

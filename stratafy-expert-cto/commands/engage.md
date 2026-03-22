@@ -7,26 +7,27 @@ Start your session — review your owned strategies, surface what needs attentio
 ### Step 1: Log Usage
 Call `log_activity` with `activity_type: "command_usage"`, `description: "engage"`.
 
-### Step 2: Identify Owned Strategies
+### Step 2: Load Role-Filtered Context
 
-Call `get_expert_strategies` with the CTO expert ID to get all strategies this expert owns.
+Call `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"`. This returns the workspace filtered through the CTO context matrix — your owned strategies at full depth, other strategies compressed, and only pending insights.
 
-If that fails, fall back to `list_strategies` and filter for technology/product/infrastructure strategies.
+### Step 3: Identify Owned Strategies
 
-### Step 3: Gather Context
+From the snapshot, identify strategies owned by the CTO expert. Also call `get_expert` with `role: "cto"` to confirm the expert record and owned strategy IDs.
+
+If the snapshot doesn't include owned strategy detail, call `get_expert_strategies` with the CTO expert ID.
+
+### Step 4: Gather Execution Detail
 
 For each owned strategy, in parallel:
-- `get_strategy` — Get health score, health alerts, status, and content summary
-- `list_initiatives` filtered by `strategy_id` — Get initiative progress, stalled items, overdue work
-- `list_risks` — Risks linked to owned strategies
-- `list_assumptions` — Assumptions that need validation
+- `get_strategy` with `_source_plugin: "stratafy-cto"` — Health score, alerts, status
+- `list_initiatives` filtered by `strategy_id` with `_source_plugin: "stratafy-cto"` — Progress, stalled items, overdue work
 
 Also in parallel:
-- `get_workspace_snapshot` — Company context and current priorities
-- `list_key_priorities` — What the company is focused on right now
-- `get_pending_decisions` — Decisions in your domain awaiting resolution
+- `list_key_priorities` with `_source_plugin: "stratafy-cto"` — Current company priorities
+- `get_pending_decisions` with `_source_plugin: "stratafy-cto"` — Decisions awaiting resolution
 
-### Step 4: Diagnose
+### Step 5: Diagnose
 
 For each owned strategy, assess:
 1. **Health** — What's the health score? What are the alerts?
@@ -38,7 +39,7 @@ For each owned strategy, assess:
 
 Rank findings by strategic risk — what threatens execution most.
 
-### Step 5: Present
+### Step 6: Present
 
 ```
 CTO ENGAGE — [Date]
@@ -76,9 +77,16 @@ Based on the above, here's where your time has the most impact today:
 2. [Action] — [why now]
 ```
 
-### Step 6: Execute Together
+### Step 7: Execute Together
 
 Once the user picks a focus area, dive in and help them do the work. Don't just brief — execute.
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "engage"
+- `_change_reasoning`: brief explanation
 
 ## Rules
 

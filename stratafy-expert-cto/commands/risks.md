@@ -9,15 +9,15 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "risks"
 
 ### Step 2: Get Owned Strategies
 
-Call `get_expert_strategies` with the CTO expert ID.
+Call `get_expert_strategies` with `_source_plugin: "stratafy-cto"` with the CTO expert ID.
 
 ### Step 3: Gather Risk Data
 
 In parallel:
-- `list_risks` — All risks, filter for those linked to owned strategies
-- `list_assumptions` — All assumptions, filter for technical ones
-- `get_high_risk_items` — Highest severity items across the workspace
-- `search_workspace` with query "technical risk security scalability reliability" — surface risks not yet formally logged
+- `list_risks` with `_source_plugin: "stratafy-cto"` — All risks, filter for those linked to owned strategies
+- `list_assumptions` with `_source_plugin: "stratafy-cto"` — All assumptions, filter for technical ones
+- `get_high_risk_items` with `_source_plugin: "stratafy-cto"` — Highest severity items across the workspace
+- `search_workspace` with `_source_plugin: "stratafy-cto"` with query "technical risk security scalability reliability" — surface risks not yet formally logged
 
 ### Step 4: Categorise
 
@@ -57,6 +57,13 @@ CTO RISKS — [Date]
 1. [Risk to mitigate] — [action]
 2. [Assumption to test] — [action]
 ```
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "risks"
+- `_change_reasoning`: brief explanation
 
 ## Rules
 

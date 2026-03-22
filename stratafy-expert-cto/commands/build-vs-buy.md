@@ -17,13 +17,13 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "build-
 ### Step 2: Gather Strategic Context
 
 In parallel:
-- `get_workspace_snapshot` — Company stage, team size, runway
-- `get_expert_strategies` — CTO's owned strategies
-- `list_strategies` — Which strategy does this capability serve?
-- `list_initiatives` — Related initiatives and their timelines
-- `list_assumptions` — Assumptions about build capacity, vendor reliability, etc.
-- `list_risks` — Risks this decision creates or mitigates
-- `search_workspace` with the capability description — any prior thinking or decisions
+- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company stage, team size, runway
+- `get_expert_strategies` with `_source_plugin: "stratafy-cto"` — CTO's owned strategies
+- `list_strategies` with `_source_plugin: "stratafy-cto"` — Which strategy does this capability serve?
+- `list_initiatives` with `_source_plugin: "stratafy-cto"` — Related initiatives and their timelines
+- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Assumptions about build capacity, vendor reliability, etc.
+- `list_risks` with `_source_plugin: "stratafy-cto"` — Risks this decision creates or mitigates
+- `search_workspace` with `_source_plugin: "stratafy-cto"` with the capability description — any prior thinking or decisions
 
 ### Step 3: Apply the Framework
 
@@ -105,6 +105,13 @@ REVERSIBILITY
 NEXT STEP
   [Single concrete action to move forward]
 ```
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "build-vs-buy"
+- `_change_reasoning`: brief explanation
 
 ## Rules
 

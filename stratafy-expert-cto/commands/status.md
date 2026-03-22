@@ -9,15 +9,15 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "status
 
 ### Step 2: Get Owned Strategies
 
-Call `get_expert_strategies` with the CTO expert ID.
+Call `get_expert_strategies` with `_source_plugin: "stratafy-cto"` with the CTO expert ID.
 
-If that fails, fall back to `list_strategies` and filter for technology/product/infrastructure strategies.
+If that fails, fall back to `list_strategies` with `_source_plugin: "stratafy-cto"` and filter for technology/product/infrastructure strategies.
 
 ### Step 3: Get Health & Initiative Data
 
 For each owned strategy, in parallel:
-- `get_strategy` — Health score, alerts, and status
-- `list_initiatives` filtered by `strategy_id` — Status, target_completion_date, completion_percentage
+- `get_strategy` with `_source_plugin: "stratafy-cto"` — Health score, alerts, and status
+- `list_initiatives` filtered by `strategy_id` with `_source_plugin: "stratafy-cto"` — Status, target_completion_date, completion_percentage
 
 ### Step 4: Identify What Needs Attention
 
@@ -56,6 +56,13 @@ CTO STATUS — [Date]
 If there are no attention items or upcoming deadlines, say so — that's a good sign.
 
 Run `/stratafy-expert-cto:engage` if you want the full briefing with recommendations.
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "status"
+- `_change_reasoning`: brief explanation
 
 ## Rules
 

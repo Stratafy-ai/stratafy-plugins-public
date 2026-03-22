@@ -17,12 +17,12 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "archit
 ### Step 2: Gather Strategic Context
 
 In parallel:
-- `get_workspace_snapshot` — Company context and stage
-- `list_strategies` — Which strategy does this decision serve?
-- `list_initiatives` — Related technical initiatives
-- `list_assumptions` — Assumptions that bear on the decision
-- `list_risks` — Risks this decision creates or mitigates
-- `search_workspace` with the decision context — related intelligence
+- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company context and stage
+- `list_strategies` with `_source_plugin: "stratafy-cto"` — Which strategy does this decision serve?
+- `list_initiatives` with `_source_plugin: "stratafy-cto"` — Related technical initiatives
+- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Assumptions that bear on the decision
+- `list_risks` with `_source_plugin: "stratafy-cto"` — Risks this decision creates or mitigates
+- `search_workspace` with `_source_plugin: "stratafy-cto"` with the decision context — related intelligence
 
 ### Step 3: Build the Brief
 
@@ -55,3 +55,10 @@ RECOMMENDATION
 NEXT STEP
   [Single concrete action]
 ```
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "architecture-brief"
+- `_change_reasoning`: brief explanation

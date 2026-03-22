@@ -10,12 +10,12 @@ Call `log_activity` with `activity_type: "command_usage"`, `description: "tech-r
 ### Step 2: Gather Context
 
 In parallel:
-- `get_workspace_snapshot` — Company context
-- `list_strategies` — Find technology/product strategies
-- `list_initiatives` — Technical initiatives and their status
-- `list_risks` — Technical risks
-- `list_assumptions` — Technical assumptions
-- `search_workspace` with query "technology architecture engineering infrastructure" — related context
+- `get_workspace_snapshot` with `_source_plugin: "stratafy-cto"` — Company context
+- `list_strategies` with `_source_plugin: "stratafy-cto"` — Find technology/product strategies
+- `list_initiatives` with `_source_plugin: "stratafy-cto"` — Technical initiatives and their status
+- `list_risks` with `_source_plugin: "stratafy-cto"` — Technical risks
+- `list_assumptions` with `_source_plugin: "stratafy-cto"` — Technical assumptions
+- `search_workspace` with `_source_plugin: "stratafy-cto"` with query "technology architecture engineering infrastructure" — related context
 
 ### Step 3: Assess
 
@@ -45,3 +45,10 @@ RECOMMENDATIONS
   1. [Specific action]
   2. [Specific action]
 ```
+
+## Provenance Context
+
+On every mutation, include:
+- `_source_plugin`: "stratafy-cto"
+- `_source_command`: "tech-review"
+- `_change_reasoning`: brief explanation

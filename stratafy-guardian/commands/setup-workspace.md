@@ -168,7 +168,18 @@ Once confirmed, build:
 4. `create_risk` if identified
 5. `create_decision` for choices already made or still open
 
-### Step 7: Summary
+### Step 7: Personal Intelligence Onboarding
+
+After building the workspace, check if the user has personal intelligence set up:
+
+Call `get_personal_intelligence`. If `needs_onboarding: true`:
+
+> "The workspace is set up. One more thing that makes a big difference — I can spend 10 minutes learning how you personally think and engage with strategy. This changes how I work with you across every interaction. Want to do that now?"
+
+If yes, run the `/stratafy-team:get-to-know-you` flow.
+If no, continue to the summary.
+
+### Step 8: Summary
 
 Present what was created:
 

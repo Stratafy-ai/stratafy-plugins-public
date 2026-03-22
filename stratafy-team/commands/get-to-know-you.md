@@ -5,23 +5,21 @@ A 10-minute conversational onboarding session that teaches Stratafy how you thin
 ## When to Use
 
 - First time using Stratafy in any workspace
-- When `get_personal_intelligence` shows `needs_onboarding: true`
+- When `get_user_context` shows `needs_onboarding: true`
 - When a user wants to reset or update their personal profile
 - Before any other skill, if personal context doesn't exist yet
 
 ## Process
 
-### Step 1: Get User Context & Check Existing Context
+### Step 1: Get User Context
 
-Call in parallel:
-- `get_user_context` with `command_name: "get-to-know-you"`, `plugin_name: "stratafy-team"`.
-  This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
-- `get_personal_intelligence` — Check what already exists
+Call `get_user_context` with `command_name: "get-to-know-you"`, `plugin_name: "stratafy-team"`.
+This returns the user's personal context, role, lens, and `_meta.needs_onboarding` flag.
 
-**If personal context already exists and onboarding is complete:**
+**If `needs_onboarding: false`** (personal context already exists):
 Show a summary of what's stored and ask: "Want to update anything, or start fresh?"
 
-**If no personal context exists:**
+**If `needs_onboarding: true`:**
 Continue to Step 2.
 
 ### Step 2: Set the Frame

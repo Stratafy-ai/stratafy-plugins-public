@@ -12,7 +12,7 @@ Set up a new Stratafy workspace for a client or organisation. Starts with resear
 
 These Stratafy MCP tools are already available — do not search for them:
 
-- **Workspace:** `select_workspace` (supports `domain` search), `create_workspace`, `update_workspace_context`, `get_workspace_snapshot`
+- **Workspace:** `select_workspace` (supports `domain` search), `update_workspace_context`, `get_workspace_snapshot`
 - **Foundation:** `update_mission`, `update_vision`, `create_value`, `create_principle`, `create_belief`
 - **Strategy:** `create_strategy`, `create_initiative`, `create_objective`, `create_metric`
 - **Intelligence:** `create_assumption`, `create_risk`, `create_insight`, `create_signal`, `create_decision`
@@ -62,7 +62,7 @@ Use web search to supplement with:
 
 **CRITICAL: Save the workspace context BEFORE presenting the foundation draft. This is a hard requirement.**
 
-1. If no workspace exists yet, call `create_workspace` with the company name.
+1. If no workspace exists yet, use the workspace management tools to create the workspace.
 2. Call `update_workspace_context` with everything from research: `industry`, `domain`, and `company_context` as a structured JSON with stage, market position, key products, competitors, revenue, team size, CEO, funding status.
 3. **Verify the save succeeded** — check the response. If it failed, fix it before continuing.
 4. Only AFTER context is saved, proceed to present the foundation draft.

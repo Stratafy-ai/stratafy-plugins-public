@@ -46,7 +46,7 @@ After each session, the coach needs to capture what was discussed and decided. U
 
 ### 4. Between Sessions
 - Monitor signals relevant to the client's industry
-- Run alignment scans: `run_internal_alignment_scan`
+- Run alignment scans: `run_alignment_foundation_scan`
 - Process any new radar findings
 - Prepare a brief for the next session
 
@@ -86,8 +86,8 @@ The client needs to set priorities for the next quarter:
 
 ### Strategy Review
 The client wants to evaluate their overall strategic health:
-1. Run `run_internal_alignment_scan` — are strategies aligned?
-2. Run `run_coherence_scan` — is the strategy internally consistent?
+1. Run `run_alignment_foundation_scan` — are strategies aligned?
+2. Run `run_alignment_coherence_scan` — is the strategy internally consistent?
 3. Review the signal pipeline — any unprocessed signals?
 4. Check decision log — any pending decisions blocking progress?
 5. Assess OKR health across the board

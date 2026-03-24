@@ -19,8 +19,8 @@ Provide one of:
 
 ## Process
 
-### Step 1: Log Usage
-Call `log_activity` with `activity_type: "command_usage"`, `description: "team-rhythm"`.
+### Step 1: Load Context
+Call `get_user_context` with `command_name: "team-rhythm"`, `plugin_name: "stratafy-guardian"`.
 
 ### Step 2: Gather Data
 

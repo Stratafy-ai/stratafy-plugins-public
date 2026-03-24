@@ -28,8 +28,8 @@ A deep analysis of a specific strategy branch. Use for quarterly reviews, board 
 **Data sources:**
 
 - `get_strategy_tree` with the strategy as root — full hierarchy
-- `run_internal_alignment_scan` — is everything aligned?
-- `run_coherence_scan` — is the strategy internally consistent?
+- `run_alignment_foundation_scan` — is everything aligned?
+- `run_alignment_coherence_scan` — is the strategy internally consistent?
 - `list_assumptions` filtered to this strategy — what are we betting on?
 - `get_risks_for_context` — what threatens this strategy?
 - `get_signals_for_strategy` — what's changing in the environment?
@@ -91,8 +91,8 @@ How well the organisation's strategies, initiatives, and objectives align with e
 
 **Data sources:**
 
-- `run_internal_alignment_scan` — systematic alignment check
-- `run_coherence_scan` — logical consistency
+- `run_alignment_foundation_scan` — systematic alignment check
+- `run_alignment_coherence_scan` — logical consistency
 - `get_strategy_tree` — full hierarchy
 
 **Format:**

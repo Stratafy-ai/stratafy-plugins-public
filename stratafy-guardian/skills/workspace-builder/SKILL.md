@@ -11,7 +11,7 @@ These are the Stratafy MCP tools you'll use during workspace setup. They are alr
 **Workspace:**
 
 - `select_workspace` — list workspaces or select one (supports `domain` param to search by URL)
-- `create_workspace` — create a new workspace
+- `create_workspace` — create a new workspace (via workspace management MCP)
 - `update_workspace_context` — save research data (industry, domain, company_context as JSON)
 - `get_workspace_snapshot` — load everything in a workspace
 
@@ -85,7 +85,7 @@ Scrape the company website and search the web. Pull out everything you can:
 
 **CRITICAL: Save workspace context BEFORE presenting anything to the user.** This is a hard requirement — do NOT skip this step.
 
-1. If no workspace exists yet, call `create_workspace` with the company name.
+1. If no workspace exists yet, use the workspace management tools to create the workspace.
 2. Call `update_workspace_context` with everything you found: industry, stage, market position, key products, competitors, revenue, team size, CEO, funding status. Pass the research as a structured JSON in the `company_context` field, and set `industry` and `domain` fields.
 3. **Verify the save succeeded** — check the response. If it failed, fix it before continuing.
 4. Only AFTER context is saved, present the foundation draft to the user.

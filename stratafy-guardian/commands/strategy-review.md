@@ -23,8 +23,8 @@ Provide one of:
 I'll use `get_strategy_tree` to get the full hierarchy of the strategy being reviewed, including sub-strategies, initiatives, and objectives.
 
 ### Step 2: Run Alignment Scans
-- `run_internal_alignment_scan` — Are strategies aligned with each other and the foundation?
-- `run_coherence_scan` — Is the strategy internally consistent? Do the pieces fit together logically?
+- `run_alignment_foundation_scan` — Are strategies aligned with each other and the foundation?
+- `run_alignment_coherence_scan` — Is the strategy internally consistent? Do the pieces fit together logically?
 
 ### Step 3: Assess Execution
 For each strategy in the branch:
@@ -82,7 +82,7 @@ A structured review document that can be:
 - Presented in a leadership meeting
 - Shared with a coaching client
 - Used as the basis for a board briefing
-- Filed as a strategic review in Stratafy using `create_review` (if available)
+- The review output can be saved as a document using `create_document`
 
 ## For Coaches
 Frame the review in terms your client understands:

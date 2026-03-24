@@ -181,7 +181,7 @@ Call `get_personal_intelligence`. If `needs_onboarding: true`:
 
 > "The workspace is set up. One more thing that makes a big difference — I can spend 10 minutes learning how you personally think and engage with strategy. This changes how I work with you across every interaction. Want to do that now?"
 
-If yes, run the `/stratafy-team:get-to-know-you` flow.
+If yes, run the personal intelligence onboarding conversationally — ask about their goals, values, energy/drains, constraints, and forward anchor, then save with `update_personal_context`, `update_role_context`, and `update_user_lens`.
 If no, continue to the summary.
 
 ### Step 8: Summary

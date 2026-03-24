@@ -10,7 +10,7 @@
       "name": "stratafy-guardian",
       "source": "./stratafy-guardian",
       "description": "Guardian of your strategy. Watches over structural health, content quality, execution alignment, and strategic coherence \u2014 surfacing what needs attention before it becomes a problem.",
-      "version": "2.1.1",
+      "version": "2.2.0",
       "author": {
         "name": "Stratafy"
       },

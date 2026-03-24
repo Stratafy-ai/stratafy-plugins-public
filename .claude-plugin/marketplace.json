@@ -1,9 +1,11 @@
 {
   "name": "stratafy-plugins",
-  "description": "The Stratafy Team \u2014 a full fractional leadership team, powered by AI. Every role grounded in your live strategy.",
   "owner": {
     "name": "Stratafy",
     "email": "hello@stratafy.com"
+  },
+  "metadata": {
+    "description": "The Stratafy Team — a full fractional leadership team, powered by AI. Every role grounded in your live strategy."
   },
   "plugins": [
     {

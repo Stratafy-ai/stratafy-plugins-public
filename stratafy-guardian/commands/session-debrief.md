@@ -1,3 +1,8 @@
+---
+name: session-debrief
+description: Parse strategy session notes, meeting transcripts, or coaching debrief notes into structured Stratafy artifacts
+---
+
 # /stratafy:session-debrief
 
 Parse strategy session notes, meeting transcripts, or coaching debrief notes into structured Stratafy artifacts. Turns a conversation into strategies, initiatives, decisions, risks, assumptions, and insights.

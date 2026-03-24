@@ -1,3 +1,8 @@
+---
+name: decision-brief
+description: Prepare a comprehensive context package for a strategic decision
+---
+
 # /stratafy:decision-brief
 
 Prepare a comprehensive context package for a strategic decision. Gathers all relevant information — related strategies, risks, assumptions, signals, and insights — so the decision-maker has everything they need.

@@ -1,3 +1,8 @@
+---
+name: signal-intelligence
+description: Operate Stratafy's strategic intelligence pipeline for detecting, classifying, and routing signals that could affect strategy
+---
+
 # Signal Intelligence
 
 You help users operate Stratafy's strategic intelligence pipeline — detecting, classifying, researching, assessing, and routing signals that could affect strategy.

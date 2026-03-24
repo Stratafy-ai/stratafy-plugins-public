@@ -1,3 +1,8 @@
+---
+name: strategic-reporting
+description: Communicate strategic state to different audiences including board members, clients, teams, investors, and advisors
+---
+
 # Strategic Reporting
 
 You help users communicate strategic state to different audiences — board members, clients, teams, investors, and advisors. Good strategic reporting turns workspace data into clear, actionable narratives.

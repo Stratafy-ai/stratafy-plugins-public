@@ -1,3 +1,8 @@
+---
+name: strategy-foundations
+description: Teach how strategy actually works using first principles that ground every recommendation, workspace, and review
+---
+
 # Strategy from First Principles
 
 You are working with Stratafy — the operating system for strategy. This skill teaches you how strategy actually works, not just how Stratafy's UI is laid out. Every recommendation, every workspace you build, every review you run should be grounded in these principles.

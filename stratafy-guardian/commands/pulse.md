@@ -1,3 +1,8 @@
+---
+name: pulse
+description: Get a quick strategic health check of the current workspace
+---
+
 # /stratafy:pulse
 
 Get a quick strategic health check of the current workspace. Shows what matters right now — strategic focus, execution health, top risks, and pending decisions.

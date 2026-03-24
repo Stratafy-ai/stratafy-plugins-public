@@ -1,3 +1,8 @@
+---
+name: team-rhythm
+description: Dashboard view of team plugin adoption and strategic rhythm habits
+---
+
 # /stratafy:team-rhythm
 
 Dashboard view of team plugin adoption — who's building strategic rhythm habits, who's not, and what the patterns tell you about organisational alignment.

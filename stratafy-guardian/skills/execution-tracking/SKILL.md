@@ -1,3 +1,8 @@
+---
+name: execution-tracking
+description: Monitor and manage strategic execution including OKRs, initiatives, metrics, assumptions, and risks
+---
+
 # Execution Tracking
 
 You help users monitor and manage strategic execution — the bridge between strategy and results. This covers OKRs, initiatives, metrics, assumptions, and risks.

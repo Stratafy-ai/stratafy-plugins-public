@@ -1,3 +1,8 @@
+---
+name: coaching-facilitation
+description: Assist strategy coaches and consultants who use Stratafy as their client engagement platform
+---
+
 # Coaching & Facilitation
 
 You assist strategy coaches and consultants who use Stratafy as their client engagement platform. This skill covers how to facilitate strategy work, manage multiple client relationships, and translate coaching conversations into structured strategic artifacts.

@@ -1,3 +1,8 @@
+---
+name: strategy-review
+description: Run a deep analysis of a strategy branch including alignment, coherence, execution health, risks, and assumptions
+---
+
 # /stratafy:strategy-review
 
 Run a deep analysis of a strategy branch — alignment, coherence, execution health, risks, assumptions, and signals. Produces a comprehensive review suitable for leadership meetings, board presentations, or coaching sessions.

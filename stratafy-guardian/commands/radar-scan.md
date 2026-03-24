@@ -1,3 +1,8 @@
+---
+name: radar-scan
+description: Run a strategic intelligence scan for competitive analysis, market trends, and environmental factors
+---
+
 # /stratafy:radar-scan
 
 Run a strategic intelligence scan — competitive analysis, market trends, regulatory changes, or any environmental factor that could affect strategy. Creates structured findings with implications and recommendations.

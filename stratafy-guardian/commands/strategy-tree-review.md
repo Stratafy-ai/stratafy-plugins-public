@@ -1,3 +1,8 @@
+---
+name: strategy-tree-review
+description: Review a strategy branch for structural quality and completeness
+---
+
 # /stratafy:strategy-tree-review
 
 Review a strategy branch for structural quality and completeness. This command walks through each layer of the strategy cascade — strategies, initiatives, then objectives and metrics — checking whether the tree is well-defined as a piece of strategic architecture.

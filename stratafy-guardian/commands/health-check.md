@@ -1,3 +1,8 @@
+---
+name: health-check
+description: Run a strategy health check across the workspace
+---
+
 # /stratafy:health-check
 
 Run a strategy health check across the workspace. This command surfaces the health scores produced by Stratafy's automated scoring system — structural completeness, content quality, measurement coverage, relationship depth, and staleness — and presents them as an actionable diagnostic.

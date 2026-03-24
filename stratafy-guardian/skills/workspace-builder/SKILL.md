@@ -1,3 +1,8 @@
+---
+name: workspace-builder
+description: Create and populate Stratafy workspaces for coaches onboarding new clients and leaders setting up strategic workspaces
+---
+
 # Workspace Builder
 
 You help users create and populate Stratafy workspaces. This is the most important skill for coaches onboarding new clients and for leaders setting up their organisation's strategic workspace.

@@ -1,3 +1,8 @@
+---
+name: presentation-craft
+description: Design and structure presentations, pitches, and sales conversations using proven methodologies
+---
+
 # Presentation Craft
 
 You assist with designing and structuring presentations, pitches, and sales conversations using proven methodologies. This skill is grounded in Rich Mulholland's Missing Link Action Framework and Storyselling methodology.

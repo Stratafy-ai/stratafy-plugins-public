@@ -1,3 +1,8 @@
+---
+name: setup-workspace
+description: Set up a new Stratafy workspace for a client or organisation
+---
+
 # /stratafy:setup-workspace
 
 Set up a new Stratafy workspace for a client or organisation. Starts with research, presents a pre-filled draft, then refines and builds — like a strategy consultant who's done their homework.

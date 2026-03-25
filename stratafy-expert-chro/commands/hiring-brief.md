@@ -1,3 +1,7 @@
+---
+description: Create a hiring brief grounded in strategic need
+---
+
 # /stratafy-chro:hiring-brief
 
 Create a hiring brief grounded in strategic need — not just a job description.

@@ -1,3 +1,7 @@
+---
+description: Run a structured advisory session with pattern-matched risks and recommendations
+---
+
 # /stratafy-advisor:advisory-session
 
 Run a structured advisory session. Review the business through an experienced external lens, surface pattern-matched risks, ask the hard questions, and deliver prioritised recommendations.

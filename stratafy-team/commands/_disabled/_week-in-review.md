@@ -1,3 +1,7 @@
+---
+description: "Friday wrap-up — what the company accomplished against priorities"
+---
+
 # /stratafy-team:week-in-review
 
 Friday wrap-up — what the company accomplished this week against priorities, metrics that moved, and what's coming next week.

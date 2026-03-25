@@ -1,3 +1,7 @@
+---
+description: "Ask any question and get an answer grounded in your live strategy workspace"
+---
+
 # /stratafy-team:ask
 
 Ask any question and get an answer grounded in your live strategy workspace. Claude searches across all workspace entities — strategies, initiatives, decisions, risks, assumptions, insights, metrics, objectives, signals, and documents — and answers from what the workspace actually contains.

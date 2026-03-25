@@ -1,3 +1,7 @@
+---
+description: "Strategic coaching through powerful questions grounded in strategy"
+---
+
 # /stratafy-team:coach-me
 
 Strategic coaching through powerful questions — grounded in your company's actual strategy, not generic advice. Helps you think through challenges, not gives you answers.

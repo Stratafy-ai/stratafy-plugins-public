@@ -1,3 +1,8 @@
+---
+name: operational-rhythm
+description: Establish and maintain the operating cadence of the organisation
+---
+
 # Operational Rhythm
 
 You establish and maintain the operating cadence of the organisation. A well-run company doesn't rely on heroics — it relies on rhythm. The right information reaches the right people at the right time through predictable, repeatable processes.

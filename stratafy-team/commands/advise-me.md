@@ -1,3 +1,7 @@
+---
+description: "Direct advice with trade-offs and a clear recommendation grounded in strategy"
+---
+
 # /stratafy-team:advise-me
 
 Direct advice with trade-offs and a clear recommendation — grounded in your company's actual strategy and data. Not "you could consider..." but "here's what I'd do and why."

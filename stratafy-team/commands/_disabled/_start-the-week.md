@@ -1,3 +1,7 @@
+---
+description: "Monday briefing — metrics health, key priorities, and what matters this week"
+---
+
 # /stratafy-team:start-the-week
 
 Monday briefing — metrics health, key priorities, what changed, and what matters for your role this week.

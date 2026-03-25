@@ -1,3 +1,7 @@
+---
+description: Structured build-vs-buy decision framework grounded in strategy
+---
+
 # /stratafy-cto:build-vs-buy
 
 Structured decision framework for build-vs-buy choices, grounded in strategic context — not just cost comparison.

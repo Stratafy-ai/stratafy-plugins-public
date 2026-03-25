@@ -1,3 +1,7 @@
+---
+description: Review team capacity and health against strategic demands
+---
+
 # /stratafy-chro:team-health
 
 Review team capacity and health against strategic demands. Surfaces where the team is stretched, where there are gaps, and what the strategy requires.

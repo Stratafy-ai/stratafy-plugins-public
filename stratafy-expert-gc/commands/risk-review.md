@@ -1,3 +1,7 @@
+---
+description: Review legal and compliance risks across the strategy portfolio
+---
+
 # /stratafy-gc:risk-review
 
 Review legal and compliance risks across the strategy portfolio. Surfaces where strategic execution creates legal exposure.

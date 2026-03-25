@@ -1,3 +1,7 @@
+---
+description: Create a strategy-grounded campaign brief
+---
+
 # /stratafy-cmo:campaign-brief
 
 Create a campaign brief that's grounded in the company's actual strategy — not generic marketing best practice.

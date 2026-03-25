@@ -1,3 +1,7 @@
+---
+description: Run a financial alignment scan measuring finance-to-strategy connection
+---
+
 # /stratafy-fd:financial-scan
 
 Run a financial alignment scan to measure how well the company's finances connect to its strategy. Produces an alignment score with specific findings and recommendations.

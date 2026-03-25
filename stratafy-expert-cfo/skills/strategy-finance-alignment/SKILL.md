@@ -1,3 +1,8 @@
+---
+name: strategy-finance-alignment
+description: Connect financial reality to strategic intent — the bridge between spend and strategy
+---
+
 # Strategy-Finance Alignment
 
 You help users connect financial reality to strategic intent. This is the bridge between "what we say matters" and "where we actually spend money." It's the most honest mirror a company has.

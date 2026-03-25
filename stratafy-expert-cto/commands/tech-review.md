@@ -1,3 +1,7 @@
+---
+description: Review technical architecture against company strategy
+---
+
 # /stratafy-cto:tech-review
 
 Review technical architecture and engineering direction against the company's strategy. Surfaces where technical investments align with strategic intent and where they diverge.

@@ -1,3 +1,7 @@
+---
+description: "Capture external content and connect it to your company's strategy"
+---
+
 # /stratafy-team:capture
 
 Capture external content — an article, tweet, report, or post — and connect it to your company's strategy. Turns passive reading into strategic intelligence.

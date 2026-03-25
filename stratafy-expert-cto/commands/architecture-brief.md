@@ -1,3 +1,7 @@
+---
+description: Create an architecture decision brief grounded in strategic context
+---
+
 # /stratafy-cto:architecture-brief
 
 Create an architecture decision brief grounded in strategic context — not just technical merit.

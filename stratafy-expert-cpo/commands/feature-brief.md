@@ -1,3 +1,7 @@
+---
+description: Create a strategy-grounded feature brief
+---
+
 # /stratafy-cpo:feature-brief
 
 Create a feature brief grounded in the company's strategy — not just user requests.

@@ -1,3 +1,7 @@
+---
+description: Surface technical risks and assumptions across owned strategies
+---
+
 # /stratafy-cto:risks
 
 Surface technical risks and assumptions across your owned strategies. Fast scan of what could go wrong and what you're betting on.

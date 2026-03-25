@@ -1,3 +1,7 @@
+---
+description: "Start your day — pull tasks, connect them to strategy, and get into focused execution"
+---
+
 # /stratafy-team:lets-go
 
 Start your day — pull tasks, connect them to strategy, and get into focused execution.

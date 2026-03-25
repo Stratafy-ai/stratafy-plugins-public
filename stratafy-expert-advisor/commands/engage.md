@@ -1,3 +1,7 @@
+---
+description: Start your advisory session — review the strategic landscape and surface insights
+---
+
 # /stratafy-advisor:engage
 
 Start your advisory session — review the full strategic landscape, apply pattern recognition, and surface what the founder needs to hear.

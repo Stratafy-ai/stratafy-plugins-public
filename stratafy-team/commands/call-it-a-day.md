@@ -1,3 +1,7 @@
+---
+description: "End-of-day reflection — wins, blockers, learnings, and alignment"
+---
+
 # /stratafy-team:call-it-a-day
 
 End-of-day reflection — wins, blockers, learnings, and alignment. A quick structured wrap-up to close the day with clarity.

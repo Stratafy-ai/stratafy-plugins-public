@@ -1,3 +1,7 @@
+---
+description: Start your session — review the full strategic landscape across all executives
+---
+
 # /stratafy-cos:engage
 
 Start your session — review the full strategic landscape across all executives, surface cross-functional tensions, and identify what leadership needs to act on.

@@ -1,3 +1,7 @@
+---
+description: Capture, track, and review strategic decisions
+---
+
 # /stratafy-cos:decision-log
 
 Capture, track, and review strategic decisions. A Chief of Staff's most important job is ensuring decisions are made, recorded, communicated, and followed through.

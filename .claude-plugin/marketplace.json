@@ -9,43 +9,10 @@
   },
   "plugins": [
     {
-      "name": "stratafy-guardian",
-      "source": "./stratafy-guardian",
-      "description": "Guardian of your strategy. Watches over structural health, content quality, execution alignment, and strategic coherence \u2014 surfacing what needs attention before it becomes a problem.",
-      "version": "3.0.1",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "strategy",
-        "coaching",
-        "workspace",
-        "guardian",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-cfo",
-      "source": "./stratafy-expert-cfo",
-      "description": "Your fractional Finance Director \u2014 connects every dollar to strategic intent. Chart of accounts design, financial alignment, budget mapping, pricing models, metrics analysis, and investor prep.",
-      "version": "0.4.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "finance",
-        "fd",
-        "fractional",
-        "strategy",
-        "budget",
-        "mcp"
-      ]
-    },
-    {
       "name": "stratafy-team",
       "source": "./stratafy-team",
-      "description": "Your AI execution partner \u2014 connects daily work to company strategy. Daily rhythm, strategic context, role-adapted coaching, and Personal Intelligence onboarding for every team member.",
-      "version": "0.13.0",
+      "description": "Your AI execution partner — connects daily work to company strategy. Daily rhythm, strategic context, role-adapted coaching, and Personal Intelligence onboarding for every team member.",
+      "version": "0.14.0",
       "author": {
         "name": "Stratafy"
       },
@@ -60,142 +27,18 @@
       ]
     },
     {
-      "name": "stratafy-expert-cos",
-      "source": "./stratafy-expert-cos",
-      "description": "Your fractional Chief of Staff \u2014 daily strategic briefings with provenance digests, cross-functional alignment, executive reporting, initiative tracking, decision facilitation, and operational rhythm for leadership teams.",
-      "version": "0.3.0",
+      "name": "stratafy-guardian",
+      "source": "./stratafy-guardian",
+      "description": "Guardian of your strategy. Watches over structural health, content quality, execution alignment, and strategic coherence — surfacing what needs attention before it becomes a problem.",
+      "version": "3.0.1",
       "author": {
         "name": "Stratafy"
       },
       "keywords": [
-        "chief-of-staff",
-        "cos",
-        "fractional",
-        "executive",
         "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-cmo",
-      "source": "./stratafy-expert-cmo",
-      "description": "Your fractional CMO \u2014 brand audits, campaign briefs, positioning analysis, and marketing-strategy alignment for marketing leaders.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "cmo",
-        "marketing",
-        "fractional",
-        "brand",
-        "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-cro",
-      "source": "./stratafy-expert-cro",
-      "description": "Your fractional CRO \u2014 pipeline reviews, deal strategy, revenue alignment, and go-to-market execution for revenue leaders.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "cro",
-        "revenue",
-        "fractional",
-        "sales",
-        "pipeline",
-        "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-cpo",
-      "source": "./stratafy-expert-cpo",
-      "description": "Your fractional CPO \u2014 roadmap reviews, feature briefs, product-strategy alignment, and prioritisation for product leaders.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "cpo",
-        "product",
-        "fractional",
-        "roadmap",
-        "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-cto",
-      "source": "./stratafy-expert-cto",
-      "description": "Your fractional CTO \u2014 connects technology decisions to strategic intent. Role-aware context filtering, technical architecture reviews, build-vs-buy analysis, and engineering decisions that serve the mission.",
-      "version": "0.3.1",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "cto",
-        "technology",
-        "fractional",
-        "architecture",
-        "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-chro",
-      "source": "./stratafy-expert-chro",
-      "description": "Your fractional CHRO \u2014 team health checks, hiring briefs, org-strategy alignment, and people analytics for people leaders.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "chro",
-        "people",
-        "fractional",
-        "hr",
-        "hiring",
-        "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-gc",
-      "source": "./stratafy-expert-gc",
-      "description": "Your fractional General Counsel \u2014 risk reviews, compliance briefs, regulatory alignment, and governance oversight for legal and compliance teams.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "gc",
-        "legal",
-        "fractional",
-        "compliance",
-        "governance",
-        "strategy",
-        "mcp"
-      ]
-    },
-    {
-      "name": "stratafy-expert-advisor",
-      "source": "./stratafy-expert-advisor",
-      "description": "Your fractional startup advisor \u2014 advisory sessions, board prep, stage-specific pattern recognition, and strategic guidance from an experienced external perspective.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Stratafy"
-      },
-      "keywords": [
-        "advisor",
-        "startup",
-        "fractional",
-        "board",
-        "advisory",
-        "strategy",
+        "coaching",
+        "workspace",
+        "guardian",
         "mcp"
       ]
     }

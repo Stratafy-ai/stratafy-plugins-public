@@ -1,3 +1,7 @@
+---
+description: Review the product roadmap against company strategy
+---
+
 # /stratafy-cpo:roadmap-review
 
 Review the product roadmap against the company's strategy. Surfaces where product work aligns with strategic intent and where it doesn't.

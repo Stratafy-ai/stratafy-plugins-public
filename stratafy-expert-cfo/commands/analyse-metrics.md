@@ -1,3 +1,7 @@
+---
+description: Analyse the full metrics landscape — health, gaps, and strategic narrative
+---
+
 # /stratafy-fd:analyse-metrics
 
 Analyse the full metrics landscape — health, gaps, story. Not "what does this metric mean?" but "are we measuring the right things, are those things healthy, and what's the strategic narrative?"

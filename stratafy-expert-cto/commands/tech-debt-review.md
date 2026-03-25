@@ -1,3 +1,7 @@
+---
+description: Assess technical debt threatening strategic execution
+---
+
 # /stratafy-cto:tech-debt-review
 
 Assess technical debt across the strategy portfolio. Surfaces where shortcuts, deferred work, and accumulated complexity threaten strategic execution — not just code quality.

@@ -1,3 +1,7 @@
+---
+description: Prepare for board meetings or investor updates with strategy-grounded narrative
+---
+
 # /stratafy-advisor:board-prep
 
 Help prepare for a board meeting or investor update. Synthesise company data into a board-ready narrative, anticipate tough questions, and structure a memo outline.

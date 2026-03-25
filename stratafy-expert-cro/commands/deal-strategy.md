@@ -1,3 +1,7 @@
+---
+description: Build a strategy-aligned approach for a specific deal or opportunity
+---
+
 # /stratafy-cro:deal-strategy
 
 Build a strategy-aligned approach for a specific deal or opportunity.

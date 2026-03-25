@@ -1,3 +1,7 @@
+---
+description: Assess compliance considerations for a strategic initiative
+---
+
 # /stratafy-gc:compliance-brief
 
 Assess compliance considerations for a specific strategic initiative — before it launches, not after.

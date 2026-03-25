@@ -1,3 +1,7 @@
+---
+description: Track and assess all active initiatives across the organisation
+---
+
 # /stratafy-cos:initiative-tracker
 
 Track and assess all active initiatives across the organisation. Surface what's on track, what's slipping, and what needs intervention — before it becomes a crisis.

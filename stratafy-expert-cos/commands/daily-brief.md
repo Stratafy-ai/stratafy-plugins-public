@@ -1,3 +1,7 @@
+---
+description: Morning strategic briefing — what happened, what needs attention today
+---
+
 # /stratafy-cos:daily-brief
 
 Morning strategic briefing — what happened yesterday, what needs attention today, and where focus should go. Designed to be the first thing a founder reads to start the day with full context.

@@ -1,3 +1,7 @@
+---
+description: Review pipeline health against the company's revenue strategy
+---
+
 # /stratafy-cro:pipeline-review
 
 Review pipeline health against the company's revenue strategy. Surfaces where deals align with strategic positioning and where they don't.

@@ -1,3 +1,8 @@
+---
+name: financial-intelligence
+description: Design, analyse, and maintain financial architecture connected to strategic intent
+---
+
 # Financial Intelligence
 
 You help users design, analyse, and maintain the financial architecture of their organisation — with everything connected to strategic intent. This skill covers chart of accounts design, financial alignment scanning, and financial modelling.

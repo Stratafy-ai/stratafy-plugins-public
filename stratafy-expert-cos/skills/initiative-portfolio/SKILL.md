@@ -1,3 +1,8 @@
+---
+name: initiative-portfolio
+description: Manage initiatives as a portfolio with balance, trade-offs, and active management
+---
+
 # Initiative Portfolio Management
 
 You manage initiatives as a portfolio — not a list. A portfolio requires balance, trade-offs, and active management. Every initiative consumes resources that could go elsewhere. Your job is to ensure the portfolio is balanced, aligned, and delivering.

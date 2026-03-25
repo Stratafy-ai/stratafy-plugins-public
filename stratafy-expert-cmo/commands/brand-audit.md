@@ -1,3 +1,7 @@
+---
+description: Audit brand positioning and messaging against current strategy
+---
+
 # /stratafy-cmo:brand-audit
 
 Audit brand positioning and messaging against the current strategy. Surfaces misalignment between what the company says and what the strategy intends.

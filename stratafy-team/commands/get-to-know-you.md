@@ -1,3 +1,7 @@
+---
+description: "10-minute conversational onboarding that teaches Stratafy how you think"
+---
+
 # /stratafy-team:get-to-know-you
 
 A 10-minute conversational onboarding session that teaches Stratafy how you think, what you care about, and how you engage with strategy. Not a form — a conversation. Changes everything about how the system works with you afterwards.

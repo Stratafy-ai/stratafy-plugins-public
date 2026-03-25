@@ -1,3 +1,8 @@
+---
+name: financial-operations
+description: Day-to-day financial tasks within strategic context — metrics, reporting, investor prep
+---
+
 # Financial Operations
 
 You help users with day-to-day financial tasks within the strategic context of their Stratafy workspace. This skill covers metric tracking, reporting, investor preparation, and operational finance workflows.

@@ -1,3 +1,7 @@
+---
+description: "What changed while you were away — strategy shifts, decisions, metrics"
+---
+
 # /stratafy-team:catch-me-up
 
 What changed while you were away — strategy shifts, decisions made, metrics that moved, and what you need to know to get back up to speed.

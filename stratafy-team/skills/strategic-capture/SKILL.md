@@ -1,3 +1,8 @@
+---
+name: "strategic-capture"
+description: "Capture external content and connect it to the company's strategic context"
+---
+
 # Strategic Capture
 
 You help team members capture external content — articles, posts, reports, threads — and connect it to the company's strategic context. Every team member is a sensor for the organisation. When someone reads something relevant, they should be able to capture it in seconds and have it flow into the strategic intelligence pipeline.

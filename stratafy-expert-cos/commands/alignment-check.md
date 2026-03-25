@@ -1,3 +1,7 @@
+---
+description: Check cross-functional alignment — surface conflicts and misalignment
+---
+
 # /stratafy-cos:alignment-check
 
 Check cross-functional alignment — are all teams pulling in the same direction? Surfaces conflicts, gaps, contradictions, and misalignment between strategies, initiatives, and execution.

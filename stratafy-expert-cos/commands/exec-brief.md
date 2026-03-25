@@ -1,3 +1,7 @@
+---
+description: Generate a concise executive briefing scannable in 2 minutes
+---
+
 # /stratafy-cos:exec-brief
 
 Generate a concise executive briefing — the one-page view of everything leadership needs to know right now. Designed to be scanned in 2 minutes and acted on immediately.

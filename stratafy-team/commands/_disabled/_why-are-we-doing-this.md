@@ -1,3 +1,7 @@
+---
+description: "Trace any piece of work up the strategy tree to purpose"
+---
+
 # /stratafy-team:why-are-we-doing-this
 
 Trace any piece of work up the strategy tree to purpose. Answers the question every team member eventually asks: "why does this matter?"

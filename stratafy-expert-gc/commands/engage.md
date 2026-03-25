@@ -1,3 +1,7 @@
+---
+description: Start your session — review owned strategies and surface what needs attention
+---
+
 # /stratafy-gc:engage
 
 Start your session — review your owned strategies, surface what needs attention, and get into focused execution.

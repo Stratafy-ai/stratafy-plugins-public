@@ -12,7 +12,7 @@ Mission (why we exist)
        └→ Strategy Pillars (how we'll get there — 3-7 big bets)
             └→ Sub-strategies (specific approaches within each pillar)
                  └→ Initiatives (time-bound projects that execute strategy)
-                      └→ Tasks (daily work items, often in Linear)
+                      └→ Tasks (daily work items)
 ```
 
 Every task should trace up this tree. When it can't, either the task is misaligned or the strategy tree has a gap.
@@ -89,12 +89,12 @@ For any piece of work, you should be able to say:
 
 If you can't complete that sentence, the work might still be valuable — but the connection needs to be made explicit or the work should be questioned.
 
-### Linear ↔ Strategy Connection
+### Task ↔ Strategy Connection
 
-Tasks in Linear connect to strategy through projects:
-- A Linear project maps to a Stratafy initiative via `[linear:PROJECT_ID]` tags
-- When an initiative has this tag, every issue in that Linear project is automatically linked to strategy
-- Tasks without a project, or in projects without initiative tags, are unmapped — flag these
+Tasks connect to strategy through initiatives:
+- Each initiative in Stratafy executes a specific strategy
+- When a team member describes their work, match it against initiatives by name, description, or context
+- Tasks that don't connect to any initiative are unmapped — flag these for alignment review
 
 ## When to Use This Knowledge
 

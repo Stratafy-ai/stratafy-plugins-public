@@ -19,9 +19,6 @@ Everything needed in parallel:
 - `list_insights` — Insights captured this week
 - `list_risks` — Risk changes this week
 
-Also pull from Linear if available:
-- `list_issues` — Issues completed this week (filter by status: done, updated this week)
-
 ### Step 3: Build the Review
 
 Adapt to the user's role (see role-adaptation skill).

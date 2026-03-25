@@ -16,21 +16,17 @@ In parallel:
 
 **Do NOT call `list_strategies` or `list_key_priorities` separately** — the snapshot includes both and avoids duplicate large payloads.
 
-### Step 3: Pull Tasks from Linear
+### Step 3: Gather Tasks
 
-Use `list_issues` with assignee set to the user's email to find all issues assigned to them. Focus on:
-1. **In-progress** issues first — what's already started
-2. **Todo/upcoming** issues — what's next
-3. **Blocked** issues — surface these early
-
-If Linear tools aren't available, ask the user what they're working on today.
+Ask the user what they're working on today. Prompt with:
+- "What are you focused on today?" or "What's on your plate?"
+- If they've used the plugin before, reference their forward anchor to frame the question
 
 ### Step 4: Connect Tasks to Strategy
 
-For each Linear issue:
-- Check its `project.id` — if it matches an initiative's `[linear:PROJECT_ID]` tag in the strategy tree, that task is automatically linked
-- For tasks without a matching project ID, use name/description matching against the strategy tree
-- Flag unmapped tasks — not as a problem, just as an observation
+For each task:
+- Match against initiatives and strategies in the workspace snapshot using name/description
+- Flag unmapped tasks — not as a problem, just as an observation worth noting
 
 ### Step 5: Present the Plan
 

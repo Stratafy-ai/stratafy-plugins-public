@@ -79,7 +79,7 @@ The MCP auth context includes the user's workspace role. Use this as the primary
 
 ### From Conversation
 If role isn't clear from context, pick it up from:
-- What tools they reference (Linear → likely engineering, CRM → likely sales)
+- What tools and systems they reference (code repos → likely engineering, pipeline → likely sales)
 - What metrics they ask about
 - How they describe their work
 - After 2-3 exchanges, you'll know

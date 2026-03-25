@@ -84,7 +84,7 @@ For [role]:
 ### Step 4: Offer to Go Deeper
 
 After presenting the briefing:
-- "Want me to pull up your Linear tasks and plan the week?" → transition to `/lets-go` territory
+- "Want to plan your tasks for the week?" → transition to `/lets-go` territory
 - "Want to dig into any of these metrics?"
 - "Want to explore the [red metric] further?"
 

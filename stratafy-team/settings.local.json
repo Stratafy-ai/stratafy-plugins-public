@@ -1,8 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "mcp__stratafy__*",
-      "mcp__linear__*"
+      "mcp__stratafy__*"
     ]
   }
 }

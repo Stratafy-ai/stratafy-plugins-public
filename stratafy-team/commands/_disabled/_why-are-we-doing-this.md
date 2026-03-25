@@ -9,7 +9,6 @@ Provide one of:
 - **An initiative** — "why are we doing the lighthouse program?"
 - **A project name** — "why are we doing Project Aurora?"
 - **A vague feeling** — "I don't understand why my work matters right now"
-- **A Linear issue ID** — "why are we doing ENG-142?"
 
 ## Process
 
@@ -20,7 +19,6 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 ### Step 2: Find the Work Item
 
 Based on input:
-- If it's a Linear issue: `get_issue` to get full details, check `project.id`
 - If it's an initiative name: `list_initiatives` to find it
 - If it's a strategy name: `get_strategy` to get full context
 - If it's vague: ask the user to describe what they're working on, then search

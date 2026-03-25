@@ -9,7 +9,7 @@ Stratafy Team gives every person in your organisation an AI partner that underst
 ## Commands
 
 ### Daily Rhythm
-- **`/lets-go`** — Start your day: pull tasks from Linear, connect to strategy, get into execution
+- **`/lets-go`** — Start your day: connect tasks to strategy and get into execution
 - **`/call-it-a-day`** — End-of-day reflection: wins, blockers, learnings, alignment check
 
 ### Weekly Rhythm
@@ -39,15 +39,13 @@ Stratafy Team gives every person in your organisation an AI partner that underst
 ## Requirements
 
 - A Stratafy workspace with strategies, metrics, and priorities configured
-- Linear integration for task management (optional but recommended)
 - Works with any workspace role — adapts automatically
 
 ## Setup
 
 1. Install the plugin in Claude
 2. Connect your Stratafy workspace via MCP
-3. Connect Linear via MCP (optional)
-4. Start with `/lets-go` or `/start-the-week`
+3. Start with `/lets-go` or `/start-the-week`
 
 ## Provenance
 

@@ -30,60 +30,69 @@ Say something like:
 
 Then move straight into the first question. Don't wait for permission to proceed.
 
-### Step 3: Personal Context (5 questions, conversational)
+### Step 3: Personal Context (6 questions, conversational)
 
 Ask these one at a time. Wait for each answer before moving on. Listen for lens signals (see Step 5).
 
-**Q1: Goals**
-"What's the most important thing you're trying to build or become in the next 12 months?"
+**Q1: Personal Goals**
+"Outside of work — what matters most to you in the next 12 months? Could be growth, health, lifestyle, learning, relationships — anything that's important to you as a person."
 
 → Store as `personal_goals_12m`
 
-**Q2: Values**
+> **Why this question matters:** People naturally default to business goals. By explicitly framing this as "outside of work", we get the personal signal that makes the system truly personal. If they still answer with business goals, gently redirect: "Got it — I'll capture that on the professional side. But what about you personally?"
+
+**Q2: Professional Goals**
+"And professionally — what's the most important thing you're trying to make happen in the next 12 months?"
+
+→ Store as `professional_goals_12m`
+
+> This is where business goals belong. For founders, this is usually about the company. For employees, it might be career progression, shipping something specific, or building a team.
+
+**Q3: Values**
 "What do you value most — in work, in people, in yourself? Give me 3-5 words."
 
 → Store as `values` (array)
 
-**Q3: Energy**
+**Q4: Energy**
 "What tends to give you energy? And what drains you?"
 
 → Store as `energisers` and `drains`
 
-**Q4: Constraints**
+**Q5: Constraints**
 "What's getting in your way right now — externally or internally?"
 
 → Store as `situational_constraints`
 
-**Q5: Forward Anchor**
+**Q6: Forward Anchor**
 "If you could only make one thing true in the next 30 days, what would it be?"
 
 → Store as `forward_anchor`
 
-**After Q5:** Call `update_personal_context` with all gathered data. Also infer `current_chapter` from the conversation so far and include it.
+**After Q6:** Call `update_personal_context` with all gathered data. Also infer `current_chapter` from the conversation so far and include it.
 
 ### Step 4: Role Context (4 questions, workspace-scoped)
 
-**Q6: Mandate**
+**Q7: Mandate**
 "Not your job title — what do you actually think your most important job is here?"
 
 → Store as `mandate`
 
-**Q7: Highest Contribution**
+**Q8: Highest Contribution**
 "Where does your time and attention create the most value for this organisation?"
 
 → Store as `highest_contribution`
 
-**Q8: Success**
+**Q9: Success**
 "What does success in your role look like in the next 3 months specifically?"
 
 → Store as `success_3m`
 
-**Q9: Relationship**
+**Q10: Relationship**
 "How do you see your relationship to the org — are you building it, running it, advising it, investing in it?"
 
 → Store as `relationship_to_org`
 
-**After Q9:** Call `update_role_context` with all gathered data.
+**After Q10:** Call `update_role_context` with all gathered data.
 
 ### Step 5: Lens Inference & Confirmation
 

@@ -9,7 +9,7 @@ Start your day — pull tasks, connect them to strategy, and get into focused ex
 ## Process
 
 ### Step 1: Get User Context
-Call `get_user_context` with `command_name: "lets-go"`, `plugin_name: "stratafy-team"`.
+Call `get_user_context` with `command_name: "lets-go"`, `plugin_name: "stratafy-team"`. If you know the workspace ID (e.g., from project instructions), also pass `workspace_id` to set the session workspace.
 This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 
 ### Step 2: Gather Context

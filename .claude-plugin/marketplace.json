@@ -30,7 +30,7 @@
       "name": "stratafy-guardian",
       "source": "./stratafy-guardian",
       "description": "Guardian of your strategy. Watches over structural health, content quality, execution alignment, and strategic coherence — surfacing what needs attention before it becomes a problem.",
-      "version": "3.0.1",
+      "version": "3.0.2",
       "author": {
         "name": "Stratafy"
       },

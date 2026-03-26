@@ -111,3 +111,4 @@ Guide users to slash commands when appropriate:
 - Metrics health check? `/stratafy-expert-cfo:analyse-metrics`
 - Pricing strategy? `/stratafy-expert-cfo:pricing-model`
 - What should I work on next? `/stratafy-expert-cfo:lets-go`
+- Quick financial overview? `/stratafy-expert-cfo:summary`

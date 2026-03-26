@@ -2,7 +2,7 @@
 description: Comprehensive quarterly financial review connecting performance to strategy
 ---
 
-# /stratafy-fd:quarterly-review
+# /stratafy-expert-cfo:quarterly-review
 
 Produce a comprehensive quarterly financial review that connects financial performance to strategic progress. Designed for leadership meetings, board presentations, or coaching sessions.
 
@@ -22,9 +22,14 @@ Optional:
 
 ## Process
 
-### Step 1: Gather Comprehensive Data
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "quarterly-review"`, `plugin_name: "stratafy-expert-cfo"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+
+### Step 2: Gather Comprehensive Data
 Pull from multiple sources simultaneously:
-- `get_workspace_snapshot` — Full strategic context
+- `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities"]` — Full strategic context
 - `get_strategy_tree` — Strategy priorities and status
 - `get_finance_proposal` — COA and account structure
 - `list_finance_mappings` — Strategy-spend connections
@@ -35,32 +40,38 @@ Pull from multiple sources simultaneously:
 - `list_decisions` — Financial decisions made this quarter
 - `list_insights` — Financial insights generated
 
-### Step 2: Financial Performance Summary
+### Step 3: Financial Performance Summary
 - Revenue actual vs. plan (if metrics are tracked)
 - Expense actual vs. plan
 - Burn rate trend over the quarter
 - Cash position and runway
 - Key metric movements (with trend via `get_metric_trend`)
 
-### Step 3: Strategy-Finance Alignment Analysis
+### Step 4: Strategy-Finance Alignment Analysis
 - Run a full financial scan (L1 + L2)
 - Compare spend allocation to strategy priorities
 - Identify alignment improvements or degradation
 - Flag material mismatches
 
-### Step 4: Assumption & Risk Review
+### Step 5: Assumption & Risk Review
 - Which financial assumptions held? Which didn't?
 - Update confidence levels on financial assumptions
 - Review financial risks — any escalated or materialised?
 - New risks to add based on Q performance?
 
-### Step 5: Forward View
+### Step 6: Forward View
 - Updated runway projection
 - Next quarter budget implications
 - Investment recommendations (increase/decrease/maintain)
 - Decisions needed before next quarter starts
 
-### Step 6: Generate Report
+### Step 7: Generate Report
+
+### Provenance Context
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-cfo"
+- `_source_command`: "quarterly-review"
+- `_change_reasoning`: Brief explanation of why this change is being made
 
 ## Output Format
 

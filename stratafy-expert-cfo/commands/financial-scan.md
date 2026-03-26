@@ -2,7 +2,7 @@
 description: Run a financial alignment scan measuring finance-to-strategy connection
 ---
 
-# /stratafy-fd:financial-scan
+# /stratafy-expert-cfo:financial-scan
 
 Run a financial alignment scan to measure how well the company's finances connect to its strategy. Produces an alignment score with specific findings and recommendations.
 
@@ -22,14 +22,19 @@ Optional:
 
 ## Process
 
-### Step 1: Gather Financial Data
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "financial-scan"`, `plugin_name: "stratafy-expert-cfo"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+
+### Step 2: Gather Financial Data
 I'll pull data from multiple sources simultaneously:
 - `list_finance_proposals` — Find the active/approved COA
 - `get_finance_proposal` — Get full account structure
 - `list_finance_mappings` — Get all strategy-account connections
 - `get_strategy_tree` — Get strategy priorities and status
 
-### Step 2: L1 Structural Scan
+### Step 3: L1 Structural Scan
 Baseline alignment check:
 - Count postable accounts vs. mapped accounts
 - Identify unmapped accounts
@@ -37,24 +42,30 @@ Baseline alignment check:
 - Check for strategies with zero financial backing
 - Calculate structural alignment score
 
-### Step 3: L2 P&L Analysis (if requested or L1 score warrants it)
+### Step 4: L2 P&L Analysis (if requested or L1 score warrants it)
 Deeper analysis:
 - Group expenses by strategy using mappings and weights
 - Compare spend allocation to strategy priority ranking
 - Identify mismatches (high-priority strategy, low spend or vice versa)
 - Flag spend drift since last scan
 
-### Step 4: Synthesise Findings
+### Step 5: Synthesise Findings
 Produce findings ranked by severity:
 - **Critical** — Unmapped spend >20%, or top strategy unfunded
 - **Warning** — Alignment score declining, or material mismatches
 - **Info** — Minor gaps, optimization opportunities
 
-### Step 5: Recommendations
+### Step 6: Recommendations
 Specific, actionable next steps:
 - "Map these 8 accounts to close the structural gap"
 - "Investigate R45K/month in miscellaneous — likely belongs to Operations"
 - "GTM spend is 3x Product spend but Product is priority #1 — decision needed"
+
+### Provenance Context
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-cfo"
+- `_source_command`: "financial-scan"
+- `_change_reasoning`: Brief explanation of why this change is being made
 
 ## Output Format
 

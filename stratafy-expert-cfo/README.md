@@ -17,12 +17,12 @@ Same skills, same commands — different voice and authority level. The Stratafy
 
 | Command | Description |
 | --- | --- |
-| `/stratafy-fd:coa-setup` | Design a strategy-aligned chart of accounts |
-| `/stratafy-fd:financial-scan` | Run financial alignment scans (L1/L2/L3) |
-| `/stratafy-fd:budget-mapping` | Connect spend to strategy — map accounts to priorities |
-| `/stratafy-fd:quarterly-review` | Comprehensive quarterly financial review |
-| `/stratafy-fd:investor-prep` | Prepare financial materials for investors |
-| `/stratafy-fd:explain-metric` | Explain a financial metric in strategic context |
+| `/stratafy-expert-cfo:coa-setup` | Design a strategy-aligned chart of accounts |
+| `/stratafy-expert-cfo:financial-scan` | Run financial alignment scans (L1/L2/L3) |
+| `/stratafy-expert-cfo:budget-mapping` | Connect spend to strategy — map accounts to priorities |
+| `/stratafy-expert-cfo:quarterly-review` | Comprehensive quarterly financial review |
+| `/stratafy-expert-cfo:investor-prep` | Prepare financial materials for investors |
+| `/stratafy-expert-cfo:explain-metric` | Explain a financial metric in strategic context |
 
 ## Skills (3)
 
@@ -39,7 +39,7 @@ Configured in `.mcp.json`: Stratafy, Linear.
 ## Provenance
 
 On every mutation tool call (create_*, update_*, delete_*, link_*, etc.), always include:
-- `_source_plugin`: "stratafy-fd"
+- `_source_plugin`: "stratafy-expert-cfo"
 - `_source_command`: the command being run (e.g. "coa-setup", "pricing-model")
 - `_change_reasoning`: 1-2 sentences explaining WHY this change is being made
 

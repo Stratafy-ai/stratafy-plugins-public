@@ -2,7 +2,7 @@
 description: Analyse the full metrics landscape — health, gaps, and strategic narrative
 ---
 
-# /stratafy-fd:analyse-metrics
+# /stratafy-expert-cfo:analyse-metrics
 
 Analyse the full metrics landscape — health, gaps, story. Not "what does this metric mean?" but "are we measuring the right things, are those things healthy, and what's the strategic narrative?"
 
@@ -28,7 +28,8 @@ Provide one of:
 ### Step 1: Gather Context
 
 Everything needed in parallel:
-- `get_workspace_snapshot` — Company context, stage, strategies
+- `get_user_context` with `command_name: "analyse-metrics"`, `plugin_name: "stratafy-expert-cfo"` — returns user's personal context (chapter, values, forward anchor, lens, role mandate) and logs session start
+- `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities"]` — Company context, stage, strategies
 - `list_metrics` — All metrics with current values, targets, thresholds
 - `list_strategies` — Active strategies (to check for measurement gaps)
 - `list_initiatives` — Active initiatives (same)
@@ -127,6 +128,12 @@ Based on the analysis, provide 3-5 specific recommendations:
 - **Set target:** "[Metric name] has no target — suggest [value] based on [benchmark/strategy]"
 
 Offer to execute recommendations directly: create new metrics, update existing ones, retire vanity metrics.
+
+### Provenance Context
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-cfo"
+- `_source_command`: "analyse-metrics"
+- `_change_reasoning`: Brief explanation of why this change is being made
 
 ## Output
 

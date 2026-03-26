@@ -2,7 +2,7 @@
 description: Design or analyse a pricing model connecting revenue to strategic intent
 ---
 
-# /stratafy-fd:pricing-model
+# /stratafy-expert-cfo:pricing-model
 
 Design or analyse a pricing model — connecting revenue architecture to strategic intent. Not "what should we charge?" in isolation, but "what pricing structure turns our strategy into sustainable revenue?"
 
@@ -31,6 +31,7 @@ Provide one of:
 #### Step 1: Gather Strategic Context
 
 Everything needed in parallel:
+- `get_user_context` with `command_name: "pricing-model"`, `plugin_name: "stratafy-expert-cfo"` — returns user's personal context (chapter, values, forward anchor, lens, role mandate) and logs session start
 - `get_workspace_snapshot` — Company stage, positioning, context
 - `get_strategy_tree` — Full strategy hierarchy, priorities, GTM approach
 - `list_strategies` — Revenue-related strategies and initiatives
@@ -122,7 +123,7 @@ Unit Economics:
 
 ### Provenance Context
 For every mutation in this step, include:
-- `_source_plugin`: "stratafy-fd"
+- `_source_plugin`: "stratafy-expert-cfo"
 - `_source_command`: "pricing-model"
 - `_change_reasoning`: Brief explanation (e.g. "Logging pricing model assumptions — 3-tier SaaS structure based on strategy analysis")
 
@@ -131,6 +132,7 @@ For every mutation in this step, include:
 #### Step 1: Gather Current State
 
 Everything needed in parallel:
+- `get_user_context` with `command_name: "pricing-model"`, `plugin_name: "stratafy-expert-cfo"` — returns user's personal context and logs session start
 - `get_workspace_snapshot` — Context and stage
 - `list_metrics` — Revenue and pricing metrics with current values
 - `get_metric_trend` — Trends for ARPU, conversion, churn, expansion

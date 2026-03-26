@@ -2,7 +2,7 @@
 description: Start your session — review owned strategies and surface what needs attention
 ---
 
-# /stratafy-fd:engage
+# /stratafy-expert-cfo:engage
 
 Start your session — review your owned strategies, surface what needs attention, and get into focused execution.
 
@@ -11,7 +11,7 @@ Start your session — review your owned strategies, surface what needs attentio
 ### Step 1: Get User Context & Identify Owned Strategies
 
 In parallel:
-- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-fd"`.
+- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-expert-cfo"`.
   This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
 - Call `get_expert_strategies` with `role: "cfo"` — returns all strategies this expert owns with name, status, and strategy type
 
@@ -92,6 +92,12 @@ Based on the above, here's where your time has the most impact today:
 ### Step 5: Execute Together
 
 Once the user picks a focus area, dive in and help — budget mapping, investor prep, financial modelling.
+
+### Provenance Context
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-cfo"
+- `_source_command`: "engage"
+- `_change_reasoning`: Brief explanation of why this change is being made
 
 ## Rules
 

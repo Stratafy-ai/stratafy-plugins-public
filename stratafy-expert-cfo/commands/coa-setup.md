@@ -2,7 +2,7 @@
 description: Design a strategy-aligned chart of accounts from scratch or restructure existing
 ---
 
-# /stratafy-fd:coa-setup
+# /stratafy-expert-cfo:coa-setup
 
 Design a strategy-aligned chart of accounts from scratch, or restructure an existing one to connect every account to strategic intent.
 
@@ -22,13 +22,18 @@ Provide one of:
 
 ## Process
 
-### Step 1: Understand the Strategic Landscape
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "coa-setup"`, `plugin_name: "stratafy-expert-cfo"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+
+### Step 2: Understand the Strategic Landscape
 I'll pull the full strategic context:
-- `get_workspace_snapshot` — Company context, industry, stage
+- `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities"]` — Company context, industry, stage
 - `get_strategy_tree` — All strategies and their priorities
 - `list_initiatives` — Active commitments with budgets
 
-### Step 2: Design or Import the COA
+### Step 3: Design or Import the COA
 
 **If designing from scratch:**
 - Analyse the strategy tree to identify required financial categories
@@ -41,23 +46,23 @@ I'll pull the full strategic context:
 - Review the imported structure for strategic gaps
 - Propose restructuring to align with the strategy tree
 
-### Step 3: Create the Proposal
+### Step 4: Create the Proposal
 - `create_finance_proposal` — With a strategic narrative explaining the design philosophy
 - `create_finance_account` or `bulk_create_finance_accounts` — Add all accounts
 
 ### Provenance Context
 For every mutation in this setup, include:
-- `_source_plugin`: "stratafy-fd"
+- `_source_plugin`: "stratafy-expert-cfo"
 - `_source_command`: "coa-setup"
 - `_change_reasoning`: Brief explanation (e.g. "Designing strategy-aligned COA — creating revenue accounts mapped to GTM strategy")
 
-### Step 4: Map to Strategies
+### Step 5: Map to Strategies
 For every postable account:
 - `create_finance_mapping` — Connect to the strategy it serves
 - Include weight and rationale for each mapping
 - Flag any accounts that can't be mapped (investigate these)
 
-### Step 5: Review Together
+### Step 6: Review Together
 Present the complete COA with:
 - Account hierarchy (visual tree)
 - Strategy mapping coverage (% mapped)

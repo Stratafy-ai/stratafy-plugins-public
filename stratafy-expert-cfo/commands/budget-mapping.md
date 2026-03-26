@@ -2,13 +2,13 @@
 description: Connect spend to strategy — review financial account to strategy mappings
 ---
 
-# /stratafy-fd:budget-mapping
+# /stratafy-expert-cfo:budget-mapping
 
 Connect spend to strategy. Review and improve the mappings between financial accounts and strategic priorities. The goal: every rand should trace to a strategic intent.
 
 ## When to Use
 
-- After creating a new COA (follow-up to `/stratafy-fd:coa-setup`)
+- After creating a new COA (follow-up to `/stratafy-expert-cfo:coa-setup`)
 - When new accounts have been added without mappings
 - After a strategy change that affects financial allocation
 - When the financial scan shows low mapping coverage
@@ -24,18 +24,23 @@ Provide one of:
 
 ## Process
 
-### Step 1: Load Current State
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "budget-mapping"`, `plugin_name: "stratafy-expert-cfo"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+
+### Step 2: Load Current State
 - `get_finance_proposal` — Full COA with accounts
 - `list_finance_mappings` — Existing mappings
 - `get_strategy_tree` — Strategy hierarchy and priorities
 
-### Step 2: Identify Gaps
+### Step 3: Identify Gaps
 - Accounts with no mappings
 - Strategies with no financial backing
 - Mappings with missing rationale
 - Mappings with weights that don't sum correctly
 
-### Step 3: Propose Mappings
+### Step 4: Propose Mappings
 For each unmapped account, I'll:
 - Analyse the account name, code, type, and description
 - Match it against the strategy tree
@@ -43,7 +48,7 @@ For each unmapped account, I'll:
 - Propose weights based on likely allocation
 - Draft rationale
 
-### Step 4: Interactive Mapping
+### Step 5: Interactive Mapping
 I'll present proposals one by one (or in batches):
 
 ```
@@ -57,11 +62,17 @@ Proposed mapping:
 Accept / Modify / Skip?
 ```
 
-### Step 5: Apply Confirmed Mappings
+### Step 6: Apply Confirmed Mappings
 - `create_finance_mapping` for each confirmed mapping
 - Track what was mapped, skipped, or deferred
 
-### Step 6: Summary
+### Provenance Context
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-cfo"
+- `_source_command`: "budget-mapping"
+- `_change_reasoning`: Brief explanation of why this change is being made
+
+### Step 7: Summary
 - Accounts mapped in this session
 - Remaining gaps
 - Updated alignment score

@@ -2,7 +2,7 @@
 description: Prepare financial materials for investor conversations connected to strategy
 ---
 
-# /stratafy-fd:investor-prep
+# /stratafy-expert-cfo:investor-prep
 
 Prepare financial materials for investor conversations — fundraising decks, due diligence responses, financial model narratives, and board updates. Everything connected to strategic context.
 
@@ -24,8 +24,13 @@ Provide one of:
 
 ## Process
 
-### Step 1: Gather Strategic + Financial Context
-- `get_workspace_snapshot` — Company story, stage, market
+### Step 1: Get User Context
+
+Call `get_user_context` with `command_name: "investor-prep"`, `plugin_name: "stratafy-expert-cfo"`.
+This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
+
+### Step 2: Gather Strategic + Financial Context
+- `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities"]` — Company story, stage, market
 - `get_strategy_tree` — Strategic direction and priorities
 - `get_finance_proposal` — COA showing financial discipline
 - `list_finance_mappings` — Strategy-spend alignment (proof of discipline)
@@ -34,7 +39,7 @@ Provide one of:
 - `list_risks` — What could go wrong (and mitigation)
 - `list_insights` — Market and financial learnings
 
-### Step 2: Build the Financial Narrative
+### Step 3: Build the Financial Narrative
 
 **Unit Economics:**
 - CAC, LTV, LTV:CAC ratio, payback period
@@ -62,7 +67,7 @@ Provide one of:
 - Assumption transparency — what the model depends on
 - Scenario analysis (best/base/worst)
 
-### Step 3: Anticipate Questions
+### Step 4: Anticipate Questions
 
 Common investor questions with drafted responses:
 - "What's your burn rate and runway?"
@@ -73,7 +78,7 @@ Common investor questions with drafted responses:
 - "When will you be profitable / need to raise again?"
 - "How do you know your strategy is working financially?"
 
-### Step 4: Generate Materials
+### Step 5: Generate Materials
 
 I'll produce a document covering:
 - Financial narrative (1-2 pages)
@@ -82,6 +87,12 @@ I'll produce a document covering:
 - Risk register with mitigation
 - Pre-answered FAQ
 - Data room checklist (what to have ready)
+
+### Provenance Context
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-cfo"
+- `_source_command`: "investor-prep"
+- `_change_reasoning`: Brief explanation of why this change is being made
 
 ## Output
 

@@ -13,7 +13,9 @@ Start your session — review your owned strategies, surface what needs attentio
 In parallel:
 - Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-expert-cfo"`.
   This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
-- Call `get_expert_strategies` with `role: "cfo"` — returns all strategies this expert owns with name, status, and strategy type
+- Call `get_expert` with `role: "fd"` — returns the FD expert profile including its `id`
+
+Then call `get_expert_strategies` with the `expert_id` from the previous step — returns all strategies this expert owns with name, status, and strategy type.
 
 ### Step 2: Gather Context
 

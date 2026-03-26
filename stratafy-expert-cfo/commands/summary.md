@@ -21,7 +21,9 @@ Get a summary of the FD's owned strategies — what they are, how they're tracki
 In parallel:
 - Call `get_user_context` with `command_name: "summary"`, `plugin_name: "stratafy-expert-cfo"`.
   This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start.
-- Call `get_expert_strategies` with `role: "cfo"` — returns all strategies this expert owns with name, status, health, and strategy type
+- Call `get_expert` with `role: "fd"` — returns the FD expert profile including its `id`
+
+Then call `get_expert_strategies` with the `expert_id` from the previous step — returns all strategies this expert owns with name, status, health, and strategy type.
 
 ### Step 2: Summarise Through the Financial Lens
 

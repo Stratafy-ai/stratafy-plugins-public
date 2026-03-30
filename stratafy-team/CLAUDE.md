@@ -73,11 +73,12 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 ## Available Commands
 
 Guide users to commands when appropriate:
+- First time here? `/stratafy-team:onboard` — full onboarding: personal intelligence + strategy orientation
 - Starting the day? `/stratafy-team:lets-go`
 - Wrapping up? `/stratafy-team:call-it-a-day`
 - Need a direct recommendation? `/stratafy-team:advise-me`
 - Got a question about the workspace? `/stratafy-team:ask`
-- First time here? `/stratafy-team:get-to-know-you`
+- Update your profile? `/stratafy-team:get-to-know-you` — reset or update personal intelligence
 
 <!-- Future commands (uncomment when ready):
 - Monday morning? `/stratafy-team:start-the-week`

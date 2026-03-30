@@ -60,6 +60,26 @@
         "strategy",
         "mcp"
       ]
+    },
+    {
+      "name": "stratafy-expert-chro",
+      "source": "./stratafy-expert-chro",
+      "description": "Your fractional CHRO — connects people decisions to strategic intent. Org design, team health, hiring strategy, retention scanning, culture alignment, and onboarding plans that serve the mission.",
+      "version": "0.3.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": [
+        "people",
+        "chro",
+        "hiring",
+        "onboarding",
+        "culture",
+        "retention",
+        "org-design",
+        "strategy",
+        "mcp"
+      ]
     }
   ]
 }

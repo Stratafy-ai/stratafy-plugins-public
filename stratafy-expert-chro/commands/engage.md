@@ -2,7 +2,7 @@
 description: Start your session — review owned strategies and surface what needs attention
 ---
 
-# /stratafy-chro:engage
+# /stratafy-expert-chro:engage
 
 Start your session — review your owned strategies, surface what needs attention, and get into focused execution.
 
@@ -11,9 +11,11 @@ Start your session — review your owned strategies, surface what needs attentio
 ### Step 1: Get User Context & Identify Owned Strategies
 
 In parallel:
-- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-chro"`.
+- Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-expert-chro"`.
   This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
-- Call `get_expert_strategies` with `role: "chro"` — returns all strategies this expert owns with name, status, and strategy type
+- Call `get_expert` with `role: "chro"` — returns the CHRO expert profile including its `id`
+
+Then call `get_expert_strategies` with the `expert_id` from the previous step — returns all strategies this expert owns with name, status, and strategy type.
 
 ### Step 2: Gather Context
 
@@ -88,6 +90,13 @@ Based on the above, here's where your time has the most impact today:
 ### Step 5: Execute Together
 
 Once the user picks a focus area, dive in and help — hiring briefs, org design, team structure analysis.
+
+## Provenance Context
+
+For every mutation in this command, include:
+- `_source_plugin`: "stratafy-expert-chro"
+- `_source_command`: "engage"
+- `_change_reasoning`: Brief explanation of why this change is being made
 
 ## Rules
 

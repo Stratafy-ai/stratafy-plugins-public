@@ -4,8 +4,14 @@ Your fractional Chief Technology Officer — connects technology to strategic in
 
 ## Commands
 
-- **`/tech-review`** — Review technical architecture and direction against strategy
+- **`/engage`** — Start your session — review owned strategies and surface what needs attention
+- **`/status`** — Quick health check — red/amber/green per owned strategy
+- **`/tech-review`** — Review technical architecture against company strategy
 - **`/architecture-brief`** — Create a strategy-aligned architecture decision brief
+- **`/tech-debt-review`** — Assess technical debt threatening strategic execution
+- **`/build-vs-buy`** — Structured build-vs-buy decision framework grounded in strategy
+- **`/risks`** — Surface technical risks and assumptions across owned strategies
+- **`/reprioritise`** — Scan the strategy tree for changes and recommend priority/horizon adjustments
 
 ## Requirements
 

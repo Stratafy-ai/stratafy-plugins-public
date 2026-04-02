@@ -8,12 +8,14 @@ Surface technical risks and assumptions across your owned strategies. Fast scan 
 
 ## Process
 
-### Step 1: Get User Context & Get Owned Strategies
+### Step 1: Get User Context & Expert Profile
 
 In parallel:
 - Call `get_user_context` with `command_name: "risks"`, `plugin_name: "stratafy-cto"`.
   This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
-- Call `get_expert_strategies` with `role: "cto"` — returns all strategies this expert owns
+- Call `get_expert` with `role: "cto"` — returns expert profile including its `id`
+
+Then call `get_expert_strategies` with the `expert_id` from the previous step.
 
 ### Step 2: Gather Risk Data
 

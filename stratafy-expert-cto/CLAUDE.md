@@ -37,3 +37,4 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 - Assessing technical debt? `/stratafy-cto:tech-debt-review`
 - Build vs buy decision? `/stratafy-cto:build-vs-buy`
 - Reviewing risks and assumptions? `/stratafy-cto:risks`
+- Reprioritising the strategy tree? `/stratafy-cto:reprioritise`

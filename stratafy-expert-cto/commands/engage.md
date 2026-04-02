@@ -8,12 +8,14 @@ Start your session — review your owned strategies, surface what needs attentio
 
 ## Process
 
-### Step 1: Get User Context & Identify Owned Strategies
+### Step 1: Get User Context & Expert Profile
 
 In parallel:
 - Call `get_user_context` with `command_name: "engage"`, `plugin_name: "stratafy-cto"`.
   This returns the user's personal context (chapter, values, forward anchor, lens, role mandate) and logs the session start. Use this context to calibrate your responses throughout the command.
-- Call `get_expert_strategies` with `role: "cto"` — returns all strategies this expert owns with name, status, and strategy type
+- Call `get_expert` with `role: "cto"` — returns expert profile including its `id`
+
+Then call `get_expert_strategies` with the `expert_id` from the previous step — returns all strategies this expert owns with name, status, and strategy type.
 
 ### Step 2: Gather Execution Detail
 

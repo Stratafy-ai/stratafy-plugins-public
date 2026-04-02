@@ -2,7 +2,7 @@
 description: Quick health check — red/amber/green per owned strategy
 ---
 
-# /stratafy-expert-cto:status
+# /stratafy-cto:status
 
 Quick health check — red/amber/green per owned strategy, with attention items and upcoming deadlines surfaced at the top.
 

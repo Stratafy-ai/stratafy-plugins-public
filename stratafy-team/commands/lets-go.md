@@ -14,11 +14,11 @@ This returns the user's personal context (chapter, values, forward anchor, lens,
 
 ### Step 2: Gather Context
 
-In parallel:
-- `get_workspace_snapshot` with `sections: ["foundation", "strategies", "key_priorities", "metrics"]` and `_source_plugin: "stratafy-team"` — Workspace context filtered to your role
-- `list_metrics` — Key metrics with current status (for quick health pulse)
+Call `get_workspace_snapshot` with `sections: ["strategies", "key_priorities", "metrics"]`, `horizon_focus: "now"`, and `_source_plugin: "stratafy-team"`.
 
-**Do NOT call `list_strategies` or `list_key_priorities` separately** — the snapshot includes both and avoids duplicate large payloads.
+- **No `foundation` section** — the daily start doesn't need mission/vision/values/beliefs. Only fetch foundation if the user asks about strategic context.
+- **`horizon_focus: "now"`** — collapses non-`now` strategies and initiatives to reference depth (id + name + status only), dramatically reducing token cost.
+- **Do NOT call `list_strategies`, `list_key_priorities`, or `list_metrics` separately** — the snapshot includes all of these. Filter key metrics using the `is_key_metric` field.
 
 ### Step 3: Gather Tasks
 

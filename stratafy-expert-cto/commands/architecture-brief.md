@@ -69,6 +69,30 @@ NEXT STEP
   [Single concrete action]
 ```
 
+### Step 4: Persist the Brief
+
+Render the brief body to the user first. Then persist it so it survives the chat and becomes a first-class workspace entity:
+
+1. **Create a draft.** Call `create_brief` with:
+   - `brief_type: "architecture"`
+   - `title`: the decision summary as a short title
+   - `description`: one-line summary of the decision
+   - `content`: the rendered markdown body from Step 3
+   - `source_plugin: "stratafy-expert-cto"`
+   - `source_command: "architecture-brief"`
+   - `lead_strategy_id`: the strategy identified in Step 2
+   - Plus provenance: `_source_plugin`, `_source_command`, `_change_reasoning` (1 sentence on why this decision is being captured), `_intent: "user_request"`, `_llm_model`.
+
+2. **Release it.** Call `release_brief` with the brief `id` returned above, plus:
+   - `content`: the final body (same as create, or the user-polished version)
+   - `generation_qa`: clarifying questions you asked the user during generation as `[{ question, answer }]`. Empty array if none.
+   - `context_refs`: the entity IDs you pulled in Step 2 — `{ strategy_ids, initiative_ids, risk_ids, assumption_ids, decision_ids }`. Only include arrays for entity types actually referenced.
+   - `context_snapshot`: 3–5 line text summary of the strategic context at release time (strategy name + status, key initiatives, any load-bearing risks/assumptions). Allows future readers to reconstruct what was true.
+   - `release_note`: optional 1-line note for audit history.
+   - Same standard provenance.
+
+3. **Show the persistent URL.** Tell the user: "Saved as brief `<brief_id>` — `https://stratafy.ai/ws/<workspace_id>/brief/<brief_id>`. This is now a first-class workspace entity: versioned, shareable, trackable."
+
 ## Provenance Context
 
 On every mutation, include:

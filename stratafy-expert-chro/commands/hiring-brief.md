@@ -71,7 +71,30 @@ RECOMMENDATION
   [Hire now / defer / restructure existing team — with strategic rationale]
 ```
 
-### Step 5: Offer Follow-ups
+### Step 5: Persist the Brief
+
+Render the brief body to the user first. Then persist it so it survives the chat and becomes a first-class workspace entity:
+
+1. **Create a draft.** Call `create_brief` with:
+   - `brief_type: "hiring"`
+   - `title`: "Hiring Brief — [role title]"
+   - `description`: one-line summary of the role and strategic need
+   - `content`: the rendered markdown body from Step 4
+   - `source_plugin: "stratafy-expert-chro"`
+   - `source_command: "hiring-brief"`
+   - `lead_strategy_id` and `lead_initiative_id` from Step 2
+   - Plus provenance: `_source_plugin`, `_source_command`, `_change_reasoning`, `_intent: "user_request"`, `_llm_model`.
+
+2. **Release it.** Call `release_brief` with the brief `id` plus:
+   - `content`: final body
+   - `generation_qa`: `[{ question, answer }]` if you asked the user about constraints or trade-offs. Empty array otherwise.
+   - `context_refs`: `{ strategy_ids, initiative_ids, objective_ids }` — IDs from Step 2.
+   - `context_snapshot`: 3–5 line summary of strategic context (strategy + initiative + gap).
+   - Same provenance.
+
+3. **Show the persistent URL.** Tell the user: "Saved as brief `<brief_id>` — `https://stratafy.ai/ws/<workspace_id>/brief/<brief_id>`. This is now a first-class workspace entity: versioned, shareable, trackable."
+
+### Step 6: Offer Follow-ups
 
 - "Want me to draft the role description?" — deeper JD based on the brief
 - "Want to check team capacity first?" — `/stratafy-expert-chro:team-health`

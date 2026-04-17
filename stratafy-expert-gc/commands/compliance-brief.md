@@ -56,3 +56,26 @@ RECOMMENDED ACTIONS
 This is a strategic risk assessment, not legal advice.
    Consult professional counsel for binding decisions.
 ```
+
+### Step 4: Persist the Brief
+
+Render the brief body to the user first. Then persist it so it survives the chat and becomes a first-class workspace entity:
+
+1. **Create a draft.** Call `create_brief` with:
+   - `brief_type: "compliance"`
+   - `title`: "Compliance Brief — [initiative name]"
+   - `description`: the risk level and one-line rationale
+   - `content`: the rendered markdown body from Step 3
+   - `source_plugin: "stratafy-expert-gc"`
+   - `source_command: "compliance-brief"`
+   - `lead_strategy_id` and `lead_initiative_id` from Step 2
+   - Plus provenance: `_source_plugin`, `_source_command`, `_change_reasoning`, `_intent: "user_request"`, `_llm_model`.
+
+2. **Release it.** Call `release_brief` with the brief `id` plus:
+   - `content`: final body
+   - `generation_qa`: `[{ question, answer }]` pairs if you asked about jurisdictions or data types. Empty array otherwise.
+   - `context_refs`: `{ strategy_ids, initiative_ids, risk_ids, assumption_ids }` — IDs from Step 2.
+   - `context_snapshot`: the compliance considerations + risk level section.
+   - Same provenance.
+
+3. **Show the persistent URL.** Tell the user: "Saved as brief `<brief_id>` — `https://stratafy.ai/ws/<workspace_id>/brief/<brief_id>`. This is now a first-class workspace entity: versioned, shareable, trackable."

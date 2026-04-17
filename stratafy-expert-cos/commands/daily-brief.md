@@ -66,7 +66,29 @@ In parallel:
 [Key assumptions approaching validation deadline]
 ```
 
-### Step 5: Offer Follow-ups
+### Step 5: Persist the Brief
+
+Render the brief body to the user first. Then persist it so it survives the chat and becomes a first-class workspace entity:
+
+1. **Create a draft.** Call `create_brief` with:
+   - `brief_type: "daily"`
+   - `title`: "Daily Brief — [YYYY-MM-DD]"
+   - `description`: the top line from "needs your attention"
+   - `content`: the rendered markdown body
+   - `source_plugin: "stratafy-expert-cos"`
+   - `source_command: "daily-brief"`
+   - Plus provenance.
+
+2. **Release it.** Call `release_brief` with the brief `id` plus:
+   - `content`: final body
+   - `generation_qa`: empty array (daily-brief is unprompted).
+   - `context_refs`: `{ strategy_ids, initiative_ids, decision_ids, risk_ids }` — IDs pulled in Step 2.
+   - `context_snapshot`: the "Yesterday's strategic activity" narrative as the snapshot.
+   - Same provenance.
+
+3. **Show the persistent URL.** Tell the user: "Saved as brief `<brief_id>` — `https://stratafy.ai/ws/<workspace_id>/brief/<brief_id>`."
+
+### Step 6: Offer Follow-ups
 
 Based on what surfaced, offer:
 - "Want me to dig into [specific issue]?"

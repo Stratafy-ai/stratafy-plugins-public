@@ -87,6 +87,29 @@ Last updated: [timestamp]
 📡 [Signal 2] — [what it means for us]
 ```
 
+### Step 6: Persist the Brief
+
+Render the brief body to the user first. Then persist it so it survives the chat and becomes a first-class workspace entity:
+
+1. **Create a draft.** Call `create_brief` with:
+   - `brief_type: "exec"`
+   - `title`: "Executive Brief — [date or focus]"
+   - `description`: the one-line headline from the brief
+   - `content`: the rendered markdown body
+   - `audience_archetype: "board"` if this is board-facing, else omit
+   - `source_plugin: "stratafy-expert-cos"`
+   - `source_command: "exec-brief"`
+   - Plus provenance: `_source_plugin`, `_source_command`, `_change_reasoning`, `_intent: "user_request"`, `_llm_model`.
+
+2. **Release it.** Call `release_brief` with the brief `id` plus:
+   - `content`: final body
+   - `generation_qa`: `[{ question, answer }]` if the user specified a focus area or time window (capture that as an answer). Empty array otherwise.
+   - `context_refs`: `{ strategy_ids, initiative_ids, metric_ids, risk_ids, decision_ids, signal_ids }` — all the IDs you pulled across Steps 2–4.
+   - `context_snapshot`: the headline + strategic health summary as the snapshot text.
+   - Same provenance.
+
+3. **Show the persistent URL.** Tell the user: "Saved as brief `<brief_id>` — `https://stratafy.ai/ws/<workspace_id>/brief/<brief_id>`. This is now a first-class workspace entity: versioned, shareable, trackable."
+
 ## Rules
 
 - **Brevity is everything.** This is an executive brief, not a report. Every word earns its place.

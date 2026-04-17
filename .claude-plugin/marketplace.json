@@ -64,8 +64,8 @@
     {
       "name": "stratafy-expert-cto",
       "source": "./stratafy-expert-cto",
-      "description": "Your fractional CTO — connects technology decisions to strategic intent. Architecture reviews, build-vs-buy analysis, tech debt assessment, risk scanning, and strategy tree reprioritisation.",
-      "version": "0.4.0",
+      "description": "Your fractional CTO — connects technology decisions to strategic intent. Architecture reviews, build-vs-buy analysis, tech debt assessment, risk scanning, and strategy tree reprioritisation. Architecture briefs now persist as first-class versioned workspace entities.",
+      "version": "0.5.0",
       "author": {
         "name": "Stratafy"
       },
@@ -82,8 +82,8 @@
     {
       "name": "stratafy-expert-chro",
       "source": "./stratafy-expert-chro",
-      "description": "Your fractional CHRO — connects people decisions to strategic intent. Org design, team health, hiring strategy, retention scanning, culture alignment, and onboarding plans that serve the mission.",
-      "version": "0.3.0",
+      "description": "Your fractional CHRO — connects people decisions to strategic intent. Org design, team health, hiring strategy, retention scanning, culture alignment, and onboarding plans that serve the mission. Hiring briefs now persist as first-class versioned workspace entities.",
+      "version": "0.4.0",
       "author": {
         "name": "Stratafy"
       },

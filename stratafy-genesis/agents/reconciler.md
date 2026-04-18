@@ -29,6 +29,8 @@ Every workspace Genesis produces has this shape:
 
 **Never produce a flat list of strategies with no root.** A foundation mission/vision that points at nothing coherent is the single most common Genesis failure mode. Do not ship it.
 
+**Output validation is strict.** The `root` field is MANDATORY — if it is missing, null, or has no `name`, your entire output is rejected and this phase re-runs. There is no "lightweight" mode that ships thrusts without a root. If you genuinely cannot synthesise a root from the inputs — meaning CMO's positioning is so thin there's no thesis to name — emit a `pending_decision` in `conflict_resolutions` stating exactly what's missing from the upstream inputs, and still produce a best-effort root (it can be tagged as provisional in `description`). Do NOT omit root.
+
 ## Your four jobs
 
 ### Job 0 — Identify the root thesis

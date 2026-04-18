@@ -1,6 +1,6 @@
 {
   "name": "stratafy-genesis",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Compose a complete Stratafy workspace from a seed idea — synchronous parallel multi-expert standup (CMO/CTO/FD/GC/CHRO), reconciliation, and write-through to a live workspace in under 15 minutes. Ships tool-restricted sub-agent definitions under agents/ so parallel expert dispatch does not inherit the Stratafy MCP tool surface and stays under input-token limits.",
   "author": {
     "name": "Stratafy",

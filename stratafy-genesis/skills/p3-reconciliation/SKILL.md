@@ -37,14 +37,29 @@ interface ReconcileP3Output {
     principles: Array<{ name: string; description: string; authored_by: ExpertRole }>
     beliefs: Array<{ name: string; description: string; authored_by: ExpertRole }>
   }
-  strategies: Array<{
-    name: string
-    strategy_type: 'product' | 'go-to-market' | 'finance' | 'people' | 'regulatory'
-    description: string
-    horizon_phase: 'now' | 'next' | 'later'
-    priority: 'low' | 'medium' | 'high' | 'critical'
-    authored_by: ExpertRole | 'reconciler'  // 'reconciler' if cross-expert merge
-  }>
+  strategies: {
+    /** The L0 root strategy — the single coherent thing the company is
+     *  building. All thrusts are children of this. Authored by the
+     *  reconciler (no single expert owns the company-level view). */
+    root: {
+      name: string                  // 1-line statement of what the company is doing
+      strategy_type: 'company'
+      description: string           // 2-4 sentence theory of change
+      horizon_phase: 'now'
+      priority: 'critical'
+      authored_by: 'reconciler'
+    }
+    /** L1 thrusts — the 3-5 operating axes that execute the root.
+     *  Each has parent_strategy_id pointing to root after write. */
+    thrusts: Array<{
+      name: string
+      strategy_type: 'product' | 'go-to-market' | 'finance' | 'people' | 'regulatory' | 'foundation'
+      description: string
+      horizon_phase: 'now' | 'next' | 'later'
+      priority: 'low' | 'medium' | 'high' | 'critical'
+      authored_by: ExpertRole | 'reconciler'  // 'reconciler' if cross-expert merge
+    }>
+  }
   signals: Array<{
     name: string
     domain: string
@@ -115,14 +130,31 @@ Any entity that is the *result of* a reconciler merge — not authored by a sing
 
 - `layers/genesis/prompts/reconcile-p3.md`
 
+## The Root Strategy
+
+The L0 root is the **single coherent thesis** the company is executing. It's NOT a generic statement like "build a great product" — it names the specific problem, the specific customer, and the specific mechanism. Examples:
+
+- ✅ "Resolve commercial disputes for SA SMEs through AI-coordinated lawyer panels — fairly, in weeks not years."
+- ❌ "Build a leading legal-tech platform" (generic, no theory of change)
+- ❌ "AI for legal" (category, not strategy)
+
+The root is authored by the reconciler — no single expert owns the company-level view. It synthesises CMO P0 problem statement + the founder-revised mission/vision + the structural decisions made during reconciliation (e.g., the SA-first jurisdictional anchor, the two-entity Tech Co/Law Co split).
+
+Children (thrusts) MUST be 3-5 in number. Each thrust:
+- Has a clear `strategy_type` (product, go-to-market, finance, regulatory, foundation, people)
+- Is something a single expert can own
+- Cannot be reduced into another thrust (if two thrusts are really one, merge them; if a thrust splits naturally into two, it's two)
+- Will be assigned to the type-appropriate expert at write-through
+
 ## Quality Gates
 
 Before passing P3 output to write-through:
 
 - [ ] Foundation has mission + vision (from P2)
-- [ ] At least 3 top-level strategies, no more than 5
-- [ ] Each strategy has `horizon_phase` and `priority` set
-- [ ] Every signal/risk/assumption is linked to at least one strategy
+- [ ] **Exactly one** root strategy with `strategy_type: 'company'`, authored by reconciler
+- [ ] **3-5 thrust strategies** as children of root — each with horizon_phase and priority set
+- [ ] Root description names the specific problem + customer + mechanism (not a generic category)
+- [ ] Every signal/risk/assumption is linked to at least one thrust (not the root — root is too abstract for direct linkage)
 - [ ] Every entity has `authored_by` set (either an expert or `'reconciler'`)
 - [ ] Pending decisions list explicitly empty `[]` rather than omitted (founder must see "no unresolved conflicts" rather than infer it)
 - [ ] `capture_score_inputs` populated for downstream Capture Score Engine
@@ -131,5 +163,7 @@ Before passing P3 output to write-through:
 
 - **Averaging conflicting positions.** "CMO says expand fast, GC says go slow → expand at moderate pace." → No. Surface the conflict.
 - **Dropping a signal because it's awkward.** If Radar surfaced a regulatory headwind that contradicts CMO's market framing, the signal stays — that's the point of having a radar.
-- **Inflating strategy count.** Five strategies max. If you have six, two of them are sub-strategies of another — fold them.
-- **Generic strategy names.** "Product strategy", "GTM strategy" — these are categories, not strategies. Use named strategies like "Build the lawyer-panel two-sided marketplace" or "Win UK small-claims-tier dispute volume in 18 months".
+- **Inflating thrust count.** Five thrusts max. If you have six, two of them are sub-thrusts of another — fold them.
+- **Generic thrust names.** "Product strategy", "GTM strategy" — these are categories, not strategies. Use named strategies like "Build the lawyer-panel two-sided marketplace" or "Win UK small-claims-tier dispute volume in 18 months".
+- **Flat structure (no root).** Three thrusts with no parent strategy is wrong shape — the workspace looks like three disconnected things. Always emit a root and parent the thrusts under it. The structural health check (`missing_parent` amber alert) catches this on read but the right thing is to never produce it.
+- **Generic root.** "Build a great X platform" is not a root strategy. The root must name the problem, the customer, and the mechanism.

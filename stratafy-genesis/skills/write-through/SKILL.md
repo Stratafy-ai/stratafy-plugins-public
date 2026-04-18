@@ -32,17 +32,40 @@ Order matters because of foreign-key relationships and the alignment scan downst
 4. For each principle: `create_principle` — `_source_expert: <authored_by>`
 5. For each belief: `create_belief` — `_source_expert: <authored_by>`
 
-### Phase B — Strategies
+### Phase B — Strategies (root + thrusts hierarchy)
 
-For each strategy in P3 output:
+P3 output gives you `strategies.root` (one) and `strategies.thrusts` (3-5). Write them in order:
 
-1. `create_strategy` with name, description, strategy_type, horizon_phase, priority
+**B.1 — Write the root strategy first**
+
+```typescript
+const root = await create_strategy({
+  name: p3.strategies.root.name,
+  description: p3.strategies.root.description,
+  strategy_type: 'company',
+  horizon_phase: 'now',
+  priority: 'critical',
+  // No parent_strategy_id — this IS the root.
+  _source_expert: 'reconciler',
+})
+// Capture root.id — needed for Phase B.2.
+```
+
+The root does NOT get an expert assignment via `assign_expert_to_strategy` — it's owned by the founder. (V1.1 may add a `founder` expert role for this; until then, leave unassigned.)
+
+**B.2 — Write each thrust as a child of root**
+
+For each thrust in `p3.strategies.thrusts`:
+
+1. `create_strategy` with:
+   - `name`, `description`, `strategy_type`, `horizon_phase`, `priority` from the thrust
+   - **`parent_strategy_id: root.id`** ← critical — this builds the hierarchy
    - `_source_expert: <authored_by>` (or `"reconciler"` for cross-expert merges)
 2. **Immediately after**, call `assign_expert_to_strategy` with:
    - `expert_id`: the role-appropriate expert (looked up from the workspace expert roster — use `get_expert(role: <role>)` if not already cached)
-   - `strategy_id`: the just-created strategy's `id`
+   - `strategy_id`: the just-created thrust's `id`
 
-Mapping of strategy type → owning expert:
+Mapping of thrust strategy_type → owning expert:
 
 | Strategy type | Owning expert role |
 | --- | --- |
@@ -53,9 +76,14 @@ Mapping of strategy type → owning expert:
 | `people` / `org` | chro |
 | `foundation` | reconciler (no single expert — leave unassigned, or assign to the expert that authored it most heavily) |
 
-Why this matters: assigning an expert to each strategy is the anchor the Expert Agent Runtime consumes when activated — each scan job knows which expert is responsible for which strategies. Without the assignment, runtime activation succeeds but scans run against an undifferentiated workspace.
+Why this hierarchy matters:
 
-Capture the returned `id` for each strategy — needed for Phase D linking AND for the assignment call above.
+1. **Foundation (mission/vision) points at the root** — one coherent thing the company is building. Without a root, mission/vision orphan against three disconnected strategies.
+2. **Thrusts get clean ownership** — each thrust has one expert who scans it, one health score, one set of objectives. Mixing the company-level view into a thrust pollutes that ownership.
+3. **The Expert Agent Runtime works correctly** — each expert's scan job runs against their thrust + the root for context. Without a root, scans run against an undifferentiated workspace.
+4. **Health checker stops flagging `missing_parent`** — the structural-health amber on every strategy disappears.
+
+Capture all returned `id`s — root + each thrust — for Phase D linking AND for the per-thrust expert assignments above.
 
 ### Phase C — Signals, Risks, Assumptions
 

@@ -1,6 +1,6 @@
 {
   "name": "stratafy-genesis",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Compose a complete Stratafy workspace from a seed idea — synchronous parallel multi-expert standup (CMO/CTO/FD/GC/CHRO), reconciliation, and write-through to a live workspace in under 15 minutes. Ships with slim self-contained expert personas; delegates to full stratafy-expert-* plugins when present.",
   "author": {
     "name": "Stratafy",

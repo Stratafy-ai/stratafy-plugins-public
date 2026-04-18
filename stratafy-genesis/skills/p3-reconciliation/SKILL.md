@@ -126,9 +126,17 @@ Each `pending_decision` includes the full options + advocacy chain so the founde
 
 Any entity that is the *result of* a reconciler merge — not authored by a single expert — gets `authored_by: 'reconciler'`. Tag the entity's description with which experts contributed the inputs.
 
+## Dispatch
+
+Dispatch Reconciliation via the plugin's tool-restricted sub-agent:
+
+- `subagent_type: "stratafy-genesis:reconciler"`
+
+The sub-agent declares `tools: Read` — no MCP tool surface inherits. Pass the full ReconcileP3Input (seed + all five expert outputs + CMO P2 draft + Founder-Persona P2 revision) in the Agent prompt. Do NOT staple conversation history or canonical prompt file contents.
+
 ## Reference Prompt
 
-- `layers/genesis/prompts/reconcile-p3.md`
+The Reconciler agent is at `agents/reconciler.md` — this is what the sub-agent loads at runtime. The upstream canonical prompt is `layers/genesis/prompts/reconcile-p3.md` in the main Stratafy repo (source of truth; the plugin agent is a compressed version kept in sync manually).
 
 ## The Root Strategy
 

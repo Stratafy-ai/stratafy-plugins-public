@@ -95,16 +95,18 @@ If aggregated verdict is `stop`, halt the run and present the GC/CTO/FD reasonin
 
 Use the `p2-mission-vision` skill.
 
-- CMO drafts a stub mission/vision from `product_concept` and `positioning_draft` (per `synthesiseCmoP2Draft` logic)
-- Founder-Persona revises in the founder's voice (use the `founder-p2.md` prompt as reference)
+- The orchestrator deterministically synthesises a CMO mission/vision stub from P0 output (per `synthesiseCmoP2Draft` logic — inline in the main agent, no sub-agent needed).
+- **Dispatch Founder-Persona via the plugin's tool-restricted sub-agent** — `subagent_type: "stratafy-genesis:founder-persona"`. Pass the seed, founder context (from `get_user_context`), and the CMO stub draft in the Agent prompt. No conversation history stapled in.
 
-Stream both versions back so the founder sees the revision happen.
+Stream both the CMO stub and the Founder-Persona revision back so the founder sees the revision happen.
 
 ### Step 6: P3 Reconciliation
 
 Use the `p3-reconciliation` skill.
 
-Compose the standup input from P0 + P1 + P2 outputs. The reconciliation prompt produces a compressed L1 strategy proposal: a coherent foundation + 3-5 top-level strategies + key signals/risks/assumptions, with conflicts flagged.
+**Dispatch Reconciliation via the plugin's tool-restricted sub-agent** — `subagent_type: "stratafy-genesis:reconciler"`. Pass the full ReconcileP3Input (seed + all five P0/P1 expert outputs + CMO P2 draft + Founder-Persona P2 revision) in the Agent prompt.
+
+The reconciler produces a compressed L1 strategy proposal: a coherent foundation + 3-5 top-level strategies + key signals/risks/assumptions, with conflicts flagged.
 
 Conflicts that auto-resolve are merged silently. Conflicts that cannot resolve become `pending_decisions` for the founder.
 

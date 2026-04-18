@@ -51,9 +51,17 @@ If `get_user_context` was not called or returned thin context, Founder-Persona s
 
 > "I don't have enough founder context to fully personalise the voice. Mission/vision are CMO-tone-leaning — revise as you go."
 
+## Dispatch
+
+Dispatch Founder-Persona via the plugin's tool-restricted sub-agent:
+
+- `subagent_type: "stratafy-genesis:founder-persona"`
+
+The sub-agent declares `tools: Read` — no MCP tool surface inherits. Pass the structured seed, founder context (from `get_user_context`), and CMO's P2 stub draft in the Agent prompt. Do NOT staple conversation history or canonical prompt file contents.
+
 ## Reference Prompt
 
-- `layers/genesis/prompts/founder-p2.md` — canonical Founder-Persona P2 prompt
+The Founder-Persona agent is at `agents/founder-persona.md` — this is what the sub-agent loads at runtime. The upstream canonical prompt is `layers/genesis/prompts/founder-p2.md` in the main Stratafy repo (source of truth; the plugin agent is a compressed version kept in sync manually).
 
 ## Voice Anti-Patterns
 

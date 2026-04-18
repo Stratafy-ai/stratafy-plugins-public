@@ -36,10 +36,26 @@ Order matters because of foreign-key relationships and the alignment scan downst
 
 For each strategy in P3 output:
 
-- `create_strategy` with name, description, strategy_type, horizon_phase, priority
-- `_source_expert: <authored_by>` (or `"reconciler"` for cross-expert merges)
+1. `create_strategy` with name, description, strategy_type, horizon_phase, priority
+   - `_source_expert: <authored_by>` (or `"reconciler"` for cross-expert merges)
+2. **Immediately after**, call `assign_expert_to_strategy` with:
+   - `expert_id`: the role-appropriate expert (looked up from the workspace expert roster — use `get_expert(role: <role>)` if not already cached)
+   - `strategy_id`: the just-created strategy's `id`
 
-Capture the returned `id` for each strategy — needed for Phase D linking.
+Mapping of strategy type → owning expert:
+
+| Strategy type | Owning expert role |
+| --- | --- |
+| `product` | cto |
+| `go-to-market` | cmo |
+| `finance` | fd |
+| `regulatory` | gc |
+| `people` / `org` | chro |
+| `foundation` | reconciler (no single expert — leave unassigned, or assign to the expert that authored it most heavily) |
+
+Why this matters: assigning an expert to each strategy is the anchor the Expert Agent Runtime consumes when activated — each scan job knows which expert is responsible for which strategies. Without the assignment, runtime activation succeeds but scans run against an undifferentiated workspace.
+
+Capture the returned `id` for each strategy — needed for Phase D linking AND for the assignment call above.
 
 ### Phase C — Signals, Risks, Assumptions
 

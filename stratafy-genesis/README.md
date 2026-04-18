@@ -71,4 +71,12 @@ In coach mode, an additional `coach_session: true` tag is added so the founder l
 
 ## Status
 
-V1 — early. The plugin currently runs the standup as a conversational pattern. Server-side `genesis-orchestrator` and dedicated Genesis MCP tools are landing in parallel; the plugin will progressively delegate to them as they become available.
+**v0.2.0 — Phase 2 wired.** The plugin now closes the full loop: bootstrap writes a workspace AND activates Expert Agent Runtime so the autonomous scan jobs start firing on the platform's existing 5-minute cron.
+
+- ✅ Bootstrap end-to-end (intake → P0+P1 standup → P2 → P3 reconciliation → write-through)
+- ✅ Per-expert provenance on every entity
+- ✅ `assign_expert_to_strategy` on every Phase 1 strategy (so the runtime knows who owns what)
+- ✅ `enable_expert_agent_runtime` activation at closeout (idempotent, audit-tracked)
+- ⏳ Server-side `genesis-orchestrator` MCP tool (replaces conversational dispatch — coming)
+
+**v0.1.0** shipped the conversational orchestration; v0.2.0 closes the Phase 2 handoff that was the missing 2% of the Genesis Phase 1 Orchestrator initiative.

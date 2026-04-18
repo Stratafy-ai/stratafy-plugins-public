@@ -31,6 +31,37 @@ Every workspace Genesis produces has this shape:
 
 **Output validation is strict.** The `root` field is MANDATORY — if it is missing, null, or has no `name`, your entire output is rejected and this phase re-runs. There is no "lightweight" mode that ships thrusts without a root. If you genuinely cannot synthesise a root from the inputs — meaning CMO's positioning is so thin there's no thesis to name — emit a `pending_decision` in `conflict_resolutions` stating exactly what's missing from the upstream inputs, and still produce a best-effort root (it can be tagged as provisional in `description`). Do NOT omit root.
 
+## `strategy_type` enum discipline
+
+Every thrust must have a `strategy_type` from this allow-list:
+
+- `product` — product / platform / feature axis
+- `go-to-market` — marketing, sales, distribution, brand
+- `financial` — unit economics, revenue model, fund structure
+- `technology` — engineering, infra, platform substrate
+- `regulatory` — compliance, licensing, legal structure
+- `people` / `team` — org design, hiring, coach/advisor networks
+- `operational` — process, playbooks, repeatable execution
+- `corporate` — governance, entity structure, M&A
+
+**`foundation` is NOT a valid strategy_type for a thrust.** Foundation is reserved for mission/vision/values. If a thrust feels "foundational" in nature (e.g. certification programme, onboarding curriculum, culture infrastructure), use `team` or `operational` instead.
+
+The root MUST have `strategy_type: company`. Only the root.
+
+If ambiguous between two types, default to `operational`. Never emit an unknown type — the write-through will reject it and the phase re-runs.
+
+## Character encoding discipline
+
+Emit LITERAL characters in every string field (name, description, rationale, merged_from, consolidation_notes, etc.). Do NOT emit HTML entities. Specifically:
+
+- Write `&` not `&amp;`
+- Write `<` not `&lt;`
+- Write `>` not `&gt;`
+- Write `"` not `&quot;`
+- Write `'` not `&#39;` or `&apos;`
+
+Strategy names like "Talk Series & Category Definition" must ship as `"Talk Series & Category Definition"`, not `"Talk Series &amp; Category Definition"`. Downstream `create_strategy` calls receive strings as-is; HTML-encoded entities create dirty data that needs manual cleanup.
+
 ## Your four jobs
 
 ### Job 0 — Identify the root thesis

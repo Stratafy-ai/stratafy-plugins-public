@@ -151,9 +151,47 @@ Once approved, write the foundation + strategy tree through to Stratafy. Every e
 - `_change_reasoning: "Genesis Phase 1 bootstrap from seed: <one-line seed summary>"`
 - `coach_session: true` (only in coach mode)
 
-Order matters — foundation first (mission, vision, values, principles, beliefs), then strategies, then signals/risks/assumptions linked to the strategies, then any `pending_decisions`.
+#### Step 8a — Workspace selection gate (MANDATORY, non-negotiable)
 
-Run the alignment suite once on the completed bootstrap: call `run_alignment_suite`. Surface gaps as additional `pending_decisions`, not as blockers.
+**Before ANY write-through call, explicitly echo the target workspace back to the founder and require affirmative confirmation.** This is a hard correctness gate, not a soft check. A Genesis run that writes to the wrong workspace is silent, destructive, and expensive to unwind — foundation + strategies + runtime activation all land in the wrong tenant.
+
+Present this exact prompt:
+
+```
+━━━ WRITE-THROUGH TARGET ━━━━━━━━━━━━━━
+
+  Workspace: <workspace_name>
+  ID:        <workspace_id>
+
+  I am about to write the foundation + strategy tree to this workspace.
+  Type CONFIRM to proceed, or type the correct workspace name to switch.
+```
+
+Rules:
+- Read the current workspace name + id via `get_user_context` or `select_workspace` with no arguments (list mode) before echoing.
+- Accept ONLY `CONFIRM` (case-insensitive) to proceed.
+- Any other response — including silence, "yes", "go", or a workspace name — is treated as a correction and triggers re-selection via `select_workspace`.
+- After any `select_workspace` call mid-bootstrap, loop back to this gate. Never skip.
+- If the current workspace is the Stratafy main workspace (the plugin author's own), treat that as a likely-wrong default and require an extra-explicit confirmation.
+
+This gate runs EVERY time, not just when uncertain. It's cheap; the alternative is a customer's workspace getting polluted.
+
+#### Step 8b — Write order + strategy_type discipline
+
+Order: workspace metadata → foundation (mission, vision, values, principles, beliefs) → strategies (L0 root first, then L1 thrusts with parent_strategy_name) → signals/risks/assumptions linked to strategies → pending_decisions.
+
+**`strategy_type` enum guard**: valid values are `company` (root only), `product`, `go-to-market`, `financial`, `technology`, `regulatory`, `people`, `team`, `operational`, `corporate`. `foundation` is NOT a valid strategy_type — it's reserved for mission/vision/values semantics. If the reconciler emits `strategy_type: foundation` for any thrust, override to `team` or `operational` based on the thrust's owning expert. Never ship `foundation` as a thrust type.
+
+**Character encoding guard**: strategy names, descriptions, and all other string fields must contain LITERAL characters. If the reconciler output contains HTML entities (`&amp;`, `&lt;`, `&gt;`, `&quot;`, `&#39;`), decode them before passing to `create_strategy` / `create_risk` / other mutation calls. The reconciler's output schema is plain UTF-8, not HTML — entity-encoded names ship dirty and require manual cleanup.
+
+#### Step 8c — Alignment suite with feedback loop
+
+Run the alignment suite once on the completed bootstrap: call `run_alignment_suite`. **Poll for completion** (the runId is not actionable until the run finishes). Once complete, iterate over high/critical gaps:
+
+- For each gap with severity `high` or `critical`, create a `pending_decision` with `_source_ref: alignment:<runId>:<gap_id>` and decision_type `type_2_reversible` unless the gap itself names a one-way door.
+- Surface the count of auto-converted gaps in the closeout summary.
+
+Alignment output that sits orphaned is not a QA pass. Either it converts to structured workspace entities, or the suite run was decoration.
 
 ### Step 9: Phase 2 Handoff
 

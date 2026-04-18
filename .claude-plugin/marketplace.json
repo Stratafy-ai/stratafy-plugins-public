@@ -102,8 +102,8 @@
     {
       "name": "stratafy-genesis",
       "source": "./stratafy-genesis",
-      "description": "Compose a complete Stratafy workspace from a seed idea — synchronous parallel multi-expert standup (CMO/CTO/FD/GC/CHRO), reconciliation, write-through with proper L0 root + L1 thrust hierarchy, and Expert Agent Runtime activation in under 15 minutes. Bootstraps a workspace AND turns on autonomous expert scans. Ships with slim self-contained expert personas; delegates to full stratafy-expert-* plugins when present.",
-      "version": "0.3.0",
+      "description": "Compose a complete Stratafy workspace from a seed idea — synchronous parallel multi-expert standup (CMO/CTO/FD/GC/CHRO) via tool-restricted sub-agents, reconciliation into L0 root + L1 thrusts hierarchy, write-through, and Expert Agent Runtime activation in under 15 minutes. Bootstraps a workspace AND turns on autonomous expert scans. Sub-agents stay off the Stratafy MCP tool surface, keeping input-token footprint tight.",
+      "version": "0.4.2",
       "author": {
         "name": "Stratafy"
       },

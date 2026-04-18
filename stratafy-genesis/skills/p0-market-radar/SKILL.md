@@ -45,7 +45,14 @@ interface RadarP0Output {
 
 ## Parallel Dispatch
 
-Run CMO and Radar **in parallel**. Single message, two Agent tool uses, one per persona. Stream each back with attribution:
+Run CMO and Radar **in parallel** via the plugin's tool-restricted sub-agents:
+
+- `subagent_type: "stratafy-genesis:cmo-expert"`
+- `subagent_type: "stratafy-genesis:radar-expert"`
+
+Single message, two Agent tool uses, one per persona. Each sub-agent is declared with `tools: Read` — no MCP tool surface inherits, so the input-token footprint stays tight. Pass the structured seed JSON in the Agent prompt; do NOT staple conversation history or the full canonical prompt file — the agent body already carries the persona and output schema.
+
+Stream each back with attribution:
 
 ```
 🎯 CMO weighing in on market framing…
@@ -76,8 +83,12 @@ Anti-patterns:
 
 ## Reference Prompts
 
-- `layers/genesis/prompts/cmo-p0.md` — canonical CMO P0 prompt
-- `layers/genesis/prompts/radar-p0.md` — canonical Radar P0 prompt
+The CMO and Radar personas + output schemas are defined in the plugin-local agent files, which are what the sub-agents actually load at runtime:
+
+- `agents/cmo-expert.md`
+- `agents/radar-expert.md`
+
+(The upstream canonical prompts at `layers/genesis/prompts/cmo-p0.md` and `radar-p0.md` in the main Stratafy repo are the source of truth for the persona definitions — but the plugin runtime cannot access them. The agent files are compressed versions kept in sync manually.)
 
 ## Quality Gates
 

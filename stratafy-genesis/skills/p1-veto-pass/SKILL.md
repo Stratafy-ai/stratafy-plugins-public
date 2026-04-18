@@ -104,7 +104,17 @@ Anti-patterns:
 
 ## Parallel Dispatch
 
-Run GC + CTO + FD in parallel. Single message, three Agent tool uses. Stream each verdict back with attribution:
+Run GC + CTO + FD **in parallel** via the plugin's tool-restricted sub-agents:
+
+- `subagent_type: "stratafy-genesis:gc-expert"`
+- `subagent_type: "stratafy-genesis:cto-expert"`
+- `subagent_type: "stratafy-genesis:fd-expert"`
+
+Single message, three Agent tool uses. Each sub-agent declares `tools: Read` — no MCP tool surface inherits. Pass the structured seed JSON in each Agent prompt. For FD, additionally pass CMO's beachhead_options (from the P0 pass) so FD can produce unit-economics-by-wedge keyed to CMO's naming — otherwise P3 reconciliation cannot merge.
+
+Do NOT staple conversation history or the full canonical prompt file into the sub-agent prompts; the agent body already carries the persona and schema.
+
+Stream each verdict back with attribution:
 
 ```
 🛡️  GC verdict: proceed_with_caveats
@@ -132,9 +142,13 @@ If any expert returns `stop`, halt the standup. Do NOT auto-continue. Present th
 
 ## Reference Prompts
 
-- `layers/genesis/prompts/gc-p1.md`
-- `layers/genesis/prompts/cto-p1.md`
-- `layers/genesis/prompts/fd-p1.md`
+The GC / CTO / FD personas + output schemas are defined in plugin-local agent files, which are what the sub-agents actually load at runtime:
+
+- `agents/gc-expert.md`
+- `agents/cto-expert.md`
+- `agents/fd-expert.md`
+
+(The upstream canonical prompts at `layers/genesis/prompts/{gc,cto,fd}-p1.md` in the main Stratafy repo are the source of truth — but the plugin runtime cannot access them. The agent files are compressed versions kept in sync manually.)
 
 ## Reference Output (Legal ODR seed)
 

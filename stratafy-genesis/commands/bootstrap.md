@@ -57,17 +57,23 @@ Questions for you (3 inferred fields):
 
 ### Step 4: P0 + P1 Parallel Standup
 
-Once the seed is confirmed, dispatch the standup. Use the `p0-market-radar` and `p1-veto-pass` skills.
+Once the seed is confirmed, dispatch the standup via the tool-restricted sub-agents shipped with this plugin. Each expert is a dedicated agent definition in `agents/` with `tools: Read` — **no MCP tools inherit into the sub-agents**, so prompt-size never blows up on the Stratafy tool surface.
 
-**Run in parallel** (single message, multiple Agent tool uses, one per expert):
+**Run in parallel** (single message, 5 Agent tool uses, one per expert):
 
-| Pass | Expert | Agent prompt source |
+| Pass | Expert | `subagent_type` |
 | --- | --- | --- |
-| P0 | CMO | `p0-market-radar` skill (CMO half) — problem statement, beachhead, positioning draft |
-| P0 | Radar | `p0-market-radar` skill (Radar half) — environmental signals, market dynamics |
-| P1 | GC | `p1-veto-pass` skill (GC) — regulatory landmines, jurisdiction risk, veto verdict |
-| P1 | CTO | `p1-veto-pass` skill (CTO) — buildable today?, hard technical bits, budget advice, veto verdict |
-| P1 | FD | `p1-veto-pass` skill (FD) — unit economics by wedge, capital needs, veto verdict |
+| P0 | CMO | `stratafy-genesis:cmo-expert` |
+| P0 | Radar | `stratafy-genesis:radar-expert` |
+| P1 | GC | `stratafy-genesis:gc-expert` |
+| P1 | CTO | `stratafy-genesis:cto-expert` |
+| P1 | FD | `stratafy-genesis:fd-expert` |
+
+Each Agent tool call passes the structured seed JSON in the prompt. For FD, also pass CMO's beachhead_options in the prompt so FD can produce unit-economics-by-wedge that matches CMO's naming — otherwise reconciliation downstream cannot merge.
+
+Do **NOT** staple conversation history, canonical prompt file contents, or workspace snapshots into the sub-agent prompt — the agent body already carries the persona and schema, and the parent conversation bloats input tokens without adding signal. Seed JSON + lane-specific prior outputs only.
+
+The skills `p0-market-radar` and `p1-veto-pass` remain as conceptual reference for the orchestrator — they are NOT passed to the sub-agents.
 
 Stream each expert's contribution back to the conversation **with persona attribution**:
 
@@ -188,7 +194,7 @@ On every mutation, include:
 ## Rules
 
 1. **Review Gate 1 and Review Gate 2 are not optional.** Skipping them is the single highest-risk failure mode (Risk 1 on the Genesis strategy — Generic Output Trap).
-2. **Dispatch P0 and P1 in true parallel.** Single message, multiple Agent tool uses. Sequential dispatch breaks the wall-clock target and undermines the standup pattern.
+2. **Dispatch P0 and P1 via the plugin's tool-restricted sub-agents** (`stratafy-genesis:<expert>`) in a single message with 5 Agent tool uses. These agents declare `tools: Read` — they cannot invoke MCP tools, cannot write to the workspace, and return JSON as their final message. Do NOT spawn generic-purpose sub-agents (they inherit the full 200+ Stratafy MCP tool surface and exceed input-token limits). If the Agent dispatch still fails on prompt size, fall back to inline dispatch from the main orchestrator rather than retrying the same bloated call.
 3. **Stream each expert with persona attribution.** The founder watching live is the demo. A silent-then-summary pattern destroys the value.
 4. **Honest provenance.** If the reconciler had to make a call between two experts, tag the entity `_source_expert: "reconciler"` — not the originating expert. Lying about authorship corrupts the change history.
 5. **At the 12-minute mark, surface time pressure.** "We're at 12 minutes — P3 reconciliation is the longest remaining step. Continue or pause?" Long-running silently is failure.

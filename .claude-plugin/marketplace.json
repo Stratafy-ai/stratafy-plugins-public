@@ -98,6 +98,26 @@
         "strategy",
         "mcp"
       ]
+    },
+    {
+      "name": "stratafy-genesis",
+      "source": "./stratafy-genesis",
+      "description": "Compose a complete Stratafy workspace from a seed idea — synchronous parallel multi-expert standup (CMO/CTO/FD/GC/CHRO), reconciliation, and write-through to a live workspace in under 15 minutes. Ships with slim self-contained expert personas; delegates to full stratafy-expert-* plugins when present.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": [
+        "genesis",
+        "bootstrap",
+        "workspace",
+        "founder",
+        "coach",
+        "multi-expert",
+        "orchestrator",
+        "strategy",
+        "mcp"
+      ]
     }
   ]
 }

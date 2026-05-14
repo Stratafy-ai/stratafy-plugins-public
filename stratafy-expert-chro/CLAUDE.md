@@ -109,3 +109,4 @@ The strategy tree is your north star. Every people recommendation should referen
 - Designing onboarding? `/stratafy-expert-chro:onboarding-plan`
 - Checking retention risk? `/stratafy-expert-chro:retention-scan`
 - Auditing culture alignment? `/stratafy-expert-chro:culture-check`
+- Scanning distributed-work model health? `/stratafy-expert-chro:hybrid-health`

@@ -82,8 +82,8 @@
     {
       "name": "stratafy-expert-chro",
       "source": "./stratafy-expert-chro",
-      "description": "Your fractional CHRO — connects people decisions to strategic intent. Org design, team health, hiring strategy, retention scanning, culture alignment, and onboarding plans that serve the mission. Hiring briefs now persist as first-class versioned workspace entities.",
-      "version": "0.4.0",
+      "description": "Your fractional CHRO — connects people decisions to strategic intent. Org design, team health, hiring strategy, retention scanning, culture alignment, onboarding plans, and distributed-work health scans that serve the mission. Hiring briefs persist as first-class versioned workspace entities.",
+      "version": "0.5.0",
       "author": {
         "name": "Stratafy"
       },

@@ -59,7 +59,7 @@ Then update `link.json` `last_synced` to the current ISO8601 timestamp (preserve
 
 ### Step 4b: Re-assert the grounding block in CLAUDE.local.md
 
-The cache files do nothing on their own — the delivery mechanism is a managed, sentinel-fenced block in `$PROJECT_ROOT/CLAUDE.local.md` that `@`-imports them. Cowork auto-loads `CLAUDE.local.md` every session and inlines `@`-imports with no tool call, so foundation + context become ambient grounding for free.
+The cache files do nothing on their own — the delivery mechanism is a managed, sentinel-fenced block in `$PROJECT_ROOT/CLAUDE.local.md` that `@`-imports them. Cowork auto-loads `CLAUDE.local.md` every session and inlines `@`-imports with no tool call, so foundation + context become ambient grounding for free. The block also embeds the **workspace-pin working rule** (`workspace_id` from `link.json`) so any Stratafy MCP operation done in this folder targets the bound workspace — read *and* write are covered, not just grounding.
 
 Read `CLAUDE.local.md`, then surgically replace only the `stratafy:begin … stratafy:end` block (create the file with a minimal header if absent; append the block if the file exists without sentinels). NEVER touch `CLAUDE.md` (that's the user's Folder-instructions surface) and NEVER rewrite the whole `CLAUDE.local.md` when sentinels exist — preserve everything outside the block. Timestamp-free; volatile state stays in `link.json`. Exact block shape and merge rules are in the **workspace-sync** skill.
 

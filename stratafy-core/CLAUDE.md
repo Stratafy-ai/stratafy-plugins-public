@@ -27,12 +27,17 @@ Writing the `.stratafy/*.md` cache is necessary but not sufficient — nothing p
 
 ```markdown
 <!-- stratafy:begin — managed by stratafy-core; do not edit inside this block -->
-## Stratafy workspace grounding
-This project is linked to the **{{workspace}}** Stratafy workspace.
+## Stratafy workspace binding
+This project is bound to the **{{workspace}}** Stratafy workspace
+(`workspace_id: {{workspace_id}}`).
+Working rule: for ANY Stratafy MCP operation in this folder, pin this
+workspace first — get_user_context(workspace_id: "{{workspace_id}}", …).
 @.stratafy/foundation.md
 @.stratafy/context.md
 <!-- stratafy:end -->
 ```
+
+The block does two jobs: `@`-imports give ambient *read* grounding; the embedded `workspace_id` + working rule make any Stratafy MCP *operation* in the folder target the bound workspace (operationalising the MCP contract's "select_workspace first, always; never assume a prior session"). `{{workspace_id}}` is data sourced from `link.json` (canonical) and re-asserted every sync — NOT a plugin-hardcoded ID.
 
 Verified in Cowork: `CLAUDE.local.md` auto-loads every session and `@path` imports inline the file content with no tool call — so foundation + context are ambient grounding for free, every session, with zero ceremony. `CLAUDE.local.md` is conventionally gitignored (per-clone) and invisible to Cowork's Folder-instructions modal, so the plugin and the user never collide. The block is timestamp-free (volatile `last_synced` stays in `link.json`) to avoid per-session churn. Sync re-asserts the block idempotently, replacing only between the sentinels.
 

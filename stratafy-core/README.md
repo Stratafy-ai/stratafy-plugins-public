@@ -24,11 +24,15 @@ The cache files alone don't reach a new session. Sync also maintains a managed, 
 
 ```markdown
 <!-- stratafy:begin — managed by stratafy-core -->
-This project is linked to the **{{workspace}}** Stratafy workspace.
+This project is bound to the **{{workspace}}** Stratafy workspace
+(workspace_id: {{workspace_id}}).
+Working rule: pin this workspace before any Stratafy MCP operation here.
 @.stratafy/foundation.md
 @.stratafy/context.md
 <!-- stratafy:end -->
 ```
+
+Two jobs in one block: the `@`-imports give ambient read grounding; the embedded `workspace_id` + working rule make any Stratafy MCP *operation* in the folder target the bound workspace automatically (no need to tell Claude which workspace this folder is for). The ID is data from `link.json`, re-asserted every sync — not plugin-hardcoded.
 
 Cowork auto-loads `CLAUDE.local.md` every session and inlines `@`-imports with no tool call — so the workspace foundation + strategy context are ambient grounding automatically, with zero ceremony. `CLAUDE.local.md` is gitignored (per-clone) and separate from the user's own `CLAUDE.md` / Folder instructions, so the plugin never overwrites user content. The block is timestamp-free; only `.stratafy/link.json` carries `last_synced`. `/stratafy:status` reports whether the block is wired.
 

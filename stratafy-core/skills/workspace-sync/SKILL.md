@@ -69,13 +69,23 @@ Writing `.stratafy/*.md` is not enough on its own — nothing pulls them into a 
 
 **Why `CLAUDE.local.md`, not `CLAUDE.md`:** `CLAUDE.md` is the user's own surface (Cowork's "Folder instructions" modal edits it). The plugin must never write there. `CLAUDE.local.md` also auto-loads, is conventionally gitignored (per-clone), and is invisible to the Folder-instructions modal — clean ownership separation.
 
-**The managed block (exact shape; timestamp-free — volatile state stays in `link.json`):**
+**The managed block (exact shape; timestamp-free — volatile state stays in `link.json`).** It does two jobs: (1) `@`-imports the cache for ambient *read* grounding, and (2) carries the **workspace-pin working rule** so any Stratafy MCP *operation* in this folder targets the right workspace. `{{workspace_id}}` is sourced from `link.json` (canonical) and re-asserted every sync — this is the binding as *data*, not a plugin-hardcoded ID:
 
 ```markdown
 <!-- stratafy:begin — managed by stratafy-core; do not edit inside this block. Refresh with /stratafy:sync -->
-## Stratafy workspace grounding
+## Stratafy workspace binding
 
-This project is linked to the **{{workspace_name}}** Stratafy workspace.
+This project is bound to the **{{workspace_name}}** Stratafy workspace
+(`workspace_id: {{workspace_id}}`).
+
+**Working rule — applies to every session in this folder:** for ANY Stratafy
+MCP operation here (reading *or* writing), pin this workspace first:
+
+> `get_user_context(workspace_id: "{{workspace_id}}", …provenance)`
+
+Never assume a prior session's workspace selection carries over. Do not operate
+against a different or unselected workspace unless the user explicitly asks; if
+they do, re-pin this one afterwards.
 
 The workspace foundation and active strategy context are imported below so they
 load automatically at the start of every session:
@@ -83,10 +93,11 @@ load automatically at the start of every session:
 @.stratafy/foundation.md
 @.stratafy/context.md
 
-If these are missing or you suspect they're stale, run `/stratafy:sync`.
-Link + sync metadata lives in `.stratafy/link.json`.
+Stale or missing? Run `/stratafy:sync`. Binding metadata: `.stratafy/link.json`.
 <!-- stratafy:end -->
 ```
+
+The pin instruction operationalises the MCP contract ("select_workspace first, always; never assume a prior session's selection") for every session in the folder automatically — the user never has to tell Claude which workspace this folder is for.
 
 **Idempotent merge — never clobber the user's own content:**
 

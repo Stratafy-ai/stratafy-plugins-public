@@ -1,0 +1,11 @@
+{
+  "name": "stratafy-core",
+  "version": "0.4.0",
+  "description": "Universal Stratafy connector — link a project to any Stratafy workspace (/stratafy:link), pull its foundation + key context into the project folder and keep it in sync (/stratafy:sync), and see the link + telemetry transparency (/stratafy:status). Workspace-agnostic: the binding is data in .stratafy/link.json, never a hardcoded ID. Project-scoped local cache.",
+  "author": {
+    "name": "Stratafy",
+    "url": "https://stratafy.ai"
+  },
+  "homepage": "https://stratafy.ai",
+  "license": "Apache-2.0"
+}

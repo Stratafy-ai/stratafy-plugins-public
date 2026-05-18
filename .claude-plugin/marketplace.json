@@ -9,6 +9,25 @@
   },
   "plugins": [
     {
+      "name": "stratafy-core",
+      "source": "./stratafy-core",
+      "description": "Universal Stratafy connector — link a project to any workspace (/stratafy:link), pull its foundation + key context into the project folder and keep it in sync (/stratafy:sync), with link + telemetry transparency (/stratafy:status). Workspace-agnostic: the binding is data in .stratafy/link.json, never a hardcoded ID. Project-scoped local cache so grounding is ambient and fast.",
+      "version": "0.4.0",
+      "author": {
+        "name": "Stratafy"
+      },
+      "keywords": [
+        "stratafy",
+        "link",
+        "sync",
+        "status",
+        "connector",
+        "workspace",
+        "foundation",
+        "mcp"
+      ]
+    },
+    {
       "name": "stratafy-team",
       "source": "./stratafy-team",
       "description": "Your AI execution partner — connects daily work to company strategy. Daily rhythm, strategic context, role-adapted coaching, and Personal Intelligence onboarding for every team member.",

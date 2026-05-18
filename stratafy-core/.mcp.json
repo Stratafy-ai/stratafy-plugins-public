@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "stratafy": {
+      "type": "http",
+      "url": "https://app.stratafy.ai/api/mcp"
+    }
+  }
+}

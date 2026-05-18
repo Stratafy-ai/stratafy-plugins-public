@@ -16,7 +16,21 @@ Workspace-agnostic: the linked workspace is stored in `<project-root>/.stratafy/
 
 ## How sync works
 
-`/stratafy:sync` reads the link, fetches the workspace's foundation (mission, vision, values, beliefs, principles) and key context (active strategies + key priorities) in a single snapshot call, and writes them to `.stratafy/foundation.md` and `.stratafy/context.md`. Sync is TTL-based (default 7 days), forceable via `/stratafy:sync`, and auto-refreshes when stale context is needed. If a command needs context and the project isn't linked yet, the link flow runs inline — no dead-end "link first" error.
+`/stratafy:sync` reads the link, fetches the workspace's foundation (mission, vision, values, beliefs, principles) and key context (active strategies + key priorities) in a single snapshot call, and writes them to `.stratafy/foundation.md` and `.stratafy/context.md`. Sync is TTL-based (default 7 days), forceable via `/stratafy:sync`, and auto-refreshes when stale context is needed. `/stratafy:link` chains straight into sync by default. If a command needs context and the project isn't linked yet, the link flow runs inline — no dead-end "link first" error.
+
+## How grounding reaches every session
+
+The cache files alone don't reach a new session. Sync also maintains a managed, sentinel-fenced block in `CLAUDE.local.md` that `@`-imports them:
+
+```markdown
+<!-- stratafy:begin — managed by stratafy-core -->
+This project is linked to the **{{workspace}}** Stratafy workspace.
+@.stratafy/foundation.md
+@.stratafy/context.md
+<!-- stratafy:end -->
+```
+
+Cowork auto-loads `CLAUDE.local.md` every session and inlines `@`-imports with no tool call — so the workspace foundation + strategy context are ambient grounding automatically, with zero ceremony. `CLAUDE.local.md` is gitignored (per-clone) and separate from the user's own `CLAUDE.md` / Folder instructions, so the plugin never overwrites user content. The block is timestamp-free; only `.stratafy/link.json` carries `last_synced`. `/stratafy:status` reports whether the block is wired.
 
 ## Local files
 
@@ -25,6 +39,7 @@ All inside the project folder (visible to file tools in both Claude Code CLI and
 - `<project-root>/.stratafy/link.json` — project↔workspace binding
 - `<project-root>/.stratafy/foundation.md` — foundation document
 - `<project-root>/.stratafy/context.md` — active strategies + key priorities
+- `<project-root>/CLAUDE.local.md` — managed sentinel block that `@`-imports the cache (gitignored; the plugin never touches `CLAUDE.md`)
 
 ## Provenance
 

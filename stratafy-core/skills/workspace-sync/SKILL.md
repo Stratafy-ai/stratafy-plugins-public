@@ -59,8 +59,49 @@ mkdir -p "$PROJECT_ROOT/.stratafy"
 - Assemble the foundation portion → `$PROJECT_ROOT/.stratafy/foundation.md` (canonical document format)
 - Assemble strategies + key priorities → `$PROJECT_ROOT/.stratafy/context.md`
 - Update `link.json` `last_synced` to ISO8601 now; preserve every other field exactly
+- Re-assert the managed grounding block in `$PROJECT_ROOT/CLAUDE.local.md` (see next section)
 
 Absolute paths only. The Write tool does not expand `~`.
+
+## Grounding block — CLAUDE.local.md (the delivery mechanism)
+
+Writing `.stratafy/*.md` is not enough on its own — nothing pulls them into a fresh session. The delivery mechanism is a **managed, sentinel-fenced block in `<project-root>/CLAUDE.local.md`** that `@`-imports the cache files. Confirmed in Cowork: `CLAUDE.local.md` auto-loads every session, and `@path` imports inline the referenced file's content with no tool call — so the foundation + context become ambient grounding for free, every session.
+
+**Why `CLAUDE.local.md`, not `CLAUDE.md`:** `CLAUDE.md` is the user's own surface (Cowork's "Folder instructions" modal edits it). The plugin must never write there. `CLAUDE.local.md` also auto-loads, is conventionally gitignored (per-clone), and is invisible to the Folder-instructions modal — clean ownership separation.
+
+**The managed block (exact shape; timestamp-free — volatile state stays in `link.json`):**
+
+```markdown
+<!-- stratafy:begin — managed by stratafy-core; do not edit inside this block. Refresh with /stratafy:sync -->
+## Stratafy workspace grounding
+
+This project is linked to the **{{workspace_name}}** Stratafy workspace.
+
+The workspace foundation and active strategy context are imported below so they
+load automatically at the start of every session:
+
+@.stratafy/foundation.md
+@.stratafy/context.md
+
+If these are missing or you suspect they're stale, run `/stratafy:sync`.
+Link + sync metadata lives in `.stratafy/link.json`.
+<!-- stratafy:end -->
+```
+
+**Idempotent merge — never clobber the user's own content:**
+
+```bash
+PROJECT_ROOT="${CLAUDE_PROJECT_DIR:-$(pwd)}"
+LOCAL="$PROJECT_ROOT/CLAUDE.local.md"
+```
+
+- `CLAUDE.local.md` absent → create it with a minimal header + the managed block
+- present, contains a `stratafy:begin`/`stratafy:end` pair → replace ONLY the text between (and including) the sentinels; leave everything else byte-for-byte
+- present, no sentinels → append the managed block after existing content (preserve all of it)
+
+Use Read then Write with surgical sentinel replacement. NEVER regenerate the whole file from scratch when sentinels already exist — the user may have written their own notes around the block.
+
+**Gitignore (repos only):** if `$PROJECT_ROOT/.git` exists, ensure `.gitignore` contains `.stratafy/` and `CLAUDE.local.md` (append if missing; don't duplicate). This keeps the per-clone binding out of version control. If there's no `.git`, skip silently — not every project folder is a repo.
 
 ## Honest empty state
 
@@ -87,7 +128,8 @@ Each project folder has its own `.stratafy/`. A user with two projects linked to
 ## Local Files
 
 - Reads `<project-root>/.stratafy/link.json`
-- Writes `<project-root>/.stratafy/foundation.md`, `<project-root>/.stratafy/context.md`, and the `last_synced` field of `link.json`
+- Writes `<project-root>/.stratafy/foundation.md`, `<project-root>/.stratafy/context.md`, the `last_synced` field of `link.json`, and the managed sentinel block in `<project-root>/CLAUDE.local.md`
+- May append to `<project-root>/.gitignore` (only if `.git` present)
 
 ## Rules
 
@@ -95,5 +137,9 @@ Each project folder has its own `.stratafy/`. A user with two projects linked to
 2. NEVER call `get_workspace_snapshot` without `sections`
 3. NEVER fabricate foundation/context — sparse state is surfaced honestly
 4. NEVER write to `~/.stratafy/` — always the absolute project-rooted path
-5. ALWAYS update `last_synced` after a successful write, preserving other `link.json` fields
-6. Respect the TTL — fresh cache is served from disk unless the user forces a refresh
+5. NEVER write to `CLAUDE.md` — that's the user's surface; the plugin owns only `CLAUDE.local.md`
+6. NEVER regenerate `CLAUDE.local.md` wholesale when sentinels exist — replace only between the markers, preserve the rest
+7. NEVER put a timestamp in the managed block — volatile state lives in `link.json` only (avoids per-session churn)
+8. ALWAYS update `last_synced` after a successful write, preserving other `link.json` fields
+9. ALWAYS re-assert the managed block on every sync (idempotent) so a fresh `@`-import is in place
+10. Respect the TTL — fresh cache is served from disk unless the user forces a refresh

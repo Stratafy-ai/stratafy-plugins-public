@@ -64,9 +64,11 @@ After the user picks, call `get_user_context(workspace_id: <chosen>, …)`. This
 
 `last_synced` is `null` until the workspace-sync skill pulls context. Re-linking to a different workspace overwrites the file and resets `last_synced` to `null`.
 
-## After linking
+## After linking — sync by default
 
-Offer an immediate sync (hand off to the workspace-sync skill). If the user declines, tell them context will be pulled the first time it's needed (the auto-trigger covers it).
+Don't ask permission to sync; a linked-but-unsynced project is a half-done state. Proceed into the workspace-sync skill by default with an explicit opt-out ("…say 'skip' if you'd rather not"). Sync writes `.stratafy/foundation.md` + `context.md`, the managed grounding block in `CLAUDE.local.md` (the thing that makes every future session auto-grounded), and the `.gitignore` entries if it's a repo. If the user explicitly skips, tell them the workspace-sync skill will auto-pull inline the first time grounding is needed.
+
+The grounding-block + gitignore mechanics are owned by the **workspace-sync** skill — workspace-link does not write `CLAUDE.local.md` itself; it delegates to sync so there's one implementation.
 
 ## Honest failure
 
@@ -90,4 +92,6 @@ If `select_workspace` fails (auth, network, missing MCP config), surface the err
 2. NEVER fail with "run /stratafy:link first" when invoked inline — run the link flow then continue the original operation
 3. NEVER fabricate a workspace list — empty means empty, say so
 4. NEVER write to `~/.stratafy/` — always the absolute project-rooted path
-5. Re-linking resets `last_synced` to `null` — the new workspace's context is not yet local
+5. NEVER write `CLAUDE.local.md` here — delegate the grounding block to the workspace-sync skill (one implementation)
+6. Sync is the default after linking, not an offer — opt-out, not opt-in
+7. Re-linking resets `last_synced` to `null` — the new workspace's context is not yet local

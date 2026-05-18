@@ -84,12 +84,16 @@ Write to the absolute path. Shape:
 
 NEVER pass `~/.stratafy/...` to Write — the Write tool does not expand `~` or resolve relative paths. Always the absolute project-rooted path.
 
-### Step 6: Offer immediate sync
+### Step 6: Sync now (default yes — don't make the user ask)
 
-> "Linked to **{{workspace_name}}**. Want me to pull its foundation and key context now? (~one call)"
+Linking without context is a half-done state — the user almost always wants the foundation immediately. So **proceed into sync by default**, with an explicit opt-out, rather than asking permission:
 
-- Yes → hand off to `/stratafy:sync` behaviour (the workspace-sync skill)
-- No → *"Done. Run `/stratafy:sync` whenever you want the context — or I'll offer to pull it the first time it's needed."*
+> "Linked to **{{workspace_name}}**. Pulling its foundation and key context now — say 'skip' if you'd rather not."
+
+- No objection / "go" / silence → run the **workspace-sync** flow (one fetch; writes `.stratafy/foundation.md` + `context.md`, the managed grounding block in `CLAUDE.local.md`, and the `.gitignore` entries if it's a repo)
+- "skip" → *"Linked. Run `/stratafy:sync` when you want the context — it'll also auto-pull the first time grounding is needed."*
+
+After sync completes, the grounding block in `CLAUDE.local.md` `@`-imports the cache, so every future session in this folder is auto-grounded with no command and no tool call.
 
 ## Voice
 
@@ -106,5 +110,7 @@ Practical, calm, transparent. This is an infrastructure command — no salesmans
 1. NEVER hardcode a workspace ID — always discover via `select_workspace` (no ID) and let the user pick
 2. NEVER fabricate a workspace list — if the MCP returns none, say so honestly
 3. NEVER write to `~/.stratafy/` — always the absolute project-rooted path
-4. Re-linking overwrites `link.json` and resets `last_synced` to null (the new workspace's context hasn't been pulled yet)
-5. The link is local to the project folder — switching projects means a different (or no) link
+4. NEVER write to `CLAUDE.md` — the plugin owns only `CLAUDE.local.md`
+5. Sync is the default after linking, not an offer — make the user opt OUT, not in
+6. Re-linking overwrites `link.json` and resets `last_synced` to null (the new workspace's context hasn't been pulled yet)
+7. The link is local to the project folder — switching projects means a different (or no) link

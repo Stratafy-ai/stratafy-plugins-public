@@ -31,9 +31,10 @@ If it fails → Step 5 (connection issue).
 PROJECT_ROOT="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 ls -la "$PROJECT_ROOT/.stratafy/foundation.md" 2>/dev/null
 ls -la "$PROJECT_ROOT/.stratafy/context.md" 2>/dev/null
+grep -q 'stratafy:begin' "$PROJECT_ROOT/CLAUDE.local.md" 2>/dev/null && echo "GROUNDING_BLOCK_PRESENT" || echo "GROUNDING_BLOCK_MISSING"
 ```
 
-Compute days since `last_synced`. Stale if `≥ sync_ttl_days`.
+Compute days since `last_synced`. Stale if `≥ sync_ttl_days`. The grounding-block check verifies the auto-load wiring is actually in place — cache files without the `CLAUDE.local.md` block means context exists on disk but won't reach a fresh session.
 
 ### Step 4: Render the status block
 
@@ -46,6 +47,8 @@ Stratafy plugin status:
 ✓ Project linked to: {{workspace_name}}
 ✓ Foundation + context synced {{n}} days ago
   {{"fresh — next auto-refresh in " (ttl-n) " days" | "STALE — run /stratafy:sync"}}
+{{✓ Auto-grounding wired (CLAUDE.local.md imports the cache — loads every session)
+  | ✗ Auto-grounding NOT wired — run /stratafy:sync to install the CLAUDE.local.md block}}
   Force refresh: /stratafy:sync
 
 Linked by {{linked_by}} on {{linked_at}}

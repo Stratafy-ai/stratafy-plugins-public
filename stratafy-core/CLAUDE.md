@@ -17,8 +17,26 @@ All inside the user's project folder so file tools can read them in Claude Code 
 - `<project-root>/.stratafy/link.json` — project↔workspace binding (workspace id/name, linked_by, last_synced, sync_ttl_days)
 - `<project-root>/.stratafy/foundation.md` — mission, vision, values, beliefs, principles (slow-changing)
 - `<project-root>/.stratafy/context.md` — active strategies + key priorities (faster-changing)
+- `<project-root>/CLAUDE.local.md` — managed sentinel block that `@`-imports the two cache files (the delivery mechanism)
 
-The Write tool does not expand `~` — always use the absolute project-rooted path.
+The Write tool does not expand `~` — always use the absolute project-rooted path. The plugin owns only `CLAUDE.local.md`; it NEVER writes `CLAUDE.md` (that's the user's Folder-instructions surface in Cowork).
+
+## Auto-grounding mechanism
+
+Writing the `.stratafy/*.md` cache is necessary but not sufficient — nothing pulls it into a fresh session. The delivery is a managed, sentinel-fenced block in `CLAUDE.local.md`:
+
+```markdown
+<!-- stratafy:begin — managed by stratafy-core; do not edit inside this block -->
+## Stratafy workspace grounding
+This project is linked to the **{{workspace}}** Stratafy workspace.
+@.stratafy/foundation.md
+@.stratafy/context.md
+<!-- stratafy:end -->
+```
+
+Verified in Cowork: `CLAUDE.local.md` auto-loads every session and `@path` imports inline the file content with no tool call — so foundation + context are ambient grounding for free, every session, with zero ceremony. `CLAUDE.local.md` is conventionally gitignored (per-clone) and invisible to Cowork's Folder-instructions modal, so the plugin and the user never collide. The block is timestamp-free (volatile `last_synced` stays in `link.json`) to avoid per-session churn. Sync re-asserts the block idempotently, replacing only between the sentinels.
+
+In git repos the link/sync flow adds `.stratafy/` and `CLAUDE.local.md` to `.gitignore`.
 
 ## Linking + sync model
 

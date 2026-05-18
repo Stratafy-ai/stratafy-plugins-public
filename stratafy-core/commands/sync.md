@@ -50,23 +50,35 @@ PROJECT_ROOT="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 mkdir -p "$PROJECT_ROOT/.stratafy"
 ```
 
-Write two files (absolute paths):
+Write the cache files (absolute paths):
 
 - `$PROJECT_ROOT/.stratafy/foundation.md` — the foundation portion: mission, vision, values, beliefs, principles, in canonical document format
 - `$PROJECT_ROOT/.stratafy/context.md` — the key context: active strategies (name + one-line) and active key priorities (title + what each bundles)
 
 Then update `link.json` `last_synced` to the current ISO8601 timestamp (preserve all other fields).
 
-### Step 5: Display
+### Step 4b: Re-assert the grounding block in CLAUDE.local.md
 
-Render a short summary, always including the freshness line:
+The cache files do nothing on their own — the delivery mechanism is a managed, sentinel-fenced block in `$PROJECT_ROOT/CLAUDE.local.md` that `@`-imports them. Cowork auto-loads `CLAUDE.local.md` every session and inlines `@`-imports with no tool call, so foundation + context become ambient grounding for free.
+
+Read `CLAUDE.local.md`, then surgically replace only the `stratafy:begin … stratafy:end` block (create the file with a minimal header if absent; append the block if the file exists without sentinels). NEVER touch `CLAUDE.md` (that's the user's Folder-instructions surface) and NEVER rewrite the whole `CLAUDE.local.md` when sentinels exist — preserve everything outside the block. Timestamp-free; volatile state stays in `link.json`. Exact block shape and merge rules are in the **workspace-sync** skill.
+
+If `$PROJECT_ROOT/.git` exists, ensure `.gitignore` contains `.stratafy/` and `CLAUDE.local.md` (append if missing). Skip silently if no `.git`.
+
+### Step 5: Display — what changed, then freshness
+
+If a previous `.stratafy/context.md` / `foundation.md` existed, diff against it and lead with what *changed* (turns sync from a chore into a briefing). Otherwise just summarise.
 
 ```
 Synced {{workspace_name}} from Stratafy.
 
+Changes since last sync:
+{{e.g. "+ new key priority: Distributed Leadership Activation" / "~ mission reworded" / "no changes"}}
+
 Foundation: {{mission one-liner}} · {{n}} values · {{n}} beliefs · {{n}} principles
 Context:    {{n}} active strategies · {{n}} key priorities
 
+✓ Grounding block refreshed in CLAUDE.local.md (auto-loads next session)
 Last synced: {{timestamp}}. Auto-refreshes after {{sync_ttl_days}} days.
 Force refresh: /stratafy:sync (say "refresh")
 ```
@@ -89,5 +101,8 @@ If foundation or context is empty/sparse, say so — never fabricate:
 2. NEVER call `get_workspace_snapshot` without `sections` — the full payload overflows context
 3. NEVER fabricate foundation/context to fill gaps — surface sparse state honestly
 4. NEVER write to `~/.stratafy/` — always the absolute project-rooted path
-5. ALWAYS update `link.json` `last_synced` after a successful write, preserving other fields
-6. Respect the TTL — don't re-fetch fresh cache unless the user explicitly forces a refresh
+5. NEVER write to `CLAUDE.md` — the plugin owns only `CLAUDE.local.md`; `CLAUDE.md` is the user's
+6. NEVER rewrite `CLAUDE.local.md` wholesale when sentinels exist — replace only between the markers
+7. ALWAYS re-assert the managed block on every sync, timestamp-free, so a fresh `@`-import is in place
+8. ALWAYS update `link.json` `last_synced` after a successful write, preserving other fields
+9. Respect the TTL — don't re-fetch fresh cache unless the user explicitly forces a refresh

@@ -42,13 +42,14 @@ test -f "$LINK" && cat "$LINK" || echo "UNLINKED"
 ```bash
 ls -la "$PROJECT_ROOT/.stratafy/foundation.md" 2>/dev/null
 ls -la "$PROJECT_ROOT/.stratafy/context.md" 2>/dev/null
+grep -q 'stratafy:begin' "$PROJECT_ROOT/CLAUDE.local.md" 2>/dev/null && echo "GROUNDING_BLOCK_PRESENT" || echo "GROUNDING_BLOCK_MISSING"
 ```
 
-Days since `last_synced`; stale if `≥ sync_ttl_days` (default 7).
+Days since `last_synced`; stale if `≥ sync_ttl_days` (default 7). Also report **auto-grounding wiring**: whether `CLAUDE.local.md` has the managed `stratafy:begin` block. Cache files present but block missing = context on disk that won't reach a fresh session — surface that as an actionable warning, not a silent pass.
 
 ## Status block
 
-**Linked:** connection ✓, linked workspace name, sync age + fresh/stale, force-refresh hint (`/stratafy:sync`), re-link hint (`/stratafy:link`), plugin version, then the telemetry transparency block.
+**Linked:** connection ✓, linked workspace name, sync age + fresh/stale, **auto-grounding wired? (CLAUDE.local.md block present)**, force-refresh hint (`/stratafy:sync`), re-link hint (`/stratafy:link`), plugin version, then the telemetry transparency block.
 
 **Unlinked:** "not linked yet" + `/stratafy:link` hint + plugin version + the telemetry block (framed as "once linked"). Then offer to link inline.
 

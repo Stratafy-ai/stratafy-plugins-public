@@ -11,8 +11,8 @@
     {
       "name": "stratafy-core",
       "source": "./stratafy-core",
-      "description": "Universal Stratafy connector — link a project to any workspace (/stratafy:link), pull its foundation + key context into the project folder and keep it in sync (/stratafy:sync), with link + telemetry transparency (/stratafy:status). Workspace-agnostic: the binding is data in .stratafy/link.json, never a hardcoded ID. Project-scoped local cache so grounding is ambient and fast.",
-      "version": "0.4.0",
+      "description": "Universal Stratafy connector — link a project to any workspace (/stratafy:link), pull its foundation + key context and keep it in sync (/stratafy:sync), with link + telemetry transparency (/stratafy:status). Auto-grounds every session: a managed CLAUDE.local.md block @-imports the cache so workspace foundation + strategy load with zero ceremony and no tool call. Workspace-agnostic (binding is .stratafy/link.json, no hardcoded ID); project-scoped; gitignored; never touches the user's CLAUDE.md.",
+      "version": "0.5.0",
       "author": {
         "name": "Stratafy"
       },

@@ -11,8 +11,8 @@
     {
       "name": "stratafy-core",
       "source": "./stratafy-core",
-      "description": "Universal Stratafy connector — link a project to any workspace (/stratafy:link), pull its foundation + key context and keep it in sync (/stratafy:sync), with link + telemetry transparency (/stratafy:status). Auto-grounds every session: a managed CLAUDE.local.md block @-imports the cache AND carries a workspace-pin working rule so any Stratafy MCP operation in the folder targets the bound workspace — read and write both covered, zero ceremony. Workspace-agnostic (binding is data in .stratafy/link.json, no hardcoded ID); project-scoped; gitignored; never touches the user's CLAUDE.md.",
-      "version": "0.6.0",
+      "description": "Universal Stratafy connector — link a project to any workspace (/stratafy:link), pull its foundation, key context, and your team's strategic loadout (objectives, metrics, recent decisions) and keep it in sync (/stratafy:sync), with link + telemetry transparency (/stratafy:status). Auto-grounds every session: a managed CLAUDE.local.md block @-imports the cache AND carries a workspace-pin working rule so any Stratafy MCP operation in the folder targets the bound workspace — read and write both covered, zero ceremony. Workspace-agnostic (binding is data in .stratafy/link.json, no hardcoded ID); project-scoped; gitignored; never touches the user's CLAUDE.md.",
+      "version": "0.7.0",
       "author": {
         "name": "Stratafy"
       },

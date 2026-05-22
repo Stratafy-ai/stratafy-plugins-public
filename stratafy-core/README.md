@@ -7,7 +7,7 @@ Workspace-agnostic: the linked workspace is stored in `<project-root>/.stratafy/
 ## What it does
 
 - `/stratafy:link` — List the workspaces you can access, pick one, link this project to it
-- `/stratafy:sync` — Pull the linked workspace's foundation + key context locally; refresh when stale
+- `/stratafy:sync` — Pull the linked workspace's foundation, key context, and your team's strategic loadout locally; refresh when stale
 - `/stratafy:status` — Show the link, sync freshness, and telemetry transparency
 
 ## How linking works
@@ -16,7 +16,7 @@ Workspace-agnostic: the linked workspace is stored in `<project-root>/.stratafy/
 
 ## How sync works
 
-`/stratafy:sync` reads the link, fetches the workspace's foundation (mission, vision, values, beliefs, principles) and key context (active strategies + key priorities) in a single snapshot call, and writes them to `.stratafy/foundation.md` and `.stratafy/context.md`. Sync is TTL-based (default 7 days), forceable via `/stratafy:sync`, and auto-refreshes when stale context is needed. `/stratafy:link` chains straight into sync by default. If a command needs context and the project isn't linked yet, the link flow runs inline — no dead-end "link first" error.
+`/stratafy:sync` reads the link, fetches the workspace's foundation (mission, vision, values, beliefs, principles), key context (active strategies + key priorities), and the caller's team-scoped strategic loadout (objectives, metrics + RAG bands, and recent decisions, via `get_user_strategy`), and writes them to `.stratafy/foundation.md`, `.stratafy/context.md`, and `.stratafy/loadout.md`. Sync is TTL-based (default 7 days), forceable via `/stratafy:sync`, and auto-refreshes when stale context is needed. `/stratafy:link` chains straight into sync by default. If a command needs context and the project isn't linked yet, the link flow runs inline — no dead-end "link first" error.
 
 ## How grounding reaches every session
 
@@ -29,6 +29,7 @@ This project is bound to the **{{workspace}}** Stratafy workspace
 Working rule: pin this workspace before any Stratafy MCP operation here.
 @.stratafy/foundation.md
 @.stratafy/context.md
+@.stratafy/loadout.md
 <!-- stratafy:end -->
 ```
 
@@ -43,6 +44,7 @@ All inside the project folder (visible to file tools in both Claude Code CLI and
 - `<project-root>/.stratafy/link.json` — project↔workspace binding
 - `<project-root>/.stratafy/foundation.md` — foundation document
 - `<project-root>/.stratafy/context.md` — active strategies + key priorities
+- `<project-root>/.stratafy/loadout.md` — team-scoped objectives, metrics + RAG bands, recent decisions
 - `<project-root>/CLAUDE.local.md` — managed sentinel block that `@`-imports the cache (gitignored; the plugin never touches `CLAUDE.md`)
 
 ## Provenance

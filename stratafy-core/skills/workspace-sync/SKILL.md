@@ -1,18 +1,19 @@
 ---
 name: "workspace-sync"
-description: "Pulls the linked Stratafy workspace's foundation and key context into the project folder and keeps it fresh on a TTL. Use when the user runs /stratafy:sync, when foundation/strategy/key-priority context is relevant to a request and the local cache is missing or stale, or when another stratafy-core operation needs grounded workspace context. Reads <project-root>/.stratafy/link.json for the workspace; if absent, runs the workspace-link flow inline first."
+description: "Pulls the linked Stratafy workspace's foundation, key context, and the caller's team-scoped strategic loadout (objectives, metrics, recent decisions) into the project folder and keeps it fresh on a TTL. Use when the user runs /stratafy:sync, when foundation/strategy/objective/metric context is relevant to a request and the local cache is missing or stale, or when another stratafy-core operation needs grounded workspace context. Reads <project-root>/.stratafy/link.json for the workspace; if absent, runs the workspace-link flow inline first."
 ---
 
 # Workspace Sync
 
 Owns the local cache of the linked workspace's context. Generic: the workspace is whatever `<project-root>/.stratafy/link.json` points at — no hardcoded ID.
 
-Two files, split by change cadence:
+Three files, split by change cadence:
 
 - `<project-root>/.stratafy/foundation.md` — mission, vision, values, beliefs, principles. Slow-changing.
 - `<project-root>/.stratafy/context.md` — active strategies + key priorities. Faster-changing.
+- `<project-root>/.stratafy/loadout.md` — the caller's team-scoped strategic loadout: objectives, metrics + RAG bands, recent decisions. Fastest-changing.
 
-Both live inside the user's project folder so file tools can read them in Claude Code CLI and Claude Desktop / Cowork (Cowork only exposes the selected project folder).
+All three live inside the user's project folder so file tools can read them in Claude Code CLI and Claude Desktop / Cowork (Cowork only exposes the selected project folder).
 
 ## Trigger
 
@@ -45,7 +46,9 @@ From `link.json`: `workspace_id`, `workspace_name`, `last_synced`, `sync_ttl_day
 
 `get_user_context(workspace_id: <from link.json>, command_name: "sync", plugin_name: "stratafy-core", …provenance)` — validate + pin + identity in one call. Do NOT call `select_workspace` separately.
 
-`get_workspace_snapshot(sections: ["foundation", "strategies", "key_priorities"], …provenance)` — all three in one call. ALWAYS pass `sections`.
+`get_workspace_snapshot(sections: ["foundation", "strategies", "key_priorities"], …provenance)` — foundation + key context in one call. ALWAYS pass `sections`.
+
+`get_user_strategy(…provenance)` — the caller's team-scoped strategic loadout: active objectives, the metrics behind them (current value + green/yellow/red band), and recent decisions. Caller-scoped — no parameters. `scope` is `"team"` (resolved a team), `"role"` (fallback to strategies the user leads), or `"empty"` (nothing to surface).
 
 Provenance: `_llm_model`, `_intent: "user_request"`, `_reason`, `_source_plugin: "stratafy-core"`, `_source_command: "sync"`.
 
@@ -58,6 +61,7 @@ mkdir -p "$PROJECT_ROOT/.stratafy"
 
 - Assemble the foundation portion → `$PROJECT_ROOT/.stratafy/foundation.md` (canonical document format)
 - Assemble strategies + key priorities → `$PROJECT_ROOT/.stratafy/context.md`
+- Assemble the `get_user_strategy` loadout → `$PROJECT_ROOT/.stratafy/loadout.md` — team name, objectives (name · target · date · priority), metrics (current value + RAG band), recent decisions. For `scope: "role"` note the fallback; for `"empty"` write a one-line honest note, not an empty doc
 - Update `link.json` `last_synced` to ISO8601 now; preserve every other field exactly
 - Re-assert the managed grounding block in `$PROJECT_ROOT/CLAUDE.local.md` (see next section)
 
@@ -87,11 +91,13 @@ Never assume a prior session's workspace selection carries over. Do not operate
 against a different or unselected workspace unless the user explicitly asks; if
 they do, re-pin this one afterwards.
 
-The workspace foundation and active strategy context are imported below so they
-load automatically at the start of every session:
+The workspace foundation, active strategy context, and your team's strategic
+loadout are imported below so they load automatically at the start of every
+session:
 
 @.stratafy/foundation.md
 @.stratafy/context.md
+@.stratafy/loadout.md
 
 Stale or missing? Run `/stratafy:sync`. Binding metadata: `.stratafy/link.json`.
 <!-- stratafy:end -->
@@ -120,6 +126,10 @@ If foundation or context is sparse/empty, surface it — never fabricate to fill
 
 > *"{{workspace_name}}'s foundation in Stratafy is still being populated — some sections are in draft."*
 
+If `get_user_strategy` returns `scope: "role"` or `"empty"`, say so — never dress a role-fallback or empty loadout up as a team loadout:
+
+> *"You're not on a team in {{workspace_name}} yet — loadout falls back to the strategies you lead."*
+
 ## Freshness line
 
 Every display includes it:
@@ -139,7 +149,7 @@ Each project folder has its own `.stratafy/`. A user with two projects linked to
 ## Local Files
 
 - Reads `<project-root>/.stratafy/link.json`
-- Writes `<project-root>/.stratafy/foundation.md`, `<project-root>/.stratafy/context.md`, the `last_synced` field of `link.json`, and the managed sentinel block in `<project-root>/CLAUDE.local.md`
+- Writes `<project-root>/.stratafy/foundation.md`, `<project-root>/.stratafy/context.md`, `<project-root>/.stratafy/loadout.md`, the `last_synced` field of `link.json`, and the managed sentinel block in `<project-root>/CLAUDE.local.md`
 - May append to `<project-root>/.gitignore` (only if `.git` present)
 
 ## Rules
@@ -154,3 +164,4 @@ Each project folder has its own `.stratafy/`. A user with two projects linked to
 8. ALWAYS update `last_synced` after a successful write, preserving other `link.json` fields
 9. ALWAYS re-assert the managed block on every sync (idempotent) so a fresh `@`-import is in place
 10. Respect the TTL — fresh cache is served from disk unless the user forces a refresh
+11. NEVER fabricate a team or its objectives — `get_user_strategy` is caller-scoped; surface `role` / `empty` scope honestly

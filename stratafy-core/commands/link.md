@@ -90,7 +90,7 @@ Linking without context is a half-done state — the user almost always wants th
 
 > "Linked to **{{workspace_name}}**. Pulling its foundation and key context now — say 'skip' if you'd rather not."
 
-- No objection / "go" / silence → run the **workspace-sync** flow (one fetch; writes `.stratafy/foundation.md` + `context.md`, the managed grounding block in `CLAUDE.local.md`, and the `.gitignore` entries if it's a repo)
+- No objection / "go" / silence → run the **workspace-sync** flow (writes `.stratafy/foundation.md`, `context.md` + `loadout.md`, the managed grounding block in `CLAUDE.local.md`, and the `.gitignore` entries if it's a repo)
 - "skip" → *"Linked. Run `/stratafy:sync` when you want the context — it'll also auto-pull the first time grounding is needed."*
 
 After sync completes, the grounding block in `CLAUDE.local.md` `@`-imports the cache, so every future session in this folder is auto-grounded with no command and no tool call.
